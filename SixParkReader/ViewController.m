@@ -24,8 +24,8 @@
     _readerService = [[SPRService alloc] initWithSPRHTTPService:_httpService];
 
 
-    [[_readerService download6ParkHTMLAsync] subscribeNext:^(NSString *htmlString) {
-        NSLog(@"6park HTML: %@", htmlString);
+    [[_readerService fetch6ParkArticlesSig] subscribeNext:^(NSArray *articles) {
+        NSLog(@"%@", articles);
     } error:^(NSError *error) {
         NSLog(@"Failed to download 6park HTML: %@", error);
     }];

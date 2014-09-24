@@ -15,9 +15,14 @@
 		DB55577719D27066000EB3A2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB55577519D27066000EB3A2 /* LaunchScreen.xib */; };
 		DB55578319D27066000EB3A2 /* SixParkReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB55578219D27066000EB3A2 /* SixParkReaderTests.m */; };
 		DB55578E19D272E7000EB3A2 /* SPRService.m in Sources */ = {isa = PBXBuildFile; fileRef = DB55578D19D272E7000EB3A2 /* SPRService.m */; };
-		DB5557AA19D27392000EB3A2 /* libReactiveCocoa-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB55579D19D2737F000EB3A2 /* libReactiveCocoa-iOS.a */; };
 		DB5557B019D281E3000EB3A2 /* SPRHTTPService.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5557AF19D281E3000EB3A2 /* SPRHTTPService.m */; };
-		DB5557D219D28645000EB3A2 /* libTBXML-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5557CD19D28634000EB3A2 /* libTBXML-iOS.a */; };
+		DB5557DA19D28A49000EB3A2 /* SPRArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5557D919D28A49000EB3A2 /* SPRArticle.m */; };
+		DB5557EA19D28D73000EB3A2 /* libReactiveCocoa-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB55579D19D2737F000EB3A2 /* libReactiveCocoa-iOS.a */; };
+		DB5557F219D31A06000EB3A2 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5557ED19D31A06000EB3A2 /* TFHpple.m */; };
+		DB5557F319D31A06000EB3A2 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5557EF19D31A06000EB3A2 /* TFHppleElement.m */; };
+		DB5557F419D31A06000EB3A2 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5557F119D31A06000EB3A2 /* XPathQuery.m */; };
+		DB5557F619D31AAB000EB3A2 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5557F519D31AAB000EB3A2 /* libxml2.2.dylib */; };
+		DB5557FC19D32548000EB3A2 /* SPRConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5557FB19D32548000EB3A2 /* SPRConstants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,41 +89,6 @@
 			remoteGlobalIDString = 88F440AA153DAC820097B4C3;
 			remoteInfo = "ReactiveCocoa-iOS";
 		};
-		DB5557C819D28634000EB3A2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DB5557C119D28634000EB3A2 /* TBXML.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 829FA09C14D5B52A00D18697;
-			remoteInfo = TBXML;
-		};
-		DB5557CA19D28634000EB3A2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DB5557C119D28634000EB3A2 /* TBXML.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 829FA0B014D5B52A00D18697;
-			remoteInfo = TBXMLTests;
-		};
-		DB5557CC19D28634000EB3A2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DB5557C119D28634000EB3A2 /* TBXML.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8290352514D9F5B200ACF7E4;
-			remoteInfo = "TBXML-iOS";
-		};
-		DB5557CE19D28634000EB3A2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DB5557C119D28634000EB3A2 /* TBXML.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8290353314D9F5B200ACF7E4;
-			remoteInfo = "TBXML-iOSTests";
-		};
-		DB5557D019D28640000EB3A2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DB5557C119D28634000EB3A2 /* TBXML.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8290352414D9F5B200ACF7E4;
-			remoteInfo = "TBXML-iOS";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -141,7 +111,17 @@
 		DB5557AE19D281E3000EB3A2 /* SPRHTTPService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRHTTPService.h; path = Services/SPRHTTPService.h; sourceTree = "<group>"; };
 		DB5557AF19D281E3000EB3A2 /* SPRHTTPService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRHTTPService.m; path = Services/SPRHTTPService.m; sourceTree = "<group>"; };
 		DB5557B119D284A9000EB3A2 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		DB5557C119D28634000EB3A2 /* TBXML.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TBXML.xcodeproj; path = ../TBXML/TBXML.xcodeproj; sourceTree = "<group>"; };
+		DB5557D819D28A49000EB3A2 /* SPRArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRArticle.h; path = DataObjects/SPRArticle.h; sourceTree = "<group>"; };
+		DB5557D919D28A49000EB3A2 /* SPRArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRArticle.m; path = DataObjects/SPRArticle.m; sourceTree = "<group>"; };
+		DB5557EC19D31A06000EB3A2 /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TFHpple.h; path = Hpple/TFHpple.h; sourceTree = "<group>"; };
+		DB5557ED19D31A06000EB3A2 /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TFHpple.m; path = Hpple/TFHpple.m; sourceTree = "<group>"; };
+		DB5557EE19D31A06000EB3A2 /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TFHppleElement.h; path = Hpple/TFHppleElement.h; sourceTree = "<group>"; };
+		DB5557EF19D31A06000EB3A2 /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TFHppleElement.m; path = Hpple/TFHppleElement.m; sourceTree = "<group>"; };
+		DB5557F019D31A06000EB3A2 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPathQuery.h; path = Hpple/XPathQuery.h; sourceTree = "<group>"; };
+		DB5557F119D31A06000EB3A2 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XPathQuery.m; path = Hpple/XPathQuery.m; sourceTree = "<group>"; };
+		DB5557F519D31AAB000EB3A2 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		DB5557FA19D32548000EB3A2 /* SPRConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRConstants.h; sourceTree = "<group>"; };
+		DB5557FB19D32548000EB3A2 /* SPRConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRConstants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,8 +129,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB5557D219D28645000EB3A2 /* libTBXML-iOS.a in Frameworks */,
-				DB5557AA19D27392000EB3A2 /* libReactiveCocoa-iOS.a in Frameworks */,
+				DB5557F619D31AAB000EB3A2 /* libxml2.2.dylib in Frameworks */,
+				DB5557EA19D28D73000EB3A2 /* libReactiveCocoa-iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,10 +148,10 @@
 			isa = PBXGroup;
 			children = (
 				DB55576519D27066000EB3A2 /* SixParkReader */,
+				DB5557F919D321D3000EB3A2 /* Frameworks */,
 				DB55577F19D27066000EB3A2 /* SixParkReaderTests */,
 				DB55576419D27066000EB3A2 /* Products */,
 				DB55579019D2737E000EB3A2 /* ReactiveCocoa.xcodeproj */,
-				DB5557C119D28634000EB3A2 /* TBXML.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -189,10 +169,14 @@
 			children = (
 				DB55576A19D27066000EB3A2 /* AppDelegate.h */,
 				DB55576B19D27066000EB3A2 /* AppDelegate.m */,
+				DB5557D719D28A31000EB3A2 /* DataObjects */,
+				DB5557EB19D319F5000EB3A2 /* Hpple */,
 				DB55577319D27066000EB3A2 /* Images.xcassets */,
 				DB55577519D27066000EB3A2 /* LaunchScreen.xib */,
 				DB55577019D27066000EB3A2 /* Main.storyboard */,
 				DB55578F19D272EA000EB3A2 /* Services */,
+				DB5557FA19D32548000EB3A2 /* SPRConstants.h */,
+				DB5557FB19D32548000EB3A2 /* SPRConstants.m */,
 				DB55576619D27066000EB3A2 /* Supporting Files */,
 				DB55576D19D27066000EB3A2 /* ViewController.h */,
 				DB55576E19D27066000EB3A2 /* ViewController.m */,
@@ -252,15 +236,35 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DB5557C219D28634000EB3A2 /* Products */ = {
+		DB5557D719D28A31000EB3A2 /* DataObjects */ = {
 			isa = PBXGroup;
 			children = (
-				DB5557C919D28634000EB3A2 /* libTBXML.a */,
-				DB5557CB19D28634000EB3A2 /* TBXMLTests.octest */,
-				DB5557CD19D28634000EB3A2 /* libTBXML-iOS.a */,
-				DB5557CF19D28634000EB3A2 /* TBXML-iOSTests.octest */,
+				DB5557D819D28A49000EB3A2 /* SPRArticle.h */,
+				DB5557D919D28A49000EB3A2 /* SPRArticle.m */,
 			);
-			name = Products;
+			name = DataObjects;
+			sourceTree = "<group>";
+		};
+		DB5557EB19D319F5000EB3A2 /* Hpple */ = {
+			isa = PBXGroup;
+			children = (
+				DB5557EC19D31A06000EB3A2 /* TFHpple.h */,
+				DB5557ED19D31A06000EB3A2 /* TFHpple.m */,
+				DB5557EE19D31A06000EB3A2 /* TFHppleElement.h */,
+				DB5557EF19D31A06000EB3A2 /* TFHppleElement.m */,
+				DB5557F019D31A06000EB3A2 /* XPathQuery.h */,
+				DB5557F119D31A06000EB3A2 /* XPathQuery.m */,
+			);
+			name = Hpple;
+			sourceTree = "<group>";
+		};
+		DB5557F919D321D3000EB3A2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DB5557F519D31AAB000EB3A2 /* libxml2.2.dylib */,
+			);
+			name = Frameworks;
+			path = SixParkReader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,7 +281,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				DB5557D119D28640000EB3A2 /* PBXTargetDependency */,
 				DB5557A919D2738D000EB3A2 /* PBXTargetDependency */,
 			);
 			name = SixParkReader;
@@ -336,10 +339,6 @@
 				{
 					ProductGroup = DB55579119D2737E000EB3A2 /* Products */;
 					ProjectRef = DB55579019D2737E000EB3A2 /* ReactiveCocoa.xcodeproj */;
-				},
-				{
-					ProductGroup = DB5557C219D28634000EB3A2 /* Products */;
-					ProjectRef = DB5557C119D28634000EB3A2 /* TBXML.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -400,34 +399,6 @@
 			remoteRef = DB5557A619D2737F000EB3A2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		DB5557C919D28634000EB3A2 /* libTBXML.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libTBXML.a;
-			remoteRef = DB5557C819D28634000EB3A2 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		DB5557CB19D28634000EB3A2 /* TBXMLTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = TBXMLTests.octest;
-			remoteRef = DB5557CA19D28634000EB3A2 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		DB5557CD19D28634000EB3A2 /* libTBXML-iOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libTBXML-iOS.a";
-			remoteRef = DB5557CC19D28634000EB3A2 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		DB5557CF19D28634000EB3A2 /* TBXML-iOSTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "TBXML-iOSTests.octest";
-			remoteRef = DB5557CE19D28634000EB3A2 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -456,9 +427,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB55576F19D27066000EB3A2 /* ViewController.m in Sources */,
+				DB5557FC19D32548000EB3A2 /* SPRConstants.m in Sources */,
 				DB5557B019D281E3000EB3A2 /* SPRHTTPService.m in Sources */,
+				DB5557F419D31A06000EB3A2 /* XPathQuery.m in Sources */,
+				DB5557F319D31A06000EB3A2 /* TFHppleElement.m in Sources */,
+				DB5557F219D31A06000EB3A2 /* TFHpple.m in Sources */,
 				DB55578E19D272E7000EB3A2 /* SPRService.m in Sources */,
 				DB55576C19D27066000EB3A2 /* AppDelegate.m in Sources */,
+				DB5557DA19D28A49000EB3A2 /* SPRArticle.m in Sources */,
 				DB55576919D27066000EB3A2 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,11 +459,6 @@
 			isa = PBXTargetDependency;
 			name = "ReactiveCocoa-iOS";
 			targetProxy = DB5557A819D2738D000EB3A2 /* PBXContainerItemProxy */;
-		};
-		DB5557D119D28640000EB3A2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "TBXML-iOS";
-			targetProxy = DB5557D019D28640000EB3A2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -547,9 +518,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -583,9 +555,11 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -595,6 +569,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SixParkReader/PrefixHeader.pch;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$SOURCE_ROOT/include/**",
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = SixParkReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -607,6 +587,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SixParkReader/PrefixHeader.pch;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$SOURCE_ROOT/include/**",
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = SixParkReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
