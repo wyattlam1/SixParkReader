@@ -14,6 +14,9 @@
 		DB55577419D27066000EB3A2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB55577319D27066000EB3A2 /* Images.xcassets */; };
 		DB55577719D27066000EB3A2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB55577519D27066000EB3A2 /* LaunchScreen.xib */; };
 		DB55578319D27066000EB3A2 /* SixParkReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB55578219D27066000EB3A2 /* SixParkReaderTests.m */; };
+		DB55578E19D272E7000EB3A2 /* SPRService.m in Sources */ = {isa = PBXBuildFile; fileRef = DB55578D19D272E7000EB3A2 /* SPRService.m */; };
+		DB5557AA19D27392000EB3A2 /* libReactiveCocoa-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB55579D19D2737F000EB3A2 /* libReactiveCocoa-iOS.a */; };
+		DB5557B019D281E3000EB3A2 /* SPRHTTPService.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5557AF19D281E3000EB3A2 /* SPRHTTPService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,6 +26,62 @@
 			proxyType = 1;
 			remoteGlobalIDString = DB55576219D27066000EB3A2;
 			remoteInfo = SixParkReader;
+		};
+		DB55579A19D2737F000EB3A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB55579019D2737E000EB3A2 /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 88037F8315056328001A5B19;
+			remoteInfo = ReactiveCocoa;
+		};
+		DB55579C19D2737F000EB3A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB55579019D2737E000EB3A2 /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 88F440AB153DAC820097B4C3;
+			remoteInfo = "ReactiveCocoa-iOS";
+		};
+		DB55579E19D2737F000EB3A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB55579019D2737E000EB3A2 /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 88CDF7DC15000FCF00163A9F;
+			remoteInfo = ReactiveCocoaTests;
+		};
+		DB5557A019D2737F000EB3A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB55579019D2737E000EB3A2 /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5FAF5223174D4C2000CAC810;
+			remoteInfo = "ReactiveCocoaTests-iOS";
+		};
+		DB5557A219D2737F000EB3A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB55579019D2737E000EB3A2 /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1860F412177C91B500C7B3C9;
+			remoteInfo = "ReactiveCocoa-iOS-UIKitTestHost";
+		};
+		DB5557A419D2737F000EB3A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB55579019D2737E000EB3A2 /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1860F430177C91B500C7B3C9;
+			remoteInfo = "ReactiveCocoa-iOS-UIKitTestHostTests";
+		};
+		DB5557A619D2737F000EB3A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB55579019D2737E000EB3A2 /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D05AD39417F2D56F0080895B;
+			remoteInfo = "ReactiveCocoa-Mac";
+		};
+		DB5557A819D2738D000EB3A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB55579019D2737E000EB3A2 /* ReactiveCocoa.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 88F440AA153DAC820097B4C3;
+			remoteInfo = "ReactiveCocoa-iOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -40,6 +99,12 @@
 		DB55577C19D27066000EB3A2 /* SixParkReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SixParkReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB55578119D27066000EB3A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB55578219D27066000EB3A2 /* SixParkReaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SixParkReaderTests.m; sourceTree = "<group>"; };
+		DB55578C19D272E7000EB3A2 /* SPRService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRService.h; path = Services/SPRService.h; sourceTree = "<group>"; };
+		DB55578D19D272E7000EB3A2 /* SPRService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRService.m; path = Services/SPRService.m; sourceTree = "<group>"; };
+		DB55579019D2737E000EB3A2 /* ReactiveCocoa.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveCocoa.xcodeproj; path = ../ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoa.xcodeproj; sourceTree = "<group>"; };
+		DB5557AE19D281E3000EB3A2 /* SPRHTTPService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRHTTPService.h; path = Services/SPRHTTPService.h; sourceTree = "<group>"; };
+		DB5557AF19D281E3000EB3A2 /* SPRHTTPService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRHTTPService.m; path = Services/SPRHTTPService.m; sourceTree = "<group>"; };
+		DB5557B119D284A9000EB3A2 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB5557AA19D27392000EB3A2 /* libReactiveCocoa-iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +132,7 @@
 				DB55576519D27066000EB3A2 /* SixParkReader */,
 				DB55577F19D27066000EB3A2 /* SixParkReaderTests */,
 				DB55576419D27066000EB3A2 /* Products */,
+				DB55579019D2737E000EB3A2 /* ReactiveCocoa.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,12 +150,13 @@
 			children = (
 				DB55576A19D27066000EB3A2 /* AppDelegate.h */,
 				DB55576B19D27066000EB3A2 /* AppDelegate.m */,
-				DB55576D19D27066000EB3A2 /* ViewController.h */,
-				DB55576E19D27066000EB3A2 /* ViewController.m */,
-				DB55577019D27066000EB3A2 /* Main.storyboard */,
 				DB55577319D27066000EB3A2 /* Images.xcassets */,
 				DB55577519D27066000EB3A2 /* LaunchScreen.xib */,
+				DB55577019D27066000EB3A2 /* Main.storyboard */,
+				DB55578F19D272EA000EB3A2 /* Services */,
 				DB55576619D27066000EB3A2 /* Supporting Files */,
+				DB55576D19D27066000EB3A2 /* ViewController.h */,
+				DB55576E19D27066000EB3A2 /* ViewController.m */,
 			);
 			path = SixParkReader;
 			sourceTree = "<group>";
@@ -98,6 +166,7 @@
 			children = (
 				DB55576719D27066000EB3A2 /* Info.plist */,
 				DB55576819D27066000EB3A2 /* main.m */,
+				DB5557B119D284A9000EB3A2 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -119,6 +188,31 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		DB55578F19D272EA000EB3A2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DB55578C19D272E7000EB3A2 /* SPRService.h */,
+				DB55578D19D272E7000EB3A2 /* SPRService.m */,
+				DB5557AE19D281E3000EB3A2 /* SPRHTTPService.h */,
+				DB5557AF19D281E3000EB3A2 /* SPRHTTPService.m */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		DB55579119D2737E000EB3A2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DB55579B19D2737F000EB3A2 /* ReactiveCocoa.framework */,
+				DB55579D19D2737F000EB3A2 /* libReactiveCocoa-iOS.a */,
+				DB55579F19D2737F000EB3A2 /* ReactiveCocoaTests.xctest */,
+				DB5557A119D2737F000EB3A2 /* ReactiveCocoaTests-iOS.xctest */,
+				DB5557A319D2737F000EB3A2 /* ReactiveCocoa-iOS-UIKitTestHost.app */,
+				DB5557A519D2737F000EB3A2 /* ReactiveCocoa-iOS-UIKitTestHostTests.octest */,
+				DB5557A719D2737F000EB3A2 /* libReactiveCocoa-Mac.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -133,6 +227,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				DB5557A919D2738D000EB3A2 /* PBXTargetDependency */,
 			);
 			name = SixParkReader;
 			productName = SixParkReader;
@@ -186,6 +281,12 @@
 			mainGroup = DB55575A19D27065000EB3A2;
 			productRefGroup = DB55576419D27066000EB3A2 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = DB55579119D2737E000EB3A2 /* Products */;
+					ProjectRef = DB55579019D2737E000EB3A2 /* ReactiveCocoa.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				DB55576219D27066000EB3A2 /* SixParkReader */,
@@ -193,6 +294,58 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		DB55579B19D2737F000EB3A2 /* ReactiveCocoa.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ReactiveCocoa.framework;
+			remoteRef = DB55579A19D2737F000EB3A2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DB55579D19D2737F000EB3A2 /* libReactiveCocoa-iOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libReactiveCocoa-iOS.a";
+			remoteRef = DB55579C19D2737F000EB3A2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DB55579F19D2737F000EB3A2 /* ReactiveCocoaTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ReactiveCocoaTests.xctest;
+			remoteRef = DB55579E19D2737F000EB3A2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DB5557A119D2737F000EB3A2 /* ReactiveCocoaTests-iOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "ReactiveCocoaTests-iOS.xctest";
+			remoteRef = DB5557A019D2737F000EB3A2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DB5557A319D2737F000EB3A2 /* ReactiveCocoa-iOS-UIKitTestHost.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "ReactiveCocoa-iOS-UIKitTestHost.app";
+			remoteRef = DB5557A219D2737F000EB3A2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DB5557A519D2737F000EB3A2 /* ReactiveCocoa-iOS-UIKitTestHostTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "ReactiveCocoa-iOS-UIKitTestHostTests.octest";
+			remoteRef = DB5557A419D2737F000EB3A2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DB5557A719D2737F000EB3A2 /* libReactiveCocoa-Mac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libReactiveCocoa-Mac.a";
+			remoteRef = DB5557A619D2737F000EB3A2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		DB55576119D27066000EB3A2 /* Resources */ = {
@@ -220,6 +373,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB55576F19D27066000EB3A2 /* ViewController.m in Sources */,
+				DB5557B019D281E3000EB3A2 /* SPRHTTPService.m in Sources */,
+				DB55578E19D272E7000EB3A2 /* SPRService.m in Sources */,
 				DB55576C19D27066000EB3A2 /* AppDelegate.m in Sources */,
 				DB55576919D27066000EB3A2 /* main.m in Sources */,
 			);
@@ -240,6 +395,11 @@
 			isa = PBXTargetDependency;
 			target = DB55576219D27066000EB3A2 /* SixParkReader */;
 			targetProxy = DB55577D19D27066000EB3A2 /* PBXContainerItemProxy */;
+		};
+		DB5557A919D2738D000EB3A2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ReactiveCocoa-iOS";
+			targetProxy = DB5557A819D2738D000EB3A2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -345,6 +505,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SixParkReader/PrefixHeader.pch;
 				INFOPLIST_FILE = SixParkReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -355,6 +517,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SixParkReader/PrefixHeader.pch;
 				INFOPLIST_FILE = SixParkReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -414,6 +578,7 @@
 				DB55578819D27066000EB3A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DB55578919D27066000EB3A2 /* Build configuration list for PBXNativeTarget "SixParkReaderTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +587,7 @@
 				DB55578B19D27066000EB3A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

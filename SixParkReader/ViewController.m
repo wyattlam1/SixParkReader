@@ -7,16 +7,28 @@
 //
 
 #import "ViewController.h"
+#import "SPRService.h"
+#import "SPRHTTPService.h"
 
 @interface ViewController ()
-
+@property (nonatomic) SPRService *readerService;
+@property (nonatomic) SPRHTTPService *httpService;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+
+    _httpService = [[SPRHTTPService alloc] init];
+    _readerService = [[SPRService alloc] initWithSPRHTTPService:_httpService];
+
+
+    [[_readerService download6ParkHTMLAsync] subscribeNext:^(NSString *htmlString) {
+        NSLog(@"6park HTML: %@", htmlString);
+    } error:^(NSError *error) {
+        NSLog(@"Failed to download 6park HTML: %@", error);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

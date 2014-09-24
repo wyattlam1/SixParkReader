@@ -1,0 +1,17 @@
+//
+//  PrefixHeader.pch
+//  SixParkReader
+//
+//  Created by Wyatt Lam on 9/23/14.
+//  Copyright (c) 2014 Wyatt Lam. All rights reserved.
+//
+
+#ifndef SixParkReader_PrefixHeader_pch
+#define SixParkReader_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
+#endif
