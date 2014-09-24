@@ -1,0 +1,429 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DB55576919D27066000EB3A2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DB55576819D27066000EB3A2 /* main.m */; };
+		DB55576C19D27066000EB3A2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB55576B19D27066000EB3A2 /* AppDelegate.m */; };
+		DB55576F19D27066000EB3A2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB55576E19D27066000EB3A2 /* ViewController.m */; };
+		DB55577219D27066000EB3A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB55577019D27066000EB3A2 /* Main.storyboard */; };
+		DB55577419D27066000EB3A2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB55577319D27066000EB3A2 /* Images.xcassets */; };
+		DB55577719D27066000EB3A2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB55577519D27066000EB3A2 /* LaunchScreen.xib */; };
+		DB55578319D27066000EB3A2 /* SixParkReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB55578219D27066000EB3A2 /* SixParkReaderTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DB55577D19D27066000EB3A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB55575B19D27065000EB3A2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DB55576219D27066000EB3A2;
+			remoteInfo = SixParkReader;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		DB55576319D27066000EB3A2 /* SixParkReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SixParkReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB55576719D27066000EB3A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DB55576819D27066000EB3A2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DB55576A19D27066000EB3A2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		DB55576B19D27066000EB3A2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		DB55576D19D27066000EB3A2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		DB55576E19D27066000EB3A2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		DB55577119D27066000EB3A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DB55577319D27066000EB3A2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		DB55577619D27066000EB3A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		DB55577C19D27066000EB3A2 /* SixParkReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SixParkReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB55578119D27066000EB3A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DB55578219D27066000EB3A2 /* SixParkReaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SixParkReaderTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DB55576019D27066000EB3A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB55577919D27066000EB3A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DB55575A19D27065000EB3A2 = {
+			isa = PBXGroup;
+			children = (
+				DB55576519D27066000EB3A2 /* SixParkReader */,
+				DB55577F19D27066000EB3A2 /* SixParkReaderTests */,
+				DB55576419D27066000EB3A2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DB55576419D27066000EB3A2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DB55576319D27066000EB3A2 /* SixParkReader.app */,
+				DB55577C19D27066000EB3A2 /* SixParkReaderTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DB55576519D27066000EB3A2 /* SixParkReader */ = {
+			isa = PBXGroup;
+			children = (
+				DB55576A19D27066000EB3A2 /* AppDelegate.h */,
+				DB55576B19D27066000EB3A2 /* AppDelegate.m */,
+				DB55576D19D27066000EB3A2 /* ViewController.h */,
+				DB55576E19D27066000EB3A2 /* ViewController.m */,
+				DB55577019D27066000EB3A2 /* Main.storyboard */,
+				DB55577319D27066000EB3A2 /* Images.xcassets */,
+				DB55577519D27066000EB3A2 /* LaunchScreen.xib */,
+				DB55576619D27066000EB3A2 /* Supporting Files */,
+			);
+			path = SixParkReader;
+			sourceTree = "<group>";
+		};
+		DB55576619D27066000EB3A2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DB55576719D27066000EB3A2 /* Info.plist */,
+				DB55576819D27066000EB3A2 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DB55577F19D27066000EB3A2 /* SixParkReaderTests */ = {
+			isa = PBXGroup;
+			children = (
+				DB55578219D27066000EB3A2 /* SixParkReaderTests.m */,
+				DB55578019D27066000EB3A2 /* Supporting Files */,
+			);
+			path = SixParkReaderTests;
+			sourceTree = "<group>";
+		};
+		DB55578019D27066000EB3A2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DB55578119D27066000EB3A2 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DB55576219D27066000EB3A2 /* SixParkReader */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB55578619D27066000EB3A2 /* Build configuration list for PBXNativeTarget "SixParkReader" */;
+			buildPhases = (
+				DB55575F19D27066000EB3A2 /* Sources */,
+				DB55576019D27066000EB3A2 /* Frameworks */,
+				DB55576119D27066000EB3A2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SixParkReader;
+			productName = SixParkReader;
+			productReference = DB55576319D27066000EB3A2 /* SixParkReader.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DB55577B19D27066000EB3A2 /* SixParkReaderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB55578919D27066000EB3A2 /* Build configuration list for PBXNativeTarget "SixParkReaderTests" */;
+			buildPhases = (
+				DB55577819D27066000EB3A2 /* Sources */,
+				DB55577919D27066000EB3A2 /* Frameworks */,
+				DB55577A19D27066000EB3A2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DB55577E19D27066000EB3A2 /* PBXTargetDependency */,
+			);
+			name = SixParkReaderTests;
+			productName = SixParkReaderTests;
+			productReference = DB55577C19D27066000EB3A2 /* SixParkReaderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DB55575B19D27065000EB3A2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Wyatt Lam";
+				TargetAttributes = {
+					DB55576219D27066000EB3A2 = {
+						CreatedOnToolsVersion = 6.0.1;
+					};
+					DB55577B19D27066000EB3A2 = {
+						CreatedOnToolsVersion = 6.0.1;
+						TestTargetID = DB55576219D27066000EB3A2;
+					};
+				};
+			};
+			buildConfigurationList = DB55575E19D27065000EB3A2 /* Build configuration list for PBXProject "SixParkReader" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DB55575A19D27065000EB3A2;
+			productRefGroup = DB55576419D27066000EB3A2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DB55576219D27066000EB3A2 /* SixParkReader */,
+				DB55577B19D27066000EB3A2 /* SixParkReaderTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DB55576119D27066000EB3A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB55577219D27066000EB3A2 /* Main.storyboard in Resources */,
+				DB55577719D27066000EB3A2 /* LaunchScreen.xib in Resources */,
+				DB55577419D27066000EB3A2 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB55577A19D27066000EB3A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DB55575F19D27066000EB3A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB55576F19D27066000EB3A2 /* ViewController.m in Sources */,
+				DB55576C19D27066000EB3A2 /* AppDelegate.m in Sources */,
+				DB55576919D27066000EB3A2 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB55577819D27066000EB3A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB55578319D27066000EB3A2 /* SixParkReaderTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DB55577E19D27066000EB3A2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DB55576219D27066000EB3A2 /* SixParkReader */;
+			targetProxy = DB55577D19D27066000EB3A2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DB55577019D27066000EB3A2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB55577119D27066000EB3A2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DB55577519D27066000EB3A2 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB55577619D27066000EB3A2 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DB55578419D27066000EB3A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		DB55578519D27066000EB3A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DB55578719D27066000EB3A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SixParkReader/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		DB55578819D27066000EB3A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SixParkReader/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		DB55578A19D27066000EB3A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SixParkReaderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SixParkReader.app/SixParkReader";
+			};
+			name = Debug;
+		};
+		DB55578B19D27066000EB3A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SixParkReaderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SixParkReader.app/SixParkReader";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DB55575E19D27065000EB3A2 /* Build configuration list for PBXProject "SixParkReader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB55578419D27066000EB3A2 /* Debug */,
+				DB55578519D27066000EB3A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB55578619D27066000EB3A2 /* Build configuration list for PBXNativeTarget "SixParkReader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB55578719D27066000EB3A2 /* Debug */,
+				DB55578819D27066000EB3A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		DB55578919D27066000EB3A2 /* Build configuration list for PBXNativeTarget "SixParkReaderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB55578A19D27066000EB3A2 /* Debug */,
+				DB55578B19D27066000EB3A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DB55575B19D27065000EB3A2 /* Project object */;
+}
