@@ -11,18 +11,18 @@
 #import "SPRArticleTableViewCell.h"
 #import "SPRArticlesModel.h"
 
-@interface SPRArticlesTableViewController ()
+@interface SPRArticlesTableViewController ()<UITableViewDelegate, UITableViewDataSource>
 @end
 
 @implementation SPRArticlesTableViewController
-
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor blueColor];
-    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+//    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerClass:[SPRArticleTableViewCell class] forCellReuseIdentifier:NSStringFromClass([SPRArticle class])];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -57,6 +57,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return _articles.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [SPRArticleTableViewCell heightForTableViewCell:tableView article:_articles[indexPath.row]];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

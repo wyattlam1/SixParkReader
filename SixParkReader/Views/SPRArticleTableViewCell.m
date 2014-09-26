@@ -8,8 +8,9 @@
 
 #import "SPRArticleTableViewCell.h"
 #import "SPRArticle.h"
+#import "UIFont+SPRAdditions.h"
 
-static const NSInteger kArticleCellPadding = 10;
+static const CGFloat kArticleCellPadding = 15.f;
 
 @interface SPRArticleTableViewCell()
 @property (nonatomic) UIView *containerView;
@@ -18,17 +19,29 @@ static const NSInteger kArticleCellPadding = 10;
 
 @implementation SPRArticleTableViewCell
 
++ (CGFloat)heightForTableViewCell:(UITableView *)tableView article:(SPRArticle *)article
+{
+    CGRect rect = [article.title boundingRectWithSize:(CGSize){CGRectGetWidth(tableView.bounds), CGFLOAT_MAX} options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) attributes:@{NSFontAttributeName: [UIFont spr_defaultFont]} context:nil];
+    return rect.size.height + (2 * kArticleCellPadding);
+}
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         _titleLabel = [UILabel new];
+        _titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        _titleLabel.numberOfLines = 0;
+        _titleLabel.font = [UIFont spr_defaultFont];
+
         _containerView = [UIView new];
         
         [_containerView addSubview:_titleLabel];
-        [self addSubview:_containerView];
+        [self.contentView addSubview:_containerView];
         
+        @weakify(self);
         [RACObserve(self, article) subscribeNext:^(id x) {
+            @strongify(self);
             [self updateCell];
         }];
     }
@@ -40,23 +53,25 @@ static const NSInteger kArticleCellPadding = 10;
 - (void)updateCell
 {
     _titleLabel.text = _article.title;
+    [self setNeedsLayout];
 }
 
 #pragma mark - Layout & Drawing
 
 - (void)layoutSubviews
 {
-    _containerView.frame = (CGRect){kArticleCellPadding, kArticleCellPadding, self.bounds.size.width - kArticleCellPadding, self.bounds.size.height - kArticleCellPadding};
-    
+    [super layoutSubviews];
+    CGFloat containerWidth = self.bounds.size.width - (2 * kArticleCellPadding);
+    _titleLabel.bounds = (CGRect){0, 0, containerWidth, 50};
     [_titleLabel sizeToFit];
     _titleLabel.frame = (CGRect){0, 0, .size = _titleLabel.bounds.size};
+    
+    _containerView.frame = (CGRect){kArticleCellPadding, kArticleCellPadding, containerWidth, CGRectGetHeight(_titleLabel.frame) + kArticleCellPadding};
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end

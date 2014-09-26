@@ -13,5 +13,7 @@
 @interface SPRArticleTableViewCell : UITableViewCell
 @property (nonatomic) SPRArticle *article;
 
++ (CGFloat)heightForTableViewCell:(UITableView *)tableView article:(SPRArticle *)article;
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 @end
