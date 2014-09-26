@@ -12,4 +12,6 @@
 
 + (NSStringEncoding)sixParkEncoding;
 
++ (CGFloat)statusBarHeight;
+
 @end

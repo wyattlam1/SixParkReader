@@ -15,4 +15,9 @@
     return CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
 }
 
++ (CGFloat)statusBarHeight
+{
+    return [UIApplication sharedApplication].statusBarFrame.size.height;
+}
+
 @end

@@ -8,8 +8,11 @@
 
 #import "SPRMasterViewController.h"
 #import "SPRArticlesViewModel.h"
+#import "SPRConstants.h"
+#import "UIColor+SPRAdditions.h"
 
 @interface SPRMasterViewController ()
+@property (nonatomic) UIView *statusBarBackground;
 @end
 
 @implementation SPRMasterViewController
@@ -17,8 +20,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _statusBarBackground = [[UIView alloc] initWithFrame:(CGRect){0, 0, CGRectGetWidth(self.view.bounds), [SPRConstants statusBarHeight]}];
+    _statusBarBackground.backgroundColor = [UIColor spr_lightGreen];
     
-    
+    [self.view addSubview:_statusBarBackground];
 }
 
 - (void)didReceiveMemoryWarning {
