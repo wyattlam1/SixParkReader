@@ -25,6 +25,8 @@
 		DB55580519D3291B000EB3A2 /* SPRArticlesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB55580419D3291B000EB3A2 /* SPRArticlesModel.m */; };
 		DB55580819D32A81000EB3A2 /* SPRArticleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB55580719D32A81000EB3A2 /* SPRArticleTableViewCell.m */; };
 		DBFE877519D5285D0033102A /* SPRMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBFE877419D5285D0033102A /* SPRMasterViewController.m */; };
+		DBFE877819D5297B0033102A /* SPRArticlesViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DBFE877719D5297B0033102A /* SPRArticlesViewModel.m */; };
+		DBFE877B19D52C620033102A /* SPRMasterViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DBFE877A19D52C620033102A /* SPRMasterViewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +131,10 @@
 		DB55580719D32A81000EB3A2 /* SPRArticleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRArticleTableViewCell.m; path = Views/SPRArticleTableViewCell.m; sourceTree = "<group>"; };
 		DBFE877319D5285D0033102A /* SPRMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRMasterViewController.h; path = Views/SPRMasterViewController.h; sourceTree = "<group>"; };
 		DBFE877419D5285D0033102A /* SPRMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRMasterViewController.m; path = Views/SPRMasterViewController.m; sourceTree = "<group>"; };
+		DBFE877619D5297B0033102A /* SPRArticlesViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRArticlesViewModel.h; path = ViewModels/SPRArticlesViewModel.h; sourceTree = "<group>"; };
+		DBFE877719D5297B0033102A /* SPRArticlesViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRArticlesViewModel.m; path = ViewModels/SPRArticlesViewModel.m; sourceTree = "<group>"; };
+		DBFE877919D52C620033102A /* SPRMasterViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRMasterViewModel.h; path = ViewModels/SPRMasterViewModel.h; sourceTree = "<group>"; };
+		DBFE877A19D52C620033102A /* SPRMasterViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRMasterViewModel.m; path = ViewModels/SPRMasterViewModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +296,10 @@
 		DB5557FE19D32861000EB3A2 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				DBFE877619D5297B0033102A /* SPRArticlesViewModel.h */,
+				DBFE877719D5297B0033102A /* SPRArticlesViewModel.m */,
+				DBFE877919D52C620033102A /* SPRMasterViewModel.h */,
+				DBFE877A19D52C620033102A /* SPRMasterViewModel.m */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -472,6 +482,8 @@
 				DB55578E19D272E7000EB3A2 /* SPRService.m in Sources */,
 				DB55576C19D27066000EB3A2 /* AppDelegate.m in Sources */,
 				DB5557DA19D28A49000EB3A2 /* SPRArticle.m in Sources */,
+				DBFE877819D5297B0033102A /* SPRArticlesViewModel.m in Sources */,
+				DBFE877B19D52C620033102A /* SPRMasterViewModel.m in Sources */,
 				DB55580219D328F9000EB3A2 /* SPRArticlesTableViewController.m in Sources */,
 				DB55576919D27066000EB3A2 /* main.m in Sources */,
 			);

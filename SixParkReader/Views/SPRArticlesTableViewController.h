@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SPRArticlesTableViewController : UITableViewController
-
+@property (nonatomic) NSArray *articles;
 @end

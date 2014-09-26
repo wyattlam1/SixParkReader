@@ -12,33 +12,30 @@
 #import "SPRArticlesModel.h"
 
 @interface SPRArticlesTableViewController ()
-@property (nonatomic) SPRArticlesModel *articlesModel;
 @end
 
 @implementation SPRArticlesTableViewController
 
-- (instancetype)initWithArticlesModel:(SPRArticlesModel *)articlesModel
-{
-    self = [super init];
-    if (self) {
-        _articlesModel = articlesModel;
-        
-        [RACObserve(_articlesModel, articles) subscribeNext:^(id x) {
-            [self update];
-        }];
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor blueColor];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)setArticles:(NSArray *)articles
+{
+    if (articles && (_articles != articles)) {
+        _articles = articles;
+        [self update];
+    }
 }
 
 - (void)update
@@ -55,13 +52,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _articlesModel.articles.count;
+    return _articles.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SPRArticleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SPRArticle class]) forIndexPath:indexPath];
-    cell.article = _articlesModel.articles[indexPath.row];
+    cell.article = _articles[indexPath.row];
     return cell;
 }
 

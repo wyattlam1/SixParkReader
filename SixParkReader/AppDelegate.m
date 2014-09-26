@@ -7,16 +7,33 @@
 //
 
 #import "AppDelegate.h"
+#import "SPRMasterViewModel.h"
+#import "SPRMasterViewController.h"
+#import "SPRArticlesModel.h"
+#import "SPRArticlesViewModel.h"
 
 @interface AppDelegate ()
-
+@property (nonatomic) SPRMasterViewModel *masterViewModel;
 @end
 
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    // Articles
+    SPRArticlesModel *articlesModel = [[SPRArticlesModel alloc] init];
+    SPRArticlesViewModel *articlesViewModel = [[SPRArticlesViewModel alloc] initWithArticlesModel:articlesModel];
+    
+    // Master
+    _masterViewModel = [[SPRMasterViewModel alloc] initWithArticlesViewModel:articlesViewModel];
+    _masterViewModel.masterViewController = (SPRMasterViewController *)self.window.rootViewController;
+    
     return YES;
 }
 

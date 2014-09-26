@@ -7,16 +7,18 @@
 //
 
 #import "SPRMasterViewController.h"
+#import "SPRArticlesViewModel.h"
 
 @interface SPRMasterViewController ()
-
 @end
 
 @implementation SPRMasterViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
