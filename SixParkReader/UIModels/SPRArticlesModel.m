@@ -16,11 +16,12 @@
 
 @implementation SPRArticlesModel
 
-- (instancetype)initWithSPRService:(SPRService *)sprService;
+- (instancetype)initWithSPRService:(SPRService *)sprService
 {
     self = [super init];
     if (self) {
         _sprService = sprService;
+        _articles = @[];
         
         [[_sprService fetch6ParkArticlesSig] subscribeNext:^(NSArray *articles) {
             self.articles = articles;

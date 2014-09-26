@@ -283,10 +283,9 @@
 		DB5557FD19D3285D000EB3A2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DBFE877C19D52F1C0033102A /* Cells */,
 				DB55580019D328F9000EB3A2 /* SPRArticlesTableViewController.h */,
 				DB55580119D328F9000EB3A2 /* SPRArticlesTableViewController.m */,
-				DB55580619D32A81000EB3A2 /* SPRArticleTableViewCell.h */,
-				DB55580719D32A81000EB3A2 /* SPRArticleTableViewCell.m */,
 				DBFE877319D5285D0033102A /* SPRMasterViewController.h */,
 				DBFE877419D5285D0033102A /* SPRMasterViewController.m */,
 			);
@@ -311,6 +310,15 @@
 				DB55580419D3291B000EB3A2 /* SPRArticlesModel.m */,
 			);
 			name = UIModels;
+			sourceTree = "<group>";
+		};
+		DBFE877C19D52F1C0033102A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DB55580619D32A81000EB3A2 /* SPRArticleTableViewCell.h */,
+				DB55580719D32A81000EB3A2 /* SPRArticleTableViewCell.m */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -561,6 +569,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALID_ARCHS = "arm64 armv7 armv7s";
@@ -598,6 +607,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;

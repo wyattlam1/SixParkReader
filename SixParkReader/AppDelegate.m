@@ -11,6 +11,8 @@
 #import "SPRMasterViewController.h"
 #import "SPRArticlesModel.h"
 #import "SPRArticlesViewModel.h"
+#import "SPRService.h"
+#import "SPRHTTPService.h"
 
 @interface AppDelegate ()
 @property (nonatomic) SPRMasterViewModel *masterViewModel;
@@ -18,16 +20,13 @@
 
 @implementation AppDelegate
 
-
-- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    return YES;
-}
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    SPRHTTPService *httpService = [SPRHTTPService new];
+    SPRService *sprService = [[SPRService alloc] initWithSPRHTTPService:httpService];
+    
     // Articles
-    SPRArticlesModel *articlesModel = [[SPRArticlesModel alloc] init];
+    SPRArticlesModel *articlesModel = [[SPRArticlesModel alloc] initWithSPRService:sprService];
     SPRArticlesViewModel *articlesViewModel = [[SPRArticlesViewModel alloc] initWithArticlesModel:articlesModel];
     
     // Master

@@ -7,10 +7,11 @@
 //
 
 #import "SPRArticlesViewModel.h"
-#import "SPRArticlesTableViewController.h"
 #import "SPRArticlesModel.h"
+#import "SPRArticlesTableViewController.h"
 
 @interface SPRArticlesViewModel()
+@property (nonatomic) SPRArticlesModel *articlesModel;
 @property (nonatomic) SPRArticlesTableViewController *articlesViewController;
 @end
 
@@ -20,7 +21,7 @@
 {
     self = [super init];
     if (self) {
-        
+        _articlesModel = articlesModel;
     }
     return self;
 }
@@ -29,7 +30,7 @@
 {
     if (!_articlesViewController) {
         _articlesViewController = [[SPRArticlesTableViewController alloc] init];
-        
+        RAC(_articlesViewController, articles) = RACObserve(_articlesModel, articles);
     }
     return _articlesViewController;
 }

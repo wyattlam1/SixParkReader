@@ -23,15 +23,26 @@ static const NSInteger kArticleCellPadding = 10;
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         _titleLabel = [UILabel new];
-        RAC(_titleLabel, text) = RACObserve(self.article, title);
-        
         _containerView = [UIView new];
         
         [_containerView addSubview:_titleLabel];
         [self addSubview:_containerView];
+        
+        [RACObserve(self, article) subscribeNext:^(id x) {
+            [self updateCell];
+        }];
     }
     return self;
 }
+
+#pragma mark - Properties
+
+- (void)updateCell
+{
+    _titleLabel.text = _article.title;
+}
+
+#pragma mark - Layout & Drawing
 
 - (void)layoutSubviews
 {

@@ -41,14 +41,10 @@ static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
 - (NSArray *)parseArticlesWithHTMLString:(NSString *)htmlString
 {
     NSMutableArray *articles = [NSMutableArray new];
-    TFHpple *doc = [TFHpple hppleWithHTMLData:[htmlString dataUsingEncoding:[SPRConstants sixParkEncoding]]];
+    TFHpple *doc = [TFHpple hppleWithHTMLData:[htmlString dataUsingEncoding:NSUTF16StringEncoding]];
     NSArray *elements = [doc searchWithXPathQuery:@"//div[@id='parknews']/a"];
     for (TFHppleElement *element in elements) {
-        TFHppleElement *firstChild = element.firstChild;
-        while (firstChild.hasChildren) {
-            firstChild = firstChild.firstChild;
-        }
-        NSString *content = firstChild.content;
+        NSString *content = element.text;
         NSString *link = element.attributes[@"href"];
         SPRArticle *article = [[SPRArticle alloc] initWithTitle:content url:[NSURL URLWithString:link]];
         [articles addObject:article];

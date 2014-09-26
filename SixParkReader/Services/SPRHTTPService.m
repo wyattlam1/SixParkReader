@@ -7,6 +7,7 @@
 //
 
 #import "SPRHTTPService.h"
+#import "SPRConstants.h"
 
 @interface SPRHTTPService()
 @property (nonatomic) NSOperationQueue *queue;
@@ -35,8 +36,7 @@
              if (error) {
                  [subscriber sendError:error];
              } else {
-                 NSStringEncoding encoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-                 [subscriber sendNext:[[NSString alloc] initWithData:data encoding:encoding]];
+                 [subscriber sendNext:[[NSString alloc] initWithData:data encoding:[SPRConstants sixParkEncoding]]];
              }
              [subscriber sendCompleted];
          }];

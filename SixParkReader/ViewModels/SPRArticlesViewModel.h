@@ -13,7 +13,6 @@
 
 @interface SPRArticlesViewModel : NSObject
 @property (nonatomic, readonly) SPRArticlesTableViewController *viewController;
-@property (nonatomic, readonly) SPRArticlesModel *articlesModel;
 
 - (instancetype)initWithArticlesModel:(SPRArticlesModel *)articlesModel;
 

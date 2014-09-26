@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class SPRService;
+
 @interface SPRArticlesModel : NSObject
+@property (nonatomic) NSInteger test;
 @property (nonatomic, copy, readonly) NSArray *articles;
+
+- (instancetype)initWithSPRService:(SPRService *)sprService;
+
 @end
