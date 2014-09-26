@@ -11,6 +11,7 @@
 #import "SPRArticleTableViewCell.h"
 #import "SPRArticlesModel.h"
 #import "SPRConstants.h"
+#import "UIColor+SPRAdditions.h"
 
 @interface SPRArticlesTableViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, readwrite) NSInteger selectedRow;
@@ -71,7 +72,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:_selectedRow inSection:0]].contentView.backgroundColor = [UIColor whiteColor];
     self.selectedRow = indexPath.row;
+    [tableView cellForRowAtIndexPath:indexPath].contentView.backgroundColor = [[UIColor spr_lightGreen] colorWithAlphaComponent:0.4f];
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == _selectedRow) {
+         cell.contentView.backgroundColor = [[UIColor spr_lightGreen] colorWithAlphaComponent:0.4f];
+    } else {
+        cell.contentView.backgroundColor = [UIColor whiteColor];
+    }
 }
 
 @end

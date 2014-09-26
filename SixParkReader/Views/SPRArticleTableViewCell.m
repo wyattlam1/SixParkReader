@@ -9,6 +9,7 @@
 #import "SPRArticleTableViewCell.h"
 #import "SPRArticle.h"
 #import "UIFont+SPRAdditions.h"
+#import "UIColor+SPRAdditions.h"
 
 static const CGFloat kArticleCellPadding = 15.f;
 
@@ -33,24 +34,22 @@ static const CGFloat kArticleCellPadding = 15.f;
         _titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
         _titleLabel.numberOfLines = 0;
         _titleLabel.font = [UIFont spr_defaultFont];
-
+        _titleLabel.backgroundColor = [UIColor clearColor];
+        
         _containerView = [UIView new];
+        _containerView.backgroundColor = [UIColor clearColor];
         
         [_containerView addSubview:_titleLabel];
         [self.contentView addSubview:_containerView];
         
-        @weakify(self);
-        [RACObserve(self, article) subscribeNext:^(id x) {
-            @strongify(self);
-            [self updateCell];
-        }];
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        [self rac_liftSelector:@selector(updateCell:) withSignals:RACObserve(self, article), nil];
     }
     return self;
 }
 
-#pragma mark - Properties
-
-- (void)updateCell
+- (void)updateCell:(SPRArticle *)article
 {
     _titleLabel.text = _article.title;
     [self setNeedsLayout];
@@ -67,11 +66,6 @@ static const CGFloat kArticleCellPadding = 15.f;
     _titleLabel.frame = (CGRect){0, 0, .size = _titleLabel.bounds.size};
     
     _containerView.frame = (CGRect){kArticleCellPadding, kArticleCellPadding, containerWidth, CGRectGetHeight(_titleLabel.frame) + kArticleCellPadding};
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
 }
 
 @end
