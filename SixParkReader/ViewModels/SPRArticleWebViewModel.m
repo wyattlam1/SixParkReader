@@ -30,8 +30,18 @@
 {
     if (!_webViewController) {
         _webViewController = [[SPRArticleWebViewController alloc] init];
+        [self setupBindings];
     }
     return _webViewController;
+}
+
+- (void)setupBindings
+{
+    [RACObserve(_articlesModel, selectedArticle) subscribeNext:^(NSNumber *index) {
+        if (_articlesModel.articles.count) {
+            _webViewController.article = _articlesModel.articles[[index integerValue]];
+        }
+    }];
 }
 
 @end

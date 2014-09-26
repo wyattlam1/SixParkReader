@@ -30,9 +30,15 @@
 {
     if (!_articlesViewController) {
         _articlesViewController = [[SPRArticlesTableViewController alloc] init];
-        RAC(_articlesViewController, articles) = RACObserve(_articlesModel, articles);
+        [self updateBindings];
     }
     return _articlesViewController;
+}
+
+- (void)updateBindings
+{
+    RAC(_articlesViewController, articles) = RACObserve(_articlesModel, articles);
+    RAC(_articlesModel, selectedArticle) = RACObserve(_articlesViewController, selectedRow);
 }
 
 @end

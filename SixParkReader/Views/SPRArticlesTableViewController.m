@@ -13,6 +13,7 @@
 #import "SPRConstants.h"
 
 @interface SPRArticlesTableViewController ()<UITableViewDelegate, UITableViewDataSource>
+@property (nonatomic, readwrite) NSInteger selectedRow;
 @end
 
 @implementation SPRArticlesTableViewController
@@ -64,6 +65,13 @@
     SPRArticleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SPRArticle class]) forIndexPath:indexPath];
     cell.article = _articles[indexPath.row];
     return cell;
+}
+
+#pragma mark - Selection
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.selectedRow = indexPath.row;
 }
 
 @end

@@ -10,4 +10,5 @@
 
 @interface SPRArticlesTableViewController : UITableViewController
 @property (nonatomic) NSArray *articles;
+@property (nonatomic, readonly) NSInteger selectedRow;
 @end

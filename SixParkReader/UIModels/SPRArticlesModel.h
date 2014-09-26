@@ -11,8 +11,8 @@
 @class SPRService;
 
 @interface SPRArticlesModel : NSObject
-@property (nonatomic) NSInteger test;
 @property (nonatomic, copy, readonly) NSArray *articles;
+@property (nonatomic) NSInteger selectedArticle;
 
 - (instancetype)initWithSPRService:(SPRService *)sprService;
 
