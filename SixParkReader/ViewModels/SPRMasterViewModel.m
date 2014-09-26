@@ -10,18 +10,22 @@
 #import "SPRMasterViewController.h"
 #import "SPRArticlesViewModel.h"
 #import "SPRArticlesTableViewController.h"
+#import "SPRArticleWebViewModel.h"
+#import "SPRArticleWebViewController.h"
 
 @interface SPRMasterViewModel()
 @property (nonatomic) SPRArticlesViewModel *articlesViewModel;
+@property (nonatomic) SPRArticleWebViewModel *webViewModel;
 @end
 
 @implementation SPRMasterViewModel
 
-- (instancetype)initWithArticlesViewModel:(SPRArticlesViewModel *)articlesViewModel
+- (instancetype)initWithArticlesViewModel:(SPRArticlesViewModel *)articlesViewModel webViewModel:(SPRArticleWebViewModel *)webViewModel
 {
     self = [super init];
     if (self) {
         _articlesViewModel = articlesViewModel;
+        _webViewModel = webViewModel;
     }
     return self;
 }
@@ -30,7 +34,7 @@
 {
     if (masterViewController && (_masterViewController != masterViewController)) {
         _masterViewController = masterViewController;        
-        _masterViewController.viewControllers = @[_articlesViewModel.viewController, [UIViewController new]];
+        _masterViewController.viewControllers = @[_articlesViewModel.viewController, _webViewModel.viewController];
     }
 }
 

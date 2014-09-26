@@ -11,6 +11,7 @@
 #import "SPRMasterViewController.h"
 #import "SPRArticlesModel.h"
 #import "SPRArticlesViewModel.h"
+#import "SPRArticleWebViewModel.h"
 #import "SPRService.h"
 #import "SPRHTTPService.h"
 
@@ -29,8 +30,11 @@
     SPRArticlesModel *articlesModel = [[SPRArticlesModel alloc] initWithSPRService:sprService];
     SPRArticlesViewModel *articlesViewModel = [[SPRArticlesViewModel alloc] initWithArticlesModel:articlesModel];
     
+    // WebView
+    SPRArticleWebViewModel *webViewModel = [[SPRArticleWebViewModel alloc] initWithArticlesModel:articlesModel];
+    
     // Master
-    _masterViewModel = [[SPRMasterViewModel alloc] initWithArticlesViewModel:articlesViewModel];
+    _masterViewModel = [[SPRMasterViewModel alloc] initWithArticlesViewModel:articlesViewModel webViewModel:webViewModel];
     _masterViewModel.masterViewController = (SPRMasterViewController *)self.window.rootViewController;
     
     return YES;

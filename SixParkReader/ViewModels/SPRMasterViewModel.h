@@ -10,9 +10,10 @@
 
 @class SPRMasterViewController;
 @class SPRArticlesViewModel;
+@class SPRArticleWebViewModel;
 
 @interface SPRMasterViewModel : NSObject
 @property (nonatomic) SPRMasterViewController *masterViewController;
 
-- (instancetype)initWithArticlesViewModel:(SPRArticlesViewModel *)articlesViewModel;
+- (instancetype)initWithArticlesViewModel:(SPRArticlesViewModel *)articlesViewModel webViewModel:(SPRArticleWebViewModel *)webViewModel;
 @end

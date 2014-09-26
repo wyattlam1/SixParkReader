@@ -26,6 +26,8 @@
 		DB55580819D32A81000EB3A2 /* SPRArticleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB55580719D32A81000EB3A2 /* SPRArticleTableViewCell.m */; };
 		DBF3087519D5BA46004DD0F2 /* UIFont+SPRAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF3087419D5BA46004DD0F2 /* UIFont+SPRAdditions.m */; };
 		DBF3087819D5D2FE004DD0F2 /* UIColor+SPRAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF3087719D5D2FE004DD0F2 /* UIColor+SPRAdditions.m */; };
+		DBF3087B19D5ED8F004DD0F2 /* SPRArticleWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF3087A19D5ED8F004DD0F2 /* SPRArticleWebViewController.m */; };
+		DBF3087E19D5EF58004DD0F2 /* SPRArticleWebViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF3087D19D5EF58004DD0F2 /* SPRArticleWebViewModel.m */; };
 		DBFE877519D5285D0033102A /* SPRMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBFE877419D5285D0033102A /* SPRMasterViewController.m */; };
 		DBFE877819D5297B0033102A /* SPRArticlesViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DBFE877719D5297B0033102A /* SPRArticlesViewModel.m */; };
 		DBFE877B19D52C620033102A /* SPRMasterViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DBFE877A19D52C620033102A /* SPRMasterViewModel.m */; };
@@ -135,6 +137,10 @@
 		DBF3087419D5BA46004DD0F2 /* UIFont+SPRAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+SPRAdditions.m"; path = "Categories/UIFont+SPRAdditions.m"; sourceTree = "<group>"; };
 		DBF3087619D5D2FE004DD0F2 /* UIColor+SPRAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+SPRAdditions.h"; path = "Categories/UIColor+SPRAdditions.h"; sourceTree = "<group>"; };
 		DBF3087719D5D2FE004DD0F2 /* UIColor+SPRAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+SPRAdditions.m"; path = "Categories/UIColor+SPRAdditions.m"; sourceTree = "<group>"; };
+		DBF3087919D5ED8F004DD0F2 /* SPRArticleWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRArticleWebViewController.h; path = Views/SPRArticleWebViewController.h; sourceTree = "<group>"; };
+		DBF3087A19D5ED8F004DD0F2 /* SPRArticleWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRArticleWebViewController.m; path = Views/SPRArticleWebViewController.m; sourceTree = "<group>"; };
+		DBF3087C19D5EF58004DD0F2 /* SPRArticleWebViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRArticleWebViewModel.h; path = ViewModels/SPRArticleWebViewModel.h; sourceTree = "<group>"; };
+		DBF3087D19D5EF58004DD0F2 /* SPRArticleWebViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRArticleWebViewModel.m; path = ViewModels/SPRArticleWebViewModel.m; sourceTree = "<group>"; };
 		DBFE877319D5285D0033102A /* SPRMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRMasterViewController.h; path = Views/SPRMasterViewController.h; sourceTree = "<group>"; };
 		DBFE877419D5285D0033102A /* SPRMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRMasterViewController.m; path = Views/SPRMasterViewController.m; sourceTree = "<group>"; };
 		DBFE877619D5297B0033102A /* SPRArticlesViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRArticlesViewModel.h; path = ViewModels/SPRArticlesViewModel.h; sourceTree = "<group>"; };
@@ -293,6 +299,8 @@
 				DBFE877C19D52F1C0033102A /* Cells */,
 				DB55580019D328F9000EB3A2 /* SPRArticlesTableViewController.h */,
 				DB55580119D328F9000EB3A2 /* SPRArticlesTableViewController.m */,
+				DBF3087919D5ED8F004DD0F2 /* SPRArticleWebViewController.h */,
+				DBF3087A19D5ED8F004DD0F2 /* SPRArticleWebViewController.m */,
 				DBFE877319D5285D0033102A /* SPRMasterViewController.h */,
 				DBFE877419D5285D0033102A /* SPRMasterViewController.m */,
 			);
@@ -306,6 +314,8 @@
 				DBFE877719D5297B0033102A /* SPRArticlesViewModel.m */,
 				DBFE877919D52C620033102A /* SPRMasterViewModel.h */,
 				DBFE877A19D52C620033102A /* SPRMasterViewModel.m */,
+				DBF3087C19D5EF58004DD0F2 /* SPRArticleWebViewModel.h */,
+				DBF3087D19D5EF58004DD0F2 /* SPRArticleWebViewModel.m */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -498,6 +508,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB5557FC19D32548000EB3A2 /* SPRConstants.m in Sources */,
+				DBF3087E19D5EF58004DD0F2 /* SPRArticleWebViewModel.m in Sources */,
 				DB55580519D3291B000EB3A2 /* SPRArticlesModel.m in Sources */,
 				DB55580819D32A81000EB3A2 /* SPRArticleTableViewCell.m in Sources */,
 				DBFE877519D5285D0033102A /* SPRMasterViewController.m in Sources */,
@@ -505,6 +516,7 @@
 				DB5557B019D281E3000EB3A2 /* SPRHTTPService.m in Sources */,
 				DB5557F419D31A06000EB3A2 /* XPathQuery.m in Sources */,
 				DB5557F319D31A06000EB3A2 /* TFHppleElement.m in Sources */,
+				DBF3087B19D5ED8F004DD0F2 /* SPRArticleWebViewController.m in Sources */,
 				DB5557F219D31A06000EB3A2 /* TFHpple.m in Sources */,
 				DBF3087819D5D2FE004DD0F2 /* UIColor+SPRAdditions.m in Sources */,
 				DB55578E19D272E7000EB3A2 /* SPRService.m in Sources */,
