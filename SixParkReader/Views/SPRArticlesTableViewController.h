@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SPRArticlesTableViewController : UITableViewController
+@interface SPRArticlesTableViewController : UIViewController
 @property (nonatomic) NSArray *articles;
 @property (nonatomic, readonly) NSInteger selectedRow;
 @end

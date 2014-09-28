@@ -20,6 +20,7 @@
     [super viewDidLoad];
     
     _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    _webView.scalesPageToFit = YES;
     [self.view addSubview:_webView];
 }
 
