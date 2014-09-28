@@ -7,6 +7,7 @@
 //
 
 #import "SPRArticlesTableViewController.h"
+#import "SPRArticlesViewModel.h"
 #import "SPRArticle.h"
 #import "SPRArticleTableViewCell.h"
 #import "SPRArticlesModel.h"
@@ -17,9 +18,10 @@
 #define DegreesToRadians(x) ((x) * M_PI / 180.0)
 
 static const CGFloat kLoadingPadding = 20.f;
-static const CGFloat kLoadingViewHeight = 60.f;
+static const CGFloat kLoadingViewHeight = 80.f;
 
 @interface SPRArticlesTableViewController ()<UITableViewDelegate, UITableViewDataSource>
+@property (nonatomic, weak) SPRArticlesViewModel *articlesViewModel;
 // Views
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) UIImageView *refreshArrowView;
@@ -27,16 +29,25 @@ static const CGFloat kLoadingViewHeight = 60.f;
 //
 @property (nonatomic, readwrite) NSInteger selectedRow;
 @property (nonatomic) CGFloat lastContentOffset;
+@property (nonatomic) BOOL completedRefresh;
 @property (nonatomic) BOOL isLoading;
 @end
 
 @implementation SPRArticlesTableViewController
 
+- (instancetype)initWithArticesViewModel:(SPRArticlesViewModel *)articlesViewModel
+{
+    self = [super init];
+    if (self) {
+        _articlesViewModel = articlesViewModel;
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    _isLoading = NO;
     self.view.backgroundColor = [UIColor whiteColor];
     
     // Refresh Arrow
@@ -52,6 +63,7 @@ static const CGFloat kLoadingViewHeight = 60.f;
     
     // Table View
     _tableView = [[UITableView alloc] init];
+    
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.contentInset = UIEdgeInsetsMake([SPRConstants statusBarHeight], 0, 0, 0);
@@ -59,9 +71,15 @@ static const CGFloat kLoadingViewHeight = 60.f;
     [_tableView registerClass:[SPRArticleTableViewCell class] forCellReuseIdentifier:NSStringFromClass([SPRArticle class])];
     [self.view addSubview:_tableView];
     
-    [RACObserve(self, articles) subscribeNext:^(id x) {
+    [RACObserve(self.articlesViewModel.articlesModel, articles) subscribeNext:^(NSArray *articles) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [_tableView reloadData];
+            [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+                [_tableView setContentOffset:CGPointMake(0, -[SPRConstants statusBarHeight])];
+            } completion:^(BOOL finished){
+                self.completedRefresh = YES;
+                self.isLoading = NO;
+            }];
         });
     }];
 
@@ -69,7 +87,6 @@ static const CGFloat kLoadingViewHeight = 60.f;
         if ([isLoading intValue]) {
             _refreshArrowView.hidden = YES;
             _loadingView.hidden = NO;
-            
         } else {
             _refreshArrowView.hidden = NO;
             _loadingView.hidden = YES;
@@ -97,20 +114,17 @@ static const CGFloat kLoadingViewHeight = 60.f;
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if ([scrollView scrolledAboveContent]) {
-        CGFloat offset = [scrollView percentageScrolledAboveContentWithMaxHeight:kLoadingViewHeight];
  
         [UIView animateWithDuration:0 animations:^{
             if ([scrollView isScrollingUpWithLastContentOffset:_lastContentOffset]) {
-                self.isLoading = YES;
-                if ([scrollView scrolledAboveContentOffset] <= kLoadingViewHeight) {
-                    [scrollView setContentOffset:scrollView.contentOffset animated:NO];
+                if (self.completedRefresh && [scrollView scrolledAboveContentOffset] <= kLoadingViewHeight) {
+                    self.completedRefresh = NO;
+                    self.isLoading = YES;
+                    [_tableView setContentOffset:_tableView.contentOffset animated:NO];
+                    [self.articlesViewModel refreshArticles];
                 }
             } else {
-                if (offset <= 1.f) {
-                    _refreshArrowView.transform = CGAffineTransformMakeRotation(DegreesToRadians(180.f * offset));
-                } else {
-                    _refreshArrowView.transform = CGAffineTransformMakeRotation(M_PI);
-                }
+                [self rotateArrowWithScrollView:scrollView];
             }
         }];
     }
@@ -118,7 +132,23 @@ static const CGFloat kLoadingViewHeight = 60.f;
     _lastContentOffset = scrollView.contentOffset.y;
 }
 
+- (void)rotateArrowWithScrollView:(UIScrollView *)scrollView
+{
+    CGFloat offset = [scrollView percentageScrolledAboveContentWithMaxHeight:kLoadingViewHeight];
+
+    if (offset <= 1.f) {
+        _refreshArrowView.transform = CGAffineTransformMakeRotation(DegreesToRadians(180.f * offset));
+    } else {
+        _refreshArrowView.transform = CGAffineTransformMakeRotation(M_PI);
+    }
+}
+
 #pragma mark - Table view data source
+
+- (NSArray *)articles
+{
+    return _articlesViewModel.articlesModel.articles;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -127,18 +157,18 @@ static const CGFloat kLoadingViewHeight = 60.f;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _articles.count;
+    return [self articles].count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [SPRArticleTableViewCell heightForTableViewCell:tableView article:_articles[indexPath.row]];
+    return [SPRArticleTableViewCell heightForTableViewCell:tableView article:[self articles][indexPath.row]];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SPRArticleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SPRArticle class]) forIndexPath:indexPath];
-    cell.article = _articles[indexPath.row];
+    cell.article = [self articles][indexPath.row];
     return cell;
 }
 

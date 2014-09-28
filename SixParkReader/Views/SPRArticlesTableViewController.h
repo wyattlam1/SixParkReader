@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class SPRArticlesViewModel;
+
 @interface SPRArticlesTableViewController : UIViewController
-@property (nonatomic) NSArray *articles;
 @property (nonatomic, readonly) NSInteger selectedRow;
+
+- (instancetype)initWithArticesViewModel:(SPRArticlesViewModel *)articlesViewModel;
 @end

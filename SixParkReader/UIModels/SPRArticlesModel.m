@@ -23,11 +23,16 @@
         _sprService = sprService;
         _articles = @[];
         
-        [[_sprService fetch6ParkArticlesSig] subscribeNext:^(NSArray *articles) {
-            self.articles = articles;
-        }];
+        [self refreshArticles];
     }
     return self;
+}
+
+- (void)refreshArticles
+{
+    [[_sprService fetch6ParkArticlesSig] subscribeNext:^(NSArray *articles) {
+        self.articles = articles;
+    }];
 }
 
 @end

@@ -29,7 +29,7 @@
 - (SPRArticlesTableViewController *)viewController
 {
     if (!_articlesViewController) {
-        _articlesViewController = [[SPRArticlesTableViewController alloc] init];
+        _articlesViewController = [[SPRArticlesTableViewController alloc] initWithArticesViewModel:self];
         [self updateBindings];
     }
     return _articlesViewController;
@@ -37,8 +37,14 @@
 
 - (void)updateBindings
 {
-    RAC(_articlesViewController, articles) = RACObserve(_articlesModel, articles);
     RAC(_articlesModel, selectedArticle) = RACObserve(_articlesViewController, selectedRow);
+}
+
+#pragma mark - Commands
+
+- (void)refreshArticles
+{
+    [_articlesModel refreshArticles];
 }
 
 @end

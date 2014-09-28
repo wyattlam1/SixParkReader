@@ -16,4 +16,6 @@
 
 - (instancetype)initWithSPRService:(SPRService *)sprService;
 
+- (void)refreshArticles;
+
 @end
