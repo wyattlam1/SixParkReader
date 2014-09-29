@@ -7,7 +7,7 @@
 //
 
 #import "SPRArticleTableViewCell.h"
-#import "SPRArticle.h"
+#import "SPRArticleInfo.h"
 #import "UIFont+SPRAdditions.h"
 #import "UIColor+SPRAdditions.h"
 
@@ -20,7 +20,7 @@ static const CGFloat kArticleCellPadding = 15.f;
 
 @implementation SPRArticleTableViewCell
 
-+ (CGFloat)heightForTableViewCell:(UITableView *)tableView article:(SPRArticle *)article
++ (CGFloat)heightForTableViewCell:(UITableView *)tableView article:(SPRArticleInfo *)article
 {
     CGRect rect = [article.title boundingRectWithSize:(CGSize){CGRectGetWidth(tableView.bounds), CGFLOAT_MAX} options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) attributes:@{NSFontAttributeName: [UIFont spr_defaultFont]} context:nil];
     return rect.size.height + (2 * kArticleCellPadding);
@@ -49,7 +49,7 @@ static const CGFloat kArticleCellPadding = 15.f;
     return self;
 }
 
-- (void)updateCell:(SPRArticle *)article
+- (void)updateCell:(SPRArticleInfo *)article
 {
     _titleLabel.text = _article.title;
     [self setNeedsLayout];

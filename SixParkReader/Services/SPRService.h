@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @class SPRHTTPService;
+@class SPRArticleInfo;
 
 @interface SPRService : NSObject
 
 - (instancetype)initWithSPRHTTPService:(SPRHTTPService *)httpService;
 - (RACSignal *)fetch6ParkArticlesSig;
-
+- (RACSignal *)parseHTMLFromArticleSig:(SPRArticleInfo *)article;
 @end

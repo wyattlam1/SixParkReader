@@ -14,7 +14,7 @@
 		DB55578319D27066000EB3A2 /* SixParkReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB55578219D27066000EB3A2 /* SixParkReaderTests.m */; };
 		DB55578E19D272E7000EB3A2 /* SPRService.m in Sources */ = {isa = PBXBuildFile; fileRef = DB55578D19D272E7000EB3A2 /* SPRService.m */; };
 		DB5557B019D281E3000EB3A2 /* SPRHTTPService.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5557AF19D281E3000EB3A2 /* SPRHTTPService.m */; };
-		DB5557DA19D28A49000EB3A2 /* SPRArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5557D919D28A49000EB3A2 /* SPRArticle.m */; };
+		DB5557DA19D28A49000EB3A2 /* SPRArticleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5557D919D28A49000EB3A2 /* SPRArticleInfo.m */; };
 		DB5557EA19D28D73000EB3A2 /* libReactiveCocoa-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB55579D19D2737F000EB3A2 /* libReactiveCocoa-iOS.a */; };
 		DB5557F219D31A06000EB3A2 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5557ED19D31A06000EB3A2 /* TFHpple.m */; };
 		DB5557F319D31A06000EB3A2 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5557EF19D31A06000EB3A2 /* TFHppleElement.m */; };
@@ -25,6 +25,8 @@
 		DB55580519D3291B000EB3A2 /* SPRArticlesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB55580419D3291B000EB3A2 /* SPRArticlesModel.m */; };
 		DB55580819D32A81000EB3A2 /* SPRArticleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB55580719D32A81000EB3A2 /* SPRArticleTableViewCell.m */; };
 		DB60AE5619D8DAB200731F03 /* SPRRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DB60AE5519D8DAB200731F03 /* SPRRefreshControl.m */; };
+		DB60AE6019D8EE7C00731F03 /* SPRArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = DB60AE5F19D8EE7C00731F03 /* SPRArticle.m */; };
+		DB60AE6319D90A4C00731F03 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = DB60AE6119D90A4C00731F03 /* style.css */; };
 		DBF3087519D5BA46004DD0F2 /* UIFont+SPRAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF3087419D5BA46004DD0F2 /* UIFont+SPRAdditions.m */; };
 		DBF3087819D5D2FE004DD0F2 /* UIColor+SPRAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF3087719D5D2FE004DD0F2 /* UIColor+SPRAdditions.m */; };
 		DBF3087B19D5ED8F004DD0F2 /* SPRArticleWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF3087A19D5ED8F004DD0F2 /* SPRArticleWebViewController.m */; };
@@ -117,8 +119,8 @@
 		DB5557AE19D281E3000EB3A2 /* SPRHTTPService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRHTTPService.h; path = Services/SPRHTTPService.h; sourceTree = "<group>"; };
 		DB5557AF19D281E3000EB3A2 /* SPRHTTPService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRHTTPService.m; path = Services/SPRHTTPService.m; sourceTree = "<group>"; };
 		DB5557B119D284A9000EB3A2 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		DB5557D819D28A49000EB3A2 /* SPRArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRArticle.h; path = DataObjects/SPRArticle.h; sourceTree = "<group>"; };
-		DB5557D919D28A49000EB3A2 /* SPRArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRArticle.m; path = DataObjects/SPRArticle.m; sourceTree = "<group>"; };
+		DB5557D819D28A49000EB3A2 /* SPRArticleInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRArticleInfo.h; path = DataObjects/SPRArticleInfo.h; sourceTree = "<group>"; };
+		DB5557D919D28A49000EB3A2 /* SPRArticleInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRArticleInfo.m; path = DataObjects/SPRArticleInfo.m; sourceTree = "<group>"; };
 		DB5557EC19D31A06000EB3A2 /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TFHpple.h; path = Hpple/TFHpple.h; sourceTree = "<group>"; };
 		DB5557ED19D31A06000EB3A2 /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TFHpple.m; path = Hpple/TFHpple.m; sourceTree = "<group>"; };
 		DB5557EE19D31A06000EB3A2 /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TFHppleElement.h; path = Hpple/TFHppleElement.h; sourceTree = "<group>"; };
@@ -136,6 +138,9 @@
 		DB55580719D32A81000EB3A2 /* SPRArticleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRArticleTableViewCell.m; path = Views/SPRArticleTableViewCell.m; sourceTree = "<group>"; };
 		DB60AE5419D8DAB200731F03 /* SPRRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRRefreshControl.h; path = CustomControls/SPRRefreshControl.h; sourceTree = "<group>"; };
 		DB60AE5519D8DAB200731F03 /* SPRRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRRefreshControl.m; path = CustomControls/SPRRefreshControl.m; sourceTree = "<group>"; };
+		DB60AE5E19D8EE7C00731F03 /* SPRArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRArticle.h; path = DataObjects/SPRArticle.h; sourceTree = "<group>"; };
+		DB60AE5F19D8EE7C00731F03 /* SPRArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRArticle.m; path = DataObjects/SPRArticle.m; sourceTree = "<group>"; };
+		DB60AE6119D90A4C00731F03 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
 		DBF3087319D5BA46004DD0F2 /* UIFont+SPRAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+SPRAdditions.h"; path = "Categories/UIFont+SPRAdditions.h"; sourceTree = "<group>"; };
 		DBF3087419D5BA46004DD0F2 /* UIFont+SPRAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+SPRAdditions.m"; path = "Categories/UIFont+SPRAdditions.m"; sourceTree = "<group>"; };
 		DBF3087619D5D2FE004DD0F2 /* UIColor+SPRAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+SPRAdditions.h"; path = "Categories/UIColor+SPRAdditions.h"; sourceTree = "<group>"; };
@@ -220,6 +225,7 @@
 				DB55576719D27066000EB3A2 /* Info.plist */,
 				DB55576819D27066000EB3A2 /* main.m */,
 				DB5557B119D284A9000EB3A2 /* PrefixHeader.pch */,
+				DB60AE6119D90A4C00731F03 /* style.css */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -269,8 +275,10 @@
 		DB5557D719D28A31000EB3A2 /* DataObjects */ = {
 			isa = PBXGroup;
 			children = (
-				DB5557D819D28A49000EB3A2 /* SPRArticle.h */,
-				DB5557D919D28A49000EB3A2 /* SPRArticle.m */,
+				DB5557D819D28A49000EB3A2 /* SPRArticleInfo.h */,
+				DB5557D919D28A49000EB3A2 /* SPRArticleInfo.m */,
+				DB60AE5E19D8EE7C00731F03 /* SPRArticle.h */,
+				DB60AE5F19D8EE7C00731F03 /* SPRArticle.m */,
 			);
 			name = DataObjects;
 			sourceTree = "<group>";
@@ -502,6 +510,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB55577219D27066000EB3A2 /* Main.storyboard in Resources */,
+				DB60AE6319D90A4C00731F03 /* style.css in Resources */,
 				DB55577419D27066000EB3A2 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -533,8 +542,9 @@
 				DB5557F219D31A06000EB3A2 /* TFHpple.m in Sources */,
 				DBF3087819D5D2FE004DD0F2 /* UIColor+SPRAdditions.m in Sources */,
 				DB55578E19D272E7000EB3A2 /* SPRService.m in Sources */,
+				DB60AE6019D8EE7C00731F03 /* SPRArticle.m in Sources */,
 				DB55576C19D27066000EB3A2 /* AppDelegate.m in Sources */,
-				DB5557DA19D28A49000EB3A2 /* SPRArticle.m in Sources */,
+				DB5557DA19D28A49000EB3A2 /* SPRArticleInfo.m in Sources */,
 				DBFE877819D5297B0033102A /* SPRArticlesViewModel.m in Sources */,
 				DBFE877B19D52C620033102A /* SPRMasterViewModel.m in Sources */,
 				DB55580219D328F9000EB3A2 /* SPRArticlesTableViewController.m in Sources */,

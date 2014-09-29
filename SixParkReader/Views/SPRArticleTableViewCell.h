@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class SPRArticle;
+@class SPRArticleInfo;
 
 @interface SPRArticleTableViewCell : UITableViewCell
-@property (nonatomic) SPRArticle *article;
+@property (nonatomic) SPRArticleInfo *article;
 
-+ (CGFloat)heightForTableViewCell:(UITableView *)tableView article:(SPRArticle *)article;
++ (CGFloat)heightForTableViewCell:(UITableView *)tableView article:(SPRArticleInfo *)article;
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 @end

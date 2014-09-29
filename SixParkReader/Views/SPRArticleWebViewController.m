@@ -7,7 +7,7 @@
 //
 
 #import "SPRArticleWebViewController.h"
-#import "SPRArticle.h"
+#import "SPRConstants.h"
 
 @interface SPRArticleWebViewController()
 @property (nonatomic) UIWebView *webView;
@@ -19,19 +19,20 @@
 {
     [super viewDidLoad];
     
-    _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
-    _webView.scalesPageToFit = YES;
+    _webView = [UIWebView new];
     [self.view addSubview:_webView];
 }
 
-
-- (void)setArticle:(SPRArticle *)article
+- (void)viewDidLayoutSubviews
 {
-    if (article && (_article != article)) {
-        _article = article;
-        
-        NSURLRequest *request = [NSURLRequest requestWithURL:_article.url];
-        [_webView loadRequest:request];
+    _webView.frame = (CGRect){0, [SPRConstants statusBarHeight], .size = self.view.bounds.size};
+}
+
+- (void)setHtmlString:(NSString *)htmlString
+{
+    if (htmlString && (_htmlString != htmlString)) {
+        _htmlString = htmlString;
+        [_webView loadHTMLString:_htmlString baseURL:nil];
     }
 }
 

@@ -9,6 +9,7 @@
 #import "SPRArticleWebViewModel.h"
 #import "SPRArticlesModel.h"
 #import "SPRArticleWebViewController.h"
+#import "SPRArticle.h"
 
 @interface SPRArticleWebViewModel()
 @property (nonatomic) SPRArticlesModel *articlesModel;
@@ -39,7 +40,9 @@
 {
     [RACObserve(_articlesModel, selectedArticle) subscribeNext:^(NSNumber *index) {
         if (_articlesModel.articles.count) {
-            _webViewController.article = _articlesModel.articles[[index integerValue]];
+            [_articlesModel.selectedArticleHTMLSig subscribeNext:^(SPRArticle *article) {
+                _webViewController.htmlString = [article html];
+            }];
         }
     }];
 }

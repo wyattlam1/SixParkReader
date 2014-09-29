@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class SPRArticle;
+@class SPRArticleInfo;
 
 @interface SPRArticleWebViewController : UIViewController
-
-@property (nonatomic) SPRArticle *article;
+@property (nonatomic, copy) NSString *htmlString;
 
 @end

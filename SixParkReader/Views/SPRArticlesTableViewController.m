@@ -8,7 +8,7 @@
 
 #import "SPRArticlesTableViewController.h"
 #import "SPRArticlesViewModel.h"
-#import "SPRArticle.h"
+#import "SPRArticleInfo.h"
 #import "SPRArticleTableViewCell.h"
 #import "SPRArticlesModel.h"
 #import "SPRRefreshControl.h"
@@ -22,9 +22,6 @@
 @property (nonatomic) UITableView *tableView;
 //
 @property (nonatomic, readwrite) NSInteger selectedRow;
-@property (nonatomic) CGFloat lastContentOffset;
-@property (nonatomic) BOOL completedRefresh;
-@property (nonatomic) BOOL isLoading;
 @end
 
 @implementation SPRArticlesTableViewController
@@ -70,7 +67,7 @@
     _tableView.dataSource = self;
     _tableView.contentInset = UIEdgeInsetsMake([SPRConstants statusBarHeight], 0, 0, 0);
     _tableView.backgroundColor = [UIColor clearColor];
-    [_tableView registerClass:[SPRArticleTableViewCell class] forCellReuseIdentifier:NSStringFromClass([SPRArticle class])];
+    [_tableView registerClass:[SPRArticleTableViewCell class] forCellReuseIdentifier:NSStringFromClass([SPRArticleInfo class])];
     [self.view addSubview:_tableView];
 }
 
@@ -116,7 +113,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SPRArticleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SPRArticle class]) forIndexPath:indexPath];
+    SPRArticleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SPRArticleInfo class]) forIndexPath:indexPath];
     cell.article = [self articles][indexPath.row];
     return cell;
 }

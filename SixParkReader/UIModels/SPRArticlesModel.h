@@ -13,6 +13,7 @@
 @interface SPRArticlesModel : NSObject
 @property (nonatomic, copy, readonly) NSArray *articles;
 @property (nonatomic) NSInteger selectedArticle;
+@property (nonatomic, readonly) RACSignal *selectedArticleHTMLSig;
 
 - (instancetype)initWithSPRService:(SPRService *)sprService;
 
