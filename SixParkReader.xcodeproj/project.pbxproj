@@ -25,6 +25,7 @@
 		DB55580519D3291B000EB3A2 /* SPRArticlesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB55580419D3291B000EB3A2 /* SPRArticlesModel.m */; };
 		DB55580819D32A81000EB3A2 /* SPRArticleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB55580719D32A81000EB3A2 /* SPRArticleTableViewCell.m */; };
 		DB60AE4B19D8A0A100731F03 /* UIScrollView+SPRAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DB60AE4A19D8A0A100731F03 /* UIScrollView+SPRAdditions.m */; };
+		DB60AE5619D8DAB200731F03 /* SPRRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DB60AE5519D8DAB200731F03 /* SPRRefreshControl.m */; };
 		DBF3087519D5BA46004DD0F2 /* UIFont+SPRAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF3087419D5BA46004DD0F2 /* UIFont+SPRAdditions.m */; };
 		DBF3087819D5D2FE004DD0F2 /* UIColor+SPRAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF3087719D5D2FE004DD0F2 /* UIColor+SPRAdditions.m */; };
 		DBF3087B19D5ED8F004DD0F2 /* SPRArticleWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF3087A19D5ED8F004DD0F2 /* SPRArticleWebViewController.m */; };
@@ -136,6 +137,8 @@
 		DB55580719D32A81000EB3A2 /* SPRArticleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRArticleTableViewCell.m; path = Views/SPRArticleTableViewCell.m; sourceTree = "<group>"; };
 		DB60AE4919D8A0A100731F03 /* UIScrollView+SPRAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+SPRAdditions.h"; path = "Categories/UIScrollView+SPRAdditions.h"; sourceTree = "<group>"; };
 		DB60AE4A19D8A0A100731F03 /* UIScrollView+SPRAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+SPRAdditions.m"; path = "Categories/UIScrollView+SPRAdditions.m"; sourceTree = "<group>"; };
+		DB60AE5419D8DAB200731F03 /* SPRRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRRefreshControl.h; path = CustomControls/SPRRefreshControl.h; sourceTree = "<group>"; };
+		DB60AE5519D8DAB200731F03 /* SPRRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRRefreshControl.m; path = CustomControls/SPRRefreshControl.m; sourceTree = "<group>"; };
 		DBF3087319D5BA46004DD0F2 /* UIFont+SPRAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+SPRAdditions.h"; path = "Categories/UIFont+SPRAdditions.h"; sourceTree = "<group>"; };
 		DBF3087419D5BA46004DD0F2 /* UIFont+SPRAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+SPRAdditions.m"; path = "Categories/UIFont+SPRAdditions.m"; sourceTree = "<group>"; };
 		DBF3087619D5D2FE004DD0F2 /* UIColor+SPRAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+SPRAdditions.h"; path = "Categories/UIColor+SPRAdditions.h"; sourceTree = "<group>"; };
@@ -195,9 +198,10 @@
 		DB55576519D27066000EB3A2 /* SixParkReader */ = {
 			isa = PBXGroup;
 			children = (
-				DBF3086C19D5B9AA004DD0F2 /* Categories */,
 				DB55576A19D27066000EB3A2 /* AppDelegate.h */,
 				DB55576B19D27066000EB3A2 /* AppDelegate.m */,
+				DBF3086C19D5B9AA004DD0F2 /* Categories */,
+				DB60AE5219D8DA8500731F03 /* CustomControls */,
 				DB5557D719D28A31000EB3A2 /* DataObjects */,
 				DB5557EB19D319F5000EB3A2 /* Hpple */,
 				DB55577319D27066000EB3A2 /* Images.xcassets */,
@@ -330,6 +334,15 @@
 				DB55580419D3291B000EB3A2 /* SPRArticlesModel.m */,
 			);
 			name = UIModels;
+			sourceTree = "<group>";
+		};
+		DB60AE5219D8DA8500731F03 /* CustomControls */ = {
+			isa = PBXGroup;
+			children = (
+				DB60AE5419D8DAB200731F03 /* SPRRefreshControl.h */,
+				DB60AE5519D8DAB200731F03 /* SPRRefreshControl.m */,
+			);
+			name = CustomControls;
 			sourceTree = "<group>";
 		};
 		DBF3086C19D5B9AA004DD0F2 /* Categories */ = {
@@ -532,6 +545,7 @@
 				DB60AE4B19D8A0A100731F03 /* UIScrollView+SPRAdditions.m in Sources */,
 				DB55580219D328F9000EB3A2 /* SPRArticlesTableViewController.m in Sources */,
 				DB55576919D27066000EB3A2 /* main.m in Sources */,
+				DB60AE5619D8DAB200731F03 /* SPRRefreshControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

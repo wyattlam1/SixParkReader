@@ -11,21 +11,17 @@
 #import "SPRArticle.h"
 #import "SPRArticleTableViewCell.h"
 #import "SPRArticlesModel.h"
+#import "SPRRefreshControl.h"
 #import "SPRConstants.h"
 #import "UIColor+SPRAdditions.h"
 #import "UIScrollView+SPRAdditions.h"
 
-#define DegreesToRadians(x) ((x) * M_PI / 180.0)
-
-static const CGFloat kLoadingPadding = 20.f;
-static const CGFloat kLoadingViewHeight = 80.f;
-
 @interface SPRArticlesTableViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, weak) SPRArticlesViewModel *articlesViewModel;
 // Views
+@property (nonatomic) SPRRefreshControl *refreshControl;
 @property (nonatomic) UITableView *tableView;
-@property (nonatomic) UIImageView *refreshArrowView;
-@property (nonatomic) UILabel *loadingView;
+
 //
 @property (nonatomic, readwrite) NSInteger selectedRow;
 @property (nonatomic) CGFloat lastContentOffset;
@@ -50,97 +46,52 @@ static const CGFloat kLoadingViewHeight = 80.f;
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    // Refresh Arrow
-    _refreshArrowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"RefreshArrow"]];
-    _refreshArrowView.contentMode = UIViewContentModeCenter;
-    [self.view addSubview:_refreshArrowView];
+    [self setupTableView];
     
-    // Loading View
-    _loadingView = [[UILabel alloc] init];
-    _loadingView.text = @"Loading…";
-    _loadingView.hidden = YES;
-    [self.view addSubview:_loadingView];
+    [RACObserve(self.articlesViewModel.articlesModel, articles) subscribeNext:^(NSArray *articles) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_tableView reloadData];
+            if (_refreshControl.isLoading) {
+                [_refreshControl didFinishLoading:_tableView];
+            }
+        });
+    }];
     
-    // Table View
+    [RACObserve(self.refreshControl, isLoading) subscribeNext:^(id x) {
+        [self.articlesViewModel refreshArticles];
+    }];
+}
+
+- (void)setupTableView
+{
+    _refreshControl = [[SPRRefreshControl alloc] init];
+    [self.view addSubview:_refreshControl];
+    
     _tableView = [[UITableView alloc] init];
-    
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.contentInset = UIEdgeInsetsMake([SPRConstants statusBarHeight], 0, 0, 0);
     _tableView.backgroundColor = [UIColor clearColor];
     [_tableView registerClass:[SPRArticleTableViewCell class] forCellReuseIdentifier:NSStringFromClass([SPRArticle class])];
     [self.view addSubview:_tableView];
-    
-    [RACObserve(self.articlesViewModel.articlesModel, articles) subscribeNext:^(NSArray *articles) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [_tableView reloadData];
-            [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
-                [_tableView setContentOffset:CGPointMake(0, -[SPRConstants statusBarHeight])];
-            } completion:^(BOOL finished){
-                self.completedRefresh = YES;
-                self.isLoading = NO;
-            }];
-        });
-    }];
-
-    [RACObserve(self, isLoading) subscribeNext:^(NSNumber *isLoading) {
-        if ([isLoading intValue]) {
-            _refreshArrowView.hidden = YES;
-            _loadingView.hidden = NO;
-        } else {
-            _refreshArrowView.hidden = NO;
-            _loadingView.hidden = YES;
-        }
-    }];
 }
 
 - (void)viewDidLayoutSubviews
 {
-    CGRect bounds = self.view.bounds;
-    CGFloat loadingPadding = [SPRConstants statusBarHeight] + kLoadingPadding;
-    
-    CGSize refreshArrowSize = _refreshArrowView.bounds.size;
-    _refreshArrowView.frame = (CGRect){CGRectGetWidth(bounds)/2.f - refreshArrowSize.width/2.f, loadingPadding, .size = refreshArrowSize};
-    _refreshArrowView.bounds = (CGRect){0, 0, .size = refreshArrowSize}; // we need to set the bounds separately so the rotation tansform doesnt translate also
-    
-    [_loadingView sizeToFit];
-    _loadingView.frame = (CGRect){(CGRectGetWidth(bounds)/2.f - CGRectGetWidth(_loadingView.bounds)/2.f), loadingPadding, .size = _loadingView.bounds.size};
-    
-    _tableView.frame = self.view.bounds;
+    _refreshControl.frame = (CGRect){0, 0, CGRectGetWidth(self.view.bounds), 60};
+   _tableView.frame = self.view.bounds;
 }
 
 #pragma mark - Pull to Refresh
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if ([scrollView scrolledAboveContent]) {
- 
-        [UIView animateWithDuration:0 animations:^{
-            if ([scrollView isScrollingUpWithLastContentOffset:_lastContentOffset]) {
-                if (self.completedRefresh && [scrollView scrolledAboveContentOffset] <= kLoadingViewHeight) {
-                    self.completedRefresh = NO;
-                    self.isLoading = YES;
-                    [_tableView setContentOffset:_tableView.contentOffset animated:NO];
-                    [self.articlesViewModel refreshArticles];
-                }
-            } else {
-                [self rotateArrowWithScrollView:scrollView];
-            }
-        }];
-    }
-    
-    _lastContentOffset = scrollView.contentOffset.y;
+    [_refreshControl scrollViewDidScroll:scrollView];
 }
 
-- (void)rotateArrowWithScrollView:(UIScrollView *)scrollView
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    CGFloat offset = [scrollView percentageScrolledAboveContentWithMaxHeight:kLoadingViewHeight];
-
-    if (offset <= 1.f) {
-        _refreshArrowView.transform = CGAffineTransformMakeRotation(DegreesToRadians(180.f * offset));
-    } else {
-        _refreshArrowView.transform = CGAffineTransformMakeRotation(M_PI);
-    }
+    [_refreshControl scrollViewdidEndScrolling:scrollView willDecelerate:decelerate];
 }
 
 #pragma mark - Table view data source
