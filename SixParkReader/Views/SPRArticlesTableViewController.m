@@ -14,14 +14,12 @@
 #import "SPRRefreshControl.h"
 #import "SPRConstants.h"
 #import "UIColor+SPRAdditions.h"
-#import "UIScrollView+SPRAdditions.h"
 
 @interface SPRArticlesTableViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, weak) SPRArticlesViewModel *articlesViewModel;
 // Views
 @property (nonatomic) SPRRefreshControl *refreshControl;
 @property (nonatomic) UITableView *tableView;
-
 //
 @property (nonatomic, readwrite) NSInteger selectedRow;
 @property (nonatomic) CGFloat lastContentOffset;
@@ -78,7 +76,7 @@
 
 - (void)viewDidLayoutSubviews
 {
-    _refreshControl.frame = (CGRect){0, 0, CGRectGetWidth(self.view.bounds), 60};
+    _refreshControl.frame = (CGRect){0, 0, CGRectGetWidth(self.view.bounds), 0};
    _tableView.frame = self.view.bounds;
 }
 
