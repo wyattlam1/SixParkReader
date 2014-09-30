@@ -10,7 +10,7 @@
 
 @implementation SPRArticle
 
-- (instancetype)initWithTitle:(NSString *)title type:(SPRArticleType)type source:(NSString *)source date:(NSString *)date bodyElements:(NSArray *)bodyElements
+- (instancetype)initWithTitle:(NSString *)title type:(SPRArticleType)type source:(NSString *)source date:(NSString *)date bodyElements:(NSArray *)bodyElements imageURLs:(NSArray *)imageURLs
 {
     self = [super init];
     if (self) {
@@ -19,6 +19,7 @@
         _source = source;
         _date = date;
         _bodyElements = bodyElements;
+        _imageURLs = imageURLs;
     }
     return self;
 }
@@ -29,6 +30,13 @@
     [htmlString appendString:@"<html>"];
     [htmlString appendFormat:@"<head><style>%@</style></head>", [self styleSheet]];
     [htmlString appendString:@"<body>"];
+    
+    // Header Image
+    if (_imageURLs.count) {
+        [htmlString appendFormat:@"<div class=\"header_image_container\"><img class=\"header_image\" src=\"%@\"/></div>", _imageURLs[0]];
+    }
+    
+    [htmlString appendString:@"<div class=\"body_content\">"];
     
     // Title
     [htmlString appendFormat:@"<h1>%@</h1>", _title];
@@ -43,6 +51,8 @@
     for (NSString *bodyString in _bodyElements) {
         [htmlString appendFormat:@"<p>%@</p>", bodyString];
     }
+    
+    [htmlString appendString:@"</div>"];
     
     [htmlString appendString:@"</body></html>"];
     return htmlString;

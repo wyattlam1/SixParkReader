@@ -20,6 +20,7 @@
     [super viewDidLoad];
     
     _webView = [UIWebView new];
+    _webView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_webView];
 }
 

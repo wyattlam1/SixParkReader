@@ -3,7 +3,21 @@ html {
 }
 
 body {
-    padding: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.header_image_container {
+    height: 300px;
+    overflow: hidden;
+}
+
+.header_image {
+    width: 100%;
+}
+
+.body_content {
+    padding: 0px 30px 30px 30px;
 }
 
 h1 {
@@ -12,6 +26,7 @@ h1 {
 
 p {
     font-size: 24px;
+    line-height: 200%;
 }
 
 .source {

@@ -55,7 +55,6 @@ static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
 
 - (RACSignal *)parseHTMLFromArticleSig:(SPRArticleInfo *)article
 {
-//    NSURL *url = [NSURL URLWithString:@"http://news.6park.com/newspark/index.php?app=news&act=view&nid=55722"];
     return [[_httpService downloadHTMLSignalWithURL:article.url] flattenMap:^RACStream *(NSString *htmlString) {
         TFHpple *doc = [TFHpple hppleWithHTMLData:[htmlString dataUsingEncoding:NSUTF16StringEncoding]];
         
@@ -82,11 +81,20 @@ static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
             }
         }
         
-        return [RACSignal return:[[SPRArticle alloc] initWithTitle:title type:type source:source date:date bodyElements:parsedBodyElements]];
+        // Images
+        NSArray *imageElements = [doc searchWithXPathQuery:@"//td[@id='newscontent']//img"];
+        NSMutableArray *imageURLs = [NSMutableArray new];
+        for (TFHppleElement *element in imageElements) {
+            NSString *imageURL = [element.attributes objectForKey:@"src"];
+            if (imageURL && ([imageURL characterAtIndex:0] == 'h')) {
+                [imageURLs addObject:imageURL];
+            }
+        }
+        return [RACSignal return:[[SPRArticle alloc] initWithTitle:title type:type source:source date:date bodyElements:parsedBodyElements imageURLs:imageURLs]];
     }];
 }
 
-#pragma mark -
+#pragma mark - Parsing Helpers
 
 - (NSString *)extractTitleFromString:(NSString *)string
 {
@@ -116,21 +124,33 @@ static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
 - (NSString *)extractSourceFromString:(NSString *)string
 {
     NSArray *components = [string componentsSeparatedByString:@" "];
-    NSString *source = components[1];
-    return source;
+    if (components.count < 2) {
+        return @"failed to get source";
+    } else {
+        NSString *source = components[1];
+        return source;
+    }
 }
 
 - (NSString *)extractDateFromString:(NSString *)string
 {
     NSArray *components = [string componentsSeparatedByString:@" "];
-    NSString *date = components[3];
-    date = [date stringByReplacingOccurrencesOfString:@"-" withString:@"."];
-    return date;
+    if (components.count < 4) {
+        return @"failed to get date";
+    } else {
+        NSString *date = components[3];
+        date = [date stringByReplacingOccurrencesOfString:@"-" withString:@"."];
+        return date;
+    }
 }
 
 - (BOOL)isNotSourceDate:(NSString *)string
 {
-    return ![[string substringWithRange:NSMakeRange(0, 4)] isEqualToString:@"新闻来源"];
+    if (string.length < 4) {
+        return YES;
+    } else {
+        return ![[string substringWithRange:NSMakeRange(0, 4)] isEqualToString:@"新闻来源"];
+    }
 }
 
 @end
