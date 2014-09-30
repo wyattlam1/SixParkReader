@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface SPRRefreshControl : UIView
-@property (nonatomic) BOOL isLoading;
+@property (nonatomic, readonly) BOOL isLoading;
 
 - (void)didFinishLoading:(UIScrollView *)scrollView;
 

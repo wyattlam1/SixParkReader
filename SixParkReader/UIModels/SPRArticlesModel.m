@@ -21,7 +21,7 @@
     self = [super init];
     if (self) {
         _sprService = sprService;
-        _articles = @[];
+//        _articles = @[];
         
         [self refreshArticles];
     }

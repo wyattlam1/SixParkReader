@@ -39,17 +39,24 @@
 {
     [super viewDidLoad];
     
+    _selectedRow = -1;
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self setupTableView];
     
     [RACObserve(self.articlesViewModel.articlesModel, articles) subscribeNext:^(NSArray *articles) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [_tableView reloadData];
-            if (_refreshControl.isLoading) {
-                [_refreshControl didFinishLoading:_tableView];
-            }
-        });
+        if (articles) {                    
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_tableView reloadData];
+                // populate first article
+                if (_selectedRow == -1) {
+                    [self tableView:_tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+                }
+                if (_refreshControl.isLoading) {
+                    [_refreshControl didFinishLoading:_tableView];
+                }
+            });
+        }
     }];
     
     [RACObserve(self.refreshControl, isLoading) subscribeNext:^(id x) {
@@ -96,11 +103,6 @@
     return _articlesViewModel.articlesModel.articles;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self articles].count;
@@ -122,9 +124,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:_selectedRow inSection:0]].contentView.backgroundColor = [UIColor whiteColor];
-    self.selectedRow = indexPath.row;
-    [tableView cellForRowAtIndexPath:indexPath].contentView.backgroundColor = [[UIColor spr_lightGreen] colorWithAlphaComponent:0.4f];
+    if (_selectedRow != indexPath.row) {
+        [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:_selectedRow inSection:0]].contentView.backgroundColor = [UIColor whiteColor];
+        self.selectedRow = indexPath.row;
+        [tableView cellForRowAtIndexPath:indexPath].contentView.backgroundColor = [[UIColor spr_lightGreen] colorWithAlphaComponent:0.4f];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath

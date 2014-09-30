@@ -150,13 +150,13 @@ static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
     }
 }
 
-- (BOOL)isNotSourceDate:(NSString *)string
+- (BOOL)isSourceDate:(NSString *)string
 {
     // skip the source/date text node
     if (string.length < 4) {
-        return YES;
+        return NO;
     } else {
-        return ![[string substringToIndex:4] isEqualToString:@"新闻来源"];
+        return [[string substringToIndex:4] isEqualToString:@"新闻来源"];
     }
 }
 
@@ -168,7 +168,12 @@ static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
 
 - (BOOL)isValidBodyText:(NSString *)string
 {
-    return string && (string.length > 0) && [self isNotSourceDate:string] && [string isEqualToString:@"】"] && [string isEqualToString:@"【"];
+    if (string && (string.length > 0)) {
+        NSString *firstChar = [string substringToIndex:1];
+        return ![self isSourceDate:string] && ![firstChar isEqualToString:@"】"] && ![firstChar isEqualToString:@"【"];
+    } else {
+        return NO;
+    }
 }
 
 @end
