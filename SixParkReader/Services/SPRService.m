@@ -73,8 +73,9 @@ static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
         NSString *date = [self extractDateFromString:sourceDateString];
         
         // Body & Images
-        NSArray *bodyElements = [doc searchWithXPathQuery:@"//td[@id='newscontent']/text() | //td[@id='newscontent']/p | //td[@id='newscontent']//img"];
+        NSString *query = @"//td[@id='newscontent']/text() | //td[@id='newscontent']/p | //td[@id='newscontent']/center/text() | //td[@id='newscontent']//img";
         NSMutableArray *parsedBodyElements = [NSMutableArray new];
+        NSArray *bodyElements = [doc searchWithXPathQuery:query];
         for (TFHppleElement *element in bodyElements) {
             if ([element.tagName isEqualToString:@"img"]) {
                 NSString *imageURL = [element.attributes objectForKey:@"src"];
@@ -89,8 +90,7 @@ static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
                     content = [element.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                 }
                 
-                // verify content
-                if (content && ![content isEqualToString:@""] && [self isNotSourceDate:content]) {
+                if ([self isValidBodyText:content]) {
                     [parsedBodyElements addObject:[SPRHTMLElement htmlElementWithText:content]];
                 }
             }
@@ -164,6 +164,11 @@ static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
 {
     // check for remote images only, ignore local images that start with "./"
     return [[imageURL substringToIndex:4] isEqualToString:@"http"];
+}
+
+- (BOOL)isValidBodyText:(NSString *)string
+{
+    return string && (string.length > 0) && [self isNotSourceDate:string] && [string isEqualToString:@"】"] && [string isEqualToString:@"【"];
 }
 
 @end
