@@ -1,5 +1,5 @@
 html {
-    font-family: "STXihei";
+    font-family: "Helvetica-Light", "STXihei";
 }
 
 body {
@@ -7,9 +7,18 @@ body {
 }
 
 h1 {
-    font-size: 36px;
+    font-size: 40px;
 }
 
 p {
     font-size: 24px;
+}
+
+.source {
+    font-size: 20px;
+}
+
+.date {
+    font-size: 20px;
+    float: right;
 }

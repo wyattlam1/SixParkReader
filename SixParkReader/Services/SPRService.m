@@ -61,20 +61,76 @@ static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
         
         // Title
         TFHppleElement *titleElement = [doc searchWithXPathQuery:@"//td[@id='newscontent']/center/h2"][0];
-        NSString *title = titleElement.text;
+        NSString *title = [self extractTitleFromString:titleElement.text];
+        
+        // Type
+        SPRArticleType type = [self extractTypeFromTitle:titleElement.text];
+        
+        // Source & Date
+        TFHppleElement *sourceDateElement = [doc searchWithXPathQuery:@"//td[@id='newscontent']/text()"][1];
+        NSString *sourceDateString = [sourceDateElement.content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        NSString *source = [self extractSourceFromString:sourceDateString];
+        NSString *date = [self extractDateFromString:sourceDateString];
         
         // Body
         NSArray *bodyElements = [doc searchWithXPathQuery:@"//td[@id='newscontent']/text()"];
         NSMutableArray *parsedBodyElements = [NSMutableArray new];
         for (TFHppleElement *element in bodyElements) {
             NSString *content = [element.content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-            if (![content isEqualToString:@""]) {
+            if (![content isEqualToString:@""] && [self isNotSourceDate:content]) {
                 [parsedBodyElements addObject:element.content];
             }
         }
         
-        return [RACSignal return:[[SPRArticle alloc] initWithTitle:title bodyElements:parsedBodyElements]];
+        return [RACSignal return:[[SPRArticle alloc] initWithTitle:title type:type source:source date:date bodyElements:parsedBodyElements]];
     }];
+}
+
+#pragma mark -
+
+- (NSString *)extractTitleFromString:(NSString *)string
+{
+    NSString *title;
+    NSScanner *scanner = [NSScanner scannerWithString:string];
+    [scanner scanUpToString:@"(" intoString:&title];
+    return title;
+}
+
+- (SPRArticleType)extractTypeFromTitle:(NSString *)title
+{
+    NSString *typeStr;
+    NSArray *components = [title componentsSeparatedByString:@"("];
+    NSScanner *scanner = [NSScanner scannerWithString:components[1]]; // "图)"
+    [scanner scanUpToString:@")" intoString:&typeStr]; // 图
+    
+    SPRArticleType type = SPRArticleTypeUnknown;
+    if ([typeStr isEqualToString:@"图"]) {
+        type = SPRArticleTypeImage;
+    } else if ([typeStr isEqualToString:@"组图"]) {
+        type = SPRArticleTypeImageSet;
+    }
+    
+    return type;
+}
+
+- (NSString *)extractSourceFromString:(NSString *)string
+{
+    NSArray *components = [string componentsSeparatedByString:@" "];
+    NSString *source = components[1];
+    return source;
+}
+
+- (NSString *)extractDateFromString:(NSString *)string
+{
+    NSArray *components = [string componentsSeparatedByString:@" "];
+    NSString *date = components[3];
+    date = [date stringByReplacingOccurrencesOfString:@"-" withString:@"."];
+    return date;
+}
+
+- (BOOL)isNotSourceDate:(NSString *)string
+{
+    return ![[string substringWithRange:NSMakeRange(0, 4)] isEqualToString:@"新闻来源"];
 }
 
 @end
