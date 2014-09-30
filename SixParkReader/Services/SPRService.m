@@ -11,6 +11,7 @@
 #import "SPRArticle.h"
 #import "SPRArticleInfo.h"
 #import "SPRConstants.h"
+#import "SPRHTMLElement.h"
 #import "TFHpple.h"
 
 static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
@@ -71,26 +72,31 @@ static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
         NSString *source = [self extractSourceFromString:sourceDateString];
         NSString *date = [self extractDateFromString:sourceDateString];
         
-        // Body
-        NSArray *bodyElements = [doc searchWithXPathQuery:@"//td[@id='newscontent']/text()"];
+        // Body & Images
+        NSArray *bodyElements = [doc searchWithXPathQuery:@"//td[@id='newscontent']/text() | //td[@id='newscontent']/p | //td[@id='newscontent']//img"];
         NSMutableArray *parsedBodyElements = [NSMutableArray new];
         for (TFHppleElement *element in bodyElements) {
-            NSString *content = [element.content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-            if (![content isEqualToString:@""] && [self isNotSourceDate:content]) {
-                [parsedBodyElements addObject:element.content];
+            if ([element.tagName isEqualToString:@"img"]) {
+                NSString *imageURL = [element.attributes objectForKey:@"src"];
+                if (imageURL && [self isArticleImage:imageURL]) {
+                    [parsedBodyElements addObject:[SPRHTMLElement htmlElementWithImageURL:imageURL]];
+                }
+            } else {
+                // found a textNode
+                NSString *content = [element.content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                if (!content) {
+                    // found a <p> node
+                    content = [element.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                }
+                
+                // verify content
+                if (content && ![content isEqualToString:@""] && [self isNotSourceDate:content]) {
+                    [parsedBodyElements addObject:[SPRHTMLElement htmlElementWithText:content]];
+                }
             }
         }
         
-        // Images
-        NSArray *imageElements = [doc searchWithXPathQuery:@"//td[@id='newscontent']//img"];
-        NSMutableArray *imageURLs = [NSMutableArray new];
-        for (TFHppleElement *element in imageElements) {
-            NSString *imageURL = [element.attributes objectForKey:@"src"];
-            if (imageURL && ([imageURL characterAtIndex:0] == 'h')) {
-                [imageURLs addObject:imageURL];
-            }
-        }
-        return [RACSignal return:[[SPRArticle alloc] initWithTitle:title type:type source:source date:date bodyElements:parsedBodyElements imageURLs:imageURLs]];
+        return [RACSignal return:[[SPRArticle alloc] initWithTitle:title type:type source:source date:date bodyElements:parsedBodyElements]];
     }];
 }
 
@@ -146,11 +152,18 @@ static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
 
 - (BOOL)isNotSourceDate:(NSString *)string
 {
+    // skip the source/date text node
     if (string.length < 4) {
         return YES;
     } else {
-        return ![[string substringWithRange:NSMakeRange(0, 4)] isEqualToString:@"新闻来源"];
+        return ![[string substringToIndex:4] isEqualToString:@"新闻来源"];
     }
+}
+
+- (BOOL)isArticleImage:(NSString *)imageURL
+{
+    // check for remote images only, ignore local images that start with "./"
+    return [[imageURL substringToIndex:4] isEqualToString:@"http"];
 }
 
 @end

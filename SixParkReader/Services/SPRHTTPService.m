@@ -34,6 +34,7 @@
         [NSURLConnection sendAsynchronousRequest:request queue:_queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
          {
              if (error) {
+                 NSLog(@"Failed to fetch article: %@", error);
                  [subscriber sendError:error];
              } else {
                  [subscriber sendNext:[[NSString alloc] initWithData:data encoding:[SPRConstants sixParkEncoding]]];

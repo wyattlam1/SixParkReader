@@ -21,9 +21,8 @@ typedef enum {
 @property (nonatomic, copy, readonly) NSString *source;
 @property (nonatomic, copy, readonly) NSString *date;
 @property (nonatomic, copy, readonly) NSArray *bodyElements;
-@property (nonatomic, copy, readonly) NSArray *imageURLs;
 
-- (instancetype)initWithTitle:(NSString *)title type:(SPRArticleType)type source:(NSString *)source date:(NSString *)date bodyElements:(NSArray *)bodyElements imageURLs:(NSArray *)imageURLs;
+- (instancetype)initWithTitle:(NSString *)title type:(SPRArticleType)type source:(NSString *)source date:(NSString *)date bodyElements:(NSArray *)bodyElements;
 
 - (NSString *)html;
 

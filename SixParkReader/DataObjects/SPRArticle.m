@@ -7,10 +7,15 @@
 //
 
 #import "SPRArticle.h"
+#import "SPRHTMLElement.h"
+
+@interface SPRArticle()
+@property (nonatomic, copy) NSString *headerImageURL;
+@end
 
 @implementation SPRArticle
 
-- (instancetype)initWithTitle:(NSString *)title type:(SPRArticleType)type source:(NSString *)source date:(NSString *)date bodyElements:(NSArray *)bodyElements imageURLs:(NSArray *)imageURLs
+- (instancetype)initWithTitle:(NSString *)title type:(SPRArticleType)type source:(NSString *)source date:(NSString *)date bodyElements:(NSArray *)bodyElements
 {
     self = [super init];
     if (self) {
@@ -19,7 +24,6 @@
         _source = source;
         _date = date;
         _bodyElements = bodyElements;
-        _imageURLs = imageURLs;
     }
     return self;
 }
@@ -32,8 +36,9 @@
     [htmlString appendString:@"<body>"];
     
     // Header Image
-    if (_imageURLs.count) {
-        [htmlString appendFormat:@"<div class=\"header_image_container\"><img class=\"header_image\" src=\"%@\"/></div>", _imageURLs[0]];
+    NSString *headerURL = [self headerImage];
+    if (headerURL) {
+        [htmlString appendFormat:@"<div class=\"header_image_container\"><img class=\"header_image\" src=\"%@\"/></div>", headerURL];
     }
     
     [htmlString appendString:@"<div class=\"body_content\">"];
@@ -48,8 +53,12 @@
     [htmlString appendFormat:@"<span class=\"date\">%@</span>", _date];
     
     // Body
-    for (NSString *bodyString in _bodyElements) {
-        [htmlString appendFormat:@"<p>%@</p>", bodyString];
+    for (SPRHTMLElement *element in _bodyElements) {
+        if ((element.type == SPRHTMLElementImg) && ![element.content isEqualToString:_headerImageURL]) {
+            [htmlString appendFormat:@"<div class=\"body_image_container\"><img src=\"%@\"/></div>", element.content];
+        } else if (element.type == SPRHTMLElementText) {
+            [htmlString appendFormat:@"<p>%@</p>", element.content];
+        }
     }
     
     [htmlString appendString:@"</div>"];
@@ -69,6 +78,17 @@
         NSLog(@"Failed to load style sheet: %@", error);
     }
     return styleSheet;
+}
+
+- (NSString *)headerImage
+{
+    for (SPRHTMLElement *element in _bodyElements) {
+        if (element.type == SPRHTMLElementImg) {
+            _headerImageURL = element.content;
+            return _headerImageURL;
+        }
+    }
+    return nil;
 }
 
 @end

@@ -20,6 +20,16 @@ body {
     padding: 0px 30px 30px 30px;
 }
 
+.body_image_container {
+    text-align: center;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.body_image_container img {
+    width: 95%;
+}
+
 h1 {
     font-size: 40px;
 }
