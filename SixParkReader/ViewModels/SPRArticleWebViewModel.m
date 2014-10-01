@@ -41,6 +41,7 @@
 {
     [RACObserve(_articlesModel, selectedArticle) subscribeNext:^(NSNumber *index) {
         if (_articlesModel.articles.count) {
+            [_webViewController startLoading];
             [_articlesModel.selectedArticleHTMLSig subscribeNext:^(SPRArticle *article) {
                 _webViewController.htmlString = [article html];
             } error:^(NSError *error) {

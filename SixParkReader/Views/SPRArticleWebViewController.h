@@ -15,4 +15,6 @@
 @property (nonatomic) NSURL *url;
 @property (nonatomic, copy) NSString *htmlString;
 
+- (void)startLoading;
+
 @end
