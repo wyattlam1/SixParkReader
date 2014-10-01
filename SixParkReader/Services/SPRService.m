@@ -16,6 +16,7 @@
 #import "NSString+SPRAdditions.h"
 
 static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
+static NSString *kSPRErrorDomain = @"SPRErrorDomain";
 
 @interface SPRService()
 @property (nonatomic) SPRHTTPService *httpService;
@@ -42,7 +43,7 @@ static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
 - (RACSignal *)fetchHTMLWithArticleInfo:(SPRArticleInfo *)article
 {
     return [[_httpService downloadHTMLSignalWithURL:article.url] flattenMap:^RACStream *(NSString *htmlString) {
-        return [RACSignal return:[self parseArticleWithHTMLString:htmlString]];
+        return [self parseArticleWithHTMLString:htmlString];
     }];
 }
 
@@ -66,7 +67,7 @@ static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
     return  articles;
 }
 
-- (SPRArticle *)parseArticleWithHTMLString:(NSString *)htmlString
+- (RACSignal *)parseArticleWithHTMLString:(NSString *)htmlString
 {
     NSDate *startTime = [NSDate date];
     TFHpple *doc = [TFHpple hppleWithHTMLData:[htmlString dataUsingEncoding:NSUTF16StringEncoding]];
@@ -75,8 +76,7 @@ static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
     TFHppleElement *titleElement = [doc searchWithXPathQuery:@"//td[@id='newscontent']/center/h2"][0];
     NSString *title = [self extractTitleFromString:titleElement.text];
     if (![title isNotNilOrEmpty]) {
-        NSLog(@"Failed to extract title from article html");
-        return nil;
+        return [RACSignal error:[NSError errorWithDomain:kSPRErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey: @"Failed to extract title from article html"}]];
     }
     
     // Type
@@ -88,12 +88,10 @@ static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
     NSString *source = [self extractSourceFromString:sourceDateString];
     NSString *date = [self extractDateFromString:sourceDateString];
     if (![source isNotNilOrEmpty]) {
-        NSLog(@"Failed to extract source from article html");
-        return nil;
+        return [RACSignal error:[NSError errorWithDomain:kSPRErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey: @"Failed to extract source from article html"}]];
     }
     if (![date isNotNilOrEmpty]) {
-        NSLog(@"Failed to extract date from article html");
-        return nil;
+        return [RACSignal error:[NSError errorWithDomain:kSPRErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey: @"Failed to extract date from article html"}]];
     }
         
     // Body & Images
@@ -122,7 +120,7 @@ static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
     
     NSLog(@"Page load time: %f", fabs([startTime timeIntervalSinceNow]));
     
-    return [[SPRArticle alloc] initWithTitle:title type:type source:source date:date bodyElements:parsedBodyElements];
+    return [RACSignal return:[[SPRArticle alloc] initWithTitle:title type:type source:source date:date bodyElements:parsedBodyElements]];
 }
 
 #pragma mark - Parsing Helpers
@@ -154,7 +152,7 @@ static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
 
 - (NSString *)extractSourceFromString:(NSString *)string
 {
-    NSArray *components = [string componentsSeparatedByString:@" "];
+    NSArray *components = [string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     if (components.count >= 2) {
         NSString *source = components[1];
         return source;
@@ -165,7 +163,7 @@ static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
 
 - (NSString *)extractDateFromString:(NSString *)string
 {
-    NSArray *components = [string componentsSeparatedByString:@" "];
+    NSArray *components = [string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     if (components.count >= 4) {
         NSString *date = components[3];
         return [date stringByReplacingOccurrencesOfString:@"-" withString:@"."];

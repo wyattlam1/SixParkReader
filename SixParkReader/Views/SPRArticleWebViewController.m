@@ -21,6 +21,7 @@
     
     _webView = [UIWebView new];
     _webView.backgroundColor = [UIColor whiteColor];
+
     [self.view addSubview:_webView];
 }
 
@@ -29,11 +30,30 @@
     _webView.frame = (CGRect){0, [SPRConstants statusBarHeight], .size = self.view.bounds.size};
 }
 
+#pragma mark - Properties
+
+- (void)setUrl:(NSURL *)url
+{
+    if (_htmlString || (url && (_url != url))) {
+        _htmlString = nil;
+        _url = url;
+        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+        [_webView loadRequest:request];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _webView.scalesPageToFit = YES;
+        });
+    }
+}
+
 - (void)setHtmlString:(NSString *)htmlString
 {
-    if (htmlString && (_htmlString != htmlString)) {
+    if (_url || (htmlString && (![_htmlString isEqualToString:htmlString]))) {
+        _url = nil;
         _htmlString = htmlString;
         [_webView loadHTMLString:_htmlString baseURL:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _webView.scalesPageToFit = NO;
+        });
     }
 }
 

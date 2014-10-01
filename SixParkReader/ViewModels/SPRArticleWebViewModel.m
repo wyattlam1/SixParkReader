@@ -10,6 +10,7 @@
 #import "SPRArticlesModel.h"
 #import "SPRArticleWebViewController.h"
 #import "SPRArticle.h"
+#import "SPRArticleInfo.h"
 
 @interface SPRArticleWebViewModel()
 @property (nonatomic) SPRArticlesModel *articlesModel;
@@ -42,6 +43,10 @@
         if (_articlesModel.articles.count) {
             [_articlesModel.selectedArticleHTMLSig subscribeNext:^(SPRArticle *article) {
                 _webViewController.htmlString = [article html];
+            } error:^(NSError *error) {
+                NSLog(@"error: %@", error);
+                SPRArticleInfo *info = _articlesModel.articles[[index integerValue]];
+                _webViewController.url = info.url;
             }];
         }
     }];

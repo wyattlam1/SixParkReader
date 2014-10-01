@@ -11,6 +11,8 @@
 @class SPRArticleInfo;
 
 @interface SPRArticleWebViewController : UIViewController
+// choose either url or htmlString
+@property (nonatomic) NSURL *url;
 @property (nonatomic, copy) NSString *htmlString;
 
 @end
