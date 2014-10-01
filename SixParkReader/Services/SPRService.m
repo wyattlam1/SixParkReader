@@ -13,6 +13,7 @@
 #import "SPRConstants.h"
 #import "SPRHTMLElement.h"
 #import "TFHpple.h"
+#import "NSString+SPRAdditions.h"
 
 static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
 
@@ -67,11 +68,16 @@ static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
 
 - (SPRArticle *)parseArticleWithHTMLString:(NSString *)htmlString
 {
+    NSDate *startTime = [NSDate date];
     TFHpple *doc = [TFHpple hppleWithHTMLData:[htmlString dataUsingEncoding:NSUTF16StringEncoding]];
     
     // Title
     TFHppleElement *titleElement = [doc searchWithXPathQuery:@"//td[@id='newscontent']/center/h2"][0];
     NSString *title = [self extractTitleFromString:titleElement.text];
+    if (![title isNotNilOrEmpty]) {
+        NSLog(@"Failed to extract title from article html");
+        return nil;
+    }
     
     // Type
     SPRArticleType type = [self extractTypeFromTitle:titleElement.text];
@@ -81,21 +87,29 @@ static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
     NSString *sourceDateString = [sourceDateElement.content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSString *source = [self extractSourceFromString:sourceDateString];
     NSString *date = [self extractDateFromString:sourceDateString];
-    
+    if (![source isNotNilOrEmpty]) {
+        NSLog(@"Failed to extract source from article html");
+        return nil;
+    }
+    if (![date isNotNilOrEmpty]) {
+        NSLog(@"Failed to extract date from article html");
+        return nil;
+    }
+        
     // Body & Images
-    NSString *query = @"//td[@id='newscontent']/text() | //td[@id='newscontent']/p | //td[@id='newscontent']/center/text() | //td[@id='newscontent']//img";
     NSMutableArray *parsedBodyElements = [NSMutableArray new];
+    NSString *query = @"//td[@id='newscontent']/text() | //td[@id='newscontent']/p | //td[@id='newscontent']/center/text() | //td[@id='newscontent']//img";
     NSArray *bodyElements = [doc searchWithXPathQuery:query];
     for (TFHppleElement *element in bodyElements) {
         if ([element.tagName isEqualToString:@"img"]) {
             NSString *imageURL = [element.attributes objectForKey:@"src"];
-            if (imageURL && [self isArticleImage:imageURL]) {
+            if ([self isArticleImage:imageURL]) {
                 [parsedBodyElements addObject:[SPRHTMLElement htmlElementWithImageURL:imageURL]];
             }
         } else {
             // found a textNode
             NSString *content = [element.content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-            if (!content) {
+            if (![content isNotNilOrEmpty]) {
                 // found a <p> node
                 content = [element.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             }
@@ -105,6 +119,8 @@ static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
             }
         }
     }
+    
+    NSLog(@"Page load time: %f", fabs([startTime timeIntervalSinceNow]));
     
     return [[SPRArticle alloc] initWithTitle:title type:type source:source date:date bodyElements:parsedBodyElements];
 }
@@ -123,39 +139,38 @@ static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
 {
     NSString *typeStr;
     NSArray *components = [title componentsSeparatedByString:@"("];
-    NSScanner *scanner = [NSScanner scannerWithString:components[1]]; // "图)"
-    [scanner scanUpToString:@")" intoString:&typeStr]; // 图
-    
+    if (components.count >= 2) {
+        NSScanner *scanner = [NSScanner scannerWithString:components[1]]; // "图)"
+        [scanner scanUpToString:@")" intoString:&typeStr]; // 图
+    }
     SPRArticleType type = SPRArticleTypeUnknown;
     if ([typeStr isEqualToString:@"图"]) {
         type = SPRArticleTypeImage;
     } else if ([typeStr isEqualToString:@"组图"]) {
         type = SPRArticleTypeImageSet;
     }
-    
     return type;
 }
 
 - (NSString *)extractSourceFromString:(NSString *)string
 {
     NSArray *components = [string componentsSeparatedByString:@" "];
-    if (components.count < 2) {
-        return @"failed to get source";
-    } else {
+    if (components.count >= 2) {
         NSString *source = components[1];
         return source;
+    } else {
+        return nil;
     }
 }
 
 - (NSString *)extractDateFromString:(NSString *)string
 {
     NSArray *components = [string componentsSeparatedByString:@" "];
-    if (components.count < 4) {
-        return @"failed to get date";
-    } else {
+    if (components.count >= 4) {
         NSString *date = components[3];
-        date = [date stringByReplacingOccurrencesOfString:@"-" withString:@"."];
-        return date;
+        return [date stringByReplacingOccurrencesOfString:@"-" withString:@"."];
+    } else {
+        return nil;
     }
 }
 
@@ -172,12 +187,12 @@ static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
 - (BOOL)isArticleImage:(NSString *)imageURL
 {
     // check for remote images only, ignore local images that start with "./"
-    return [[imageURL substringToIndex:4] isEqualToString:@"http"];
+    return (imageURL.length != 0) && [[imageURL substringToIndex:4] isEqualToString:@"http"];
 }
 
 - (BOOL)isValidBodyText:(NSString *)string
 {
-    if (string && (string.length > 0)) {
+    if ([string isNotNilOrEmpty]) {
         NSString *firstChar = [string substringToIndex:1];
         return ![self isSourceDate:string] && ![firstChar isEqualToString:@"】"] && ![firstChar isEqualToString:@"【"];
     } else {
