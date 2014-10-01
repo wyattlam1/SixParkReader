@@ -80,6 +80,7 @@ static const CGFloat kRefreshTriggerHeight = 80.f;
     } completion:^(BOOL finished) {
         _loadingTitleLabel.alpha = 1;
         self.isLoading = NO;
+        _refreshArrowView.transform = CGAffineTransformIdentity;
     }];
 }
 
@@ -94,7 +95,6 @@ static const CGFloat kRefreshTriggerHeight = 80.f;
         }
     }
 }
-
 
 - (void)scrollViewdidEndScrolling:(UIScrollView *)scrollView willDecelerate:(BOOL)willDecelerate
 {
@@ -113,18 +113,21 @@ static const CGFloat kRefreshTriggerHeight = 80.f;
 - (void)rotateRefreshArrow:(UIScrollView *)scrollView
 {
     CGFloat distance = scrollView.bounds.origin.y + scrollView.contentInset.top;
-    CGFloat percentChange = -distance / kRefreshTriggerHeight; // distance is negative, so multiply by '-' to make percentage positive
-    if (percentChange > 1.f) {
-        percentChange = 1.f;
-    }
-    
-    [UIView animateWithDuration:0 animations:^{
-        if (percentChange <= 1.f) {
-            _refreshArrowView.transform = CGAffineTransformMakeRotation(DegreesToRadians(180.f * percentChange));
-        } else {
-            _refreshArrowView.transform = CGAffineTransformMakeRotation(M_PI);
+    if (distance <= -kRefreshTriggerHeight) {
+        distance = distance + kRefreshTriggerHeight;
+        CGFloat percentChange = -distance / 30; // distance is negative, so multiply by '-' to make percentage positive
+        if (percentChange > 1.f) {
+            percentChange = 1.f;
         }
-    }];
+        
+        [UIView animateWithDuration:0 animations:^{
+            if (percentChange <= 1.f) {
+                _refreshArrowView.transform = CGAffineTransformMakeRotation(DegreesToRadians(180.f * percentChange));
+            } else {
+                _refreshArrowView.transform = CGAffineTransformMakeRotation(M_PI);
+            }
+        }];
+    }
 }
 
 @end
