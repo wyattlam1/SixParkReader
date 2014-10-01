@@ -16,7 +16,7 @@ static const CGFloat kRefreshTriggerHeight = 80.f;
 
 @interface SPRRefreshControl()
 @property (nonatomic) UIImageView *refreshArrowView;
-@property (nonatomic) UILabel *loadingTitleLabel;
+@property (nonatomic) UIActivityIndicatorView *spinner;
 @end
 
 @implementation SPRRefreshControl
@@ -30,11 +30,9 @@ static const CGFloat kRefreshTriggerHeight = 80.f;
         _refreshArrowView.contentMode = UIViewContentModeCenter;
         [self addSubview:_refreshArrowView];
         
-        // Loading View
-        _loadingTitleLabel = [[UILabel alloc] init];
-        _loadingTitleLabel.text = @"Loading…";
-        _loadingTitleLabel.hidden = YES;
-        [self addSubview:_loadingTitleLabel];
+        // Spinner
+        _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [self addSubview:_spinner];
     }
     return self;
 }
@@ -47,10 +45,10 @@ static const CGFloat kRefreshTriggerHeight = 80.f;
         _isLoading = isLoading;
         if (_isLoading) {
             _refreshArrowView.hidden = YES;
-            _loadingTitleLabel.hidden = NO;
+            [_spinner startAnimating];
         } else {
             _refreshArrowView.hidden = NO;
-            _loadingTitleLabel.hidden = YES;
+            [_spinner stopAnimating];
         }
     }
 }
@@ -66,8 +64,7 @@ static const CGFloat kRefreshTriggerHeight = 80.f;
     _refreshArrowView.frame = (CGRect){CGRectGetWidth(bounds)/2.f - refreshArrowSize.width/2.f, loadingPadding, .size = refreshArrowSize};
     _refreshArrowView.bounds = (CGRect){0, 0, .size = refreshArrowSize}; // we need to set the bounds separately so the rotation tansform doesnt translate also
     
-    [_loadingTitleLabel sizeToFit];
-    _loadingTitleLabel.frame = (CGRect){(CGRectGetWidth(bounds)/2.f - CGRectGetWidth(_loadingTitleLabel.bounds)/2.f), loadingPadding, .size = _loadingTitleLabel.bounds.size};
+    _spinner.frame = (CGRect){(CGRectGetWidth(bounds)/2.f - CGRectGetWidth(_spinner.bounds)/2.f), loadingPadding, .size = _spinner.bounds.size};
 }
 
 #pragma mark - Scrollview Delegate
@@ -76,9 +73,7 @@ static const CGFloat kRefreshTriggerHeight = 80.f;
 {
     [UIView animateWithDuration:0.3 animations:^{
         scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, -[SPRConstants statusBarHeight]);
-        _loadingTitleLabel.alpha = 0;
     } completion:^(BOOL finished) {
-        _loadingTitleLabel.alpha = 1;
         self.isLoading = NO;
         _refreshArrowView.transform = CGAffineTransformIdentity;
     }];
