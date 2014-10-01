@@ -37,7 +37,7 @@
 
 - (RACSignal *)selectedArticleHTMLSig
 {
-    return [_sprService parseHTMLFromArticleSig:_articles[_selectedArticle]];
+    return [_sprService fetchHTMLWithArticleInfo:_articles[_selectedArticle]];
 }
 
 @end

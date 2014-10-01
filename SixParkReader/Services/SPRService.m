@@ -38,6 +38,13 @@ static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
     }];
 }
 
+- (RACSignal *)fetchHTMLWithArticleInfo:(SPRArticleInfo *)article
+{
+    return [[_httpService downloadHTMLSignalWithURL:article.url] flattenMap:^RACStream *(NSString *htmlString) {
+        return [RACSignal return:[self parseArticleWithHTMLString:htmlString]];
+    }];
+}
+
 #pragma mark - Private
 
 - (NSArray *)parseArticlesWithHTMLString:(NSString *)htmlString
@@ -48,56 +55,58 @@ static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
     for (TFHppleElement *element in elements) {
         NSString *content = element.text;
         NSString *link = element.attributes[@"href"];
+        // ignore ads
+        if ([[link substringWithRange:NSMakeRange(7, 4)] isEqualToString:@"list"]) {
+            continue;
+        }
         SPRArticleInfo *article = [[SPRArticleInfo alloc] initWithTitle:content url:[NSURL URLWithString:link]];
         [articles addObject:article];
     }
     return  articles;
 }
 
-- (RACSignal *)parseHTMLFromArticleSig:(SPRArticleInfo *)article
+- (SPRArticle *)parseArticleWithHTMLString:(NSString *)htmlString
 {
-    return [[_httpService downloadHTMLSignalWithURL:article.url] flattenMap:^RACStream *(NSString *htmlString) {
-        TFHpple *doc = [TFHpple hppleWithHTMLData:[htmlString dataUsingEncoding:NSUTF16StringEncoding]];
-        
-        // Title
-        TFHppleElement *titleElement = [doc searchWithXPathQuery:@"//td[@id='newscontent']/center/h2"][0];
-        NSString *title = [self extractTitleFromString:titleElement.text];
-        
-        // Type
-        SPRArticleType type = [self extractTypeFromTitle:titleElement.text];
-        
-        // Source & Date
-        TFHppleElement *sourceDateElement = [doc searchWithXPathQuery:@"//td[@id='newscontent']/text()"][1];
-        NSString *sourceDateString = [sourceDateElement.content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        NSString *source = [self extractSourceFromString:sourceDateString];
-        NSString *date = [self extractDateFromString:sourceDateString];
-        
-        // Body & Images
-        NSString *query = @"//td[@id='newscontent']/text() | //td[@id='newscontent']/p | //td[@id='newscontent']/center/text() | //td[@id='newscontent']//img";
-        NSMutableArray *parsedBodyElements = [NSMutableArray new];
-        NSArray *bodyElements = [doc searchWithXPathQuery:query];
-        for (TFHppleElement *element in bodyElements) {
-            if ([element.tagName isEqualToString:@"img"]) {
-                NSString *imageURL = [element.attributes objectForKey:@"src"];
-                if (imageURL && [self isArticleImage:imageURL]) {
-                    [parsedBodyElements addObject:[SPRHTMLElement htmlElementWithImageURL:imageURL]];
-                }
-            } else {
-                // found a textNode
-                NSString *content = [element.content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                if (!content) {
-                    // found a <p> node
-                    content = [element.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                }
-                
-                if ([self isValidBodyText:content]) {
-                    [parsedBodyElements addObject:[SPRHTMLElement htmlElementWithText:content]];
-                }
+    TFHpple *doc = [TFHpple hppleWithHTMLData:[htmlString dataUsingEncoding:NSUTF16StringEncoding]];
+    
+    // Title
+    TFHppleElement *titleElement = [doc searchWithXPathQuery:@"//td[@id='newscontent']/center/h2"][0];
+    NSString *title = [self extractTitleFromString:titleElement.text];
+    
+    // Type
+    SPRArticleType type = [self extractTypeFromTitle:titleElement.text];
+    
+    // Source & Date
+    TFHppleElement *sourceDateElement = [doc searchWithXPathQuery:@"//td[@id='newscontent']/text()"][1];
+    NSString *sourceDateString = [sourceDateElement.content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *source = [self extractSourceFromString:sourceDateString];
+    NSString *date = [self extractDateFromString:sourceDateString];
+    
+    // Body & Images
+    NSString *query = @"//td[@id='newscontent']/text() | //td[@id='newscontent']/p | //td[@id='newscontent']/center/text() | //td[@id='newscontent']//img";
+    NSMutableArray *parsedBodyElements = [NSMutableArray new];
+    NSArray *bodyElements = [doc searchWithXPathQuery:query];
+    for (TFHppleElement *element in bodyElements) {
+        if ([element.tagName isEqualToString:@"img"]) {
+            NSString *imageURL = [element.attributes objectForKey:@"src"];
+            if (imageURL && [self isArticleImage:imageURL]) {
+                [parsedBodyElements addObject:[SPRHTMLElement htmlElementWithImageURL:imageURL]];
+            }
+        } else {
+            // found a textNode
+            NSString *content = [element.content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            if (!content) {
+                // found a <p> node
+                content = [element.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            }
+            
+            if ([self isValidBodyText:content]) {
+                [parsedBodyElements addObject:[SPRHTMLElement htmlElementWithText:content]];
             }
         }
-        
-        return [RACSignal return:[[SPRArticle alloc] initWithTitle:title type:type source:source date:date bodyElements:parsedBodyElements]];
-    }];
+    }
+    
+    return [[SPRArticle alloc] initWithTitle:title type:type source:source date:date bodyElements:parsedBodyElements];
 }
 
 #pragma mark - Parsing Helpers

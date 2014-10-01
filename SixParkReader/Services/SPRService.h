@@ -14,6 +14,9 @@
 @interface SPRService : NSObject
 
 - (instancetype)initWithSPRHTTPService:(SPRHTTPService *)httpService;
+
 - (RACSignal *)fetch6ParkArticlesSig;
-- (RACSignal *)parseHTMLFromArticleSig:(SPRArticleInfo *)article;
+
+- (RACSignal *)fetchHTMLWithArticleInfo:(SPRArticleInfo *)article;
+
 @end
