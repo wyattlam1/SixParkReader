@@ -45,7 +45,11 @@
     [self setupTableView];
     
     [RACObserve(self.articlesViewModel.articlesModel, articles) subscribeNext:^(NSArray *articles) {
-        if (articles) {                    
+        dispatch_async(dispatch_get_main_queue(), ^{
+           _refreshControl.hidden = (!articles || articles.count == 0);
+        });
+
+        if (articles) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [_tableView reloadData];
                 // populate first article
