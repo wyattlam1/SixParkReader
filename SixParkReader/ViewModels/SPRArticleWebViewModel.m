@@ -11,6 +11,7 @@
 #import "SPRArticleWebViewController.h"
 #import "SPRArticle.h"
 #import "SPRArticleInfo.h"
+#import "SPRArticleToolbarView.h"
 
 @interface SPRArticleWebViewModel()
 @property (nonatomic) SPRArticlesModel *articlesModel;
@@ -42,15 +43,39 @@
     [RACObserve(_articlesModel, selectedArticle) subscribeNext:^(NSNumber *index) {
         if (_articlesModel.articles.count) {
             [_webViewController startLoading];
-            [_articlesModel.selectedArticleHTMLSig subscribeNext:^(SPRArticle *article) {
-                _webViewController.htmlString = [article html];
-            } error:^(NSError *error) {
-                NSLog(@"error: %@", error);
-                SPRArticleInfo *info = _articlesModel.articles[[index integerValue]];
-                _webViewController.url = info.url;
-            }];
+            [self loadArticleWithIndex:[index integerValue]];
         }
     }];
+    
+    [_webViewController.toolbarView.webViewIcon addTarget:self action:@selector(webViewIconClicked:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)webViewIconClicked:(UIButton *)sender
+{
+    NSInteger index = _articlesModel.selectedArticle;
+    if (_webViewController.isArticleLoaded) {
+        [self loadWebArticleWithIndex:index];
+    } else {
+        [self loadArticleWithIndex:index];
+    }
+}
+
+#pragma mark - Article Loading
+
+- (void)loadArticleWithIndex:(NSInteger)index
+{
+    [_articlesModel.selectedArticleHTMLSig subscribeNext:^(SPRArticle *article) {
+        _webViewController.htmlString = [article html];
+    } error:^(NSError *error) {
+        NSLog(@"Failed to load article: %@", error);
+        [self loadWebArticleWithIndex:index];
+    }];
+}
+
+- (void)loadWebArticleWithIndex:(NSInteger)index
+{
+    SPRArticleInfo *info = _articlesModel.articles[index];
+    _webViewController.url = info.url;
 }
 
 @end
