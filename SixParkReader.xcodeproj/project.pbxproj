@@ -430,6 +430,7 @@
 				TargetAttributes = {
 					DB55576219D27066000EB3A2 = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = 358C7AU8QR;
 					};
 					DB55577B19D27066000EB3A2 = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -687,6 +688,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SixParkReader/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
@@ -698,6 +701,7 @@
 				INFOPLIST_FILE = SixParkReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -705,6 +709,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SixParkReader/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
@@ -716,6 +722,7 @@
 				INFOPLIST_FILE = SixParkReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

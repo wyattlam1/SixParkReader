@@ -117,9 +117,7 @@ static NSString *kSPRErrorDomain = @"SPRErrorDomain";
             }
         }
     }
-    
-    NSLog(@"Page load time: %f", fabs([startTime timeIntervalSinceNow]));
-    
+        
     return [RACSignal return:[[SPRArticle alloc] initWithTitle:title type:type source:source date:date bodyElements:parsedBodyElements]];
 }
 
