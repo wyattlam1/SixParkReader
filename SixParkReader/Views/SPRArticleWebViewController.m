@@ -44,7 +44,7 @@
 {
     _toolbarView.frame = (CGRect){0, [SPRConstants statusBarHeight], CGRectGetWidth(self.view.bounds), [SPRArticleToolbarView toolbarHeight]};
 
-    _webView.frame = (CGRect){0, CGRectGetMaxY(_toolbarView.frame), .size = self.view.bounds.size};
+    _webView.frame = (CGRect){0, CGRectGetMaxY(_toolbarView.frame), CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - CGRectGetHeight(_toolbarView.bounds)};
 
     _spinner.frame = (CGRect){CGRectGetWidth(_webView.bounds)/2.f - CGRectGetWidth(_spinner.bounds)/2.f, CGRectGetHeight(_webView.bounds)/2.f - CGRectGetHeight(_spinner.bounds)/2.f, .size = _spinner.bounds.size};
 }
