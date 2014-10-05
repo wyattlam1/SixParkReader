@@ -13,3 +13,7 @@ p {
 .date {
     font-size: 24px;
 }
+
+.body_image_container img {
+    width: 95%;
+}
