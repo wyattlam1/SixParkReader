@@ -74,31 +74,45 @@ static NSString *kSPRErrorDomain = @"SPRErrorDomain";
 
 - (RACSignal *)parseArticleWithHTMLString:(NSString *)htmlString
 {
-    NSDate *startTime = [NSDate date];
     TFHpple *doc = [TFHpple hppleWithHTMLData:[htmlString dataUsingEncoding:NSUTF16StringEncoding]];
+    NSString *title;
+    SPRArticleType type = SPRArticleTypeUnknown;
+    NSString *source;
+    NSString *date;
+    NSArray *elements;
+    NSString *errorString;
     
-    // Title
-    TFHppleElement *titleElement = [doc searchWithXPathQuery:@"//td[@id='newscontent']/center/h2"][0];
-    NSString *title = [self extractTitleFromString:titleElement.text];
-    if (![title isNotNilOrEmpty]) {
-        return [RACSignal error:[NSError errorWithDomain:kSPRErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey: @"Failed to extract title from article html"}]];
+    // Title & Type
+    elements = [doc searchWithXPathQuery:@"//td[@id='newscontent']/center/h2"];
+    if (elements.count > 0) {
+        TFHppleElement *titleElement = elements[0];
+        title = [self extractTitleFromString:titleElement.text];
+        if (![title isNotNilOrEmpty]) {
+            errorString = @"Failed to extract title from article html";
+        } else {
+            type = [self extractTypeFromTitle:titleElement.text];
+        }
+    } else {
+        errorString = @"Failed to extract title from article html";
     }
-    
-    // Type
-    SPRArticleType type = [self extractTypeFromTitle:titleElement.text];
     
     // Source & Date
-    TFHppleElement *sourceDateElement = [doc searchWithXPathQuery:@"//td[@id='newscontent']/text()"][1];
-    NSString *sourceDateString = [sourceDateElement.content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    NSString *source = [self extractSourceFromString:sourceDateString];
-    NSString *date = [self extractDateFromString:sourceDateString];
-    if (![source isNotNilOrEmpty]) {
-        return [RACSignal error:[NSError errorWithDomain:kSPRErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey: @"Failed to extract source from article html"}]];
+    elements = [doc searchWithXPathQuery:@"//td[@id='newscontent']/text()"];
+    if (elements.count > 0) {
+        TFHppleElement *sourceDateElement = elements[1];
+        NSString *sourceDateString = [sourceDateElement.content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        source = [self extractSourceFromString:sourceDateString];
+        date = [self extractDateFromString:sourceDateString];
+        if (![source isNotNilOrEmpty]) {
+            errorString = @"Failed to extract source from article html";
+        }
+        if (![date isNotNilOrEmpty]) {
+            errorString = @"Failed to extract date from article html";
+        }
+    } else {
+        errorString = @"Failed to extract source from article html";
     }
-    if (![date isNotNilOrEmpty]) {
-        return [RACSignal error:[NSError errorWithDomain:kSPRErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey: @"Failed to extract date from article html"}]];
-    }
-        
+    
     // Body & Images
     NSMutableArray *parsedBodyElements = [NSMutableArray new];
     NSMutableString *query = [NSMutableString new];
@@ -130,8 +144,13 @@ static NSString *kSPRErrorDomain = @"SPRErrorDomain";
             }
         }
     }
-        
-    return [RACSignal return:[[SPRArticle alloc] initWithTitle:title type:type source:source date:date bodyElements:parsedBodyElements]];
+    
+    
+    if (errorString) {
+        return [RACSignal error:[NSError errorWithDomain:kSPRErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey: errorString}]];
+    } else {
+        return [RACSignal return:[[SPRArticle alloc] initWithTitle:title type:type source:source date:date bodyElements:parsedBodyElements]];
+    }
 }
 
 #pragma mark - Parsing Helpers
