@@ -1,5 +1,5 @@
 //
-//  SPRArticleToolbarView.h
+//  SPRFontSizePickerController.h
 //  SixParkReader
 //
 //  Created by Wyatt Lam on 10/4/14.
@@ -8,11 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SPRArticleToolbarView : UIView
+@interface SPRFontSizePickerController : UIViewController
 @property (nonatomic, readonly) UIButton *smallerFontButton;
 @property (nonatomic, readonly) UIButton *largerFontButton;
-@property (nonatomic, readonly) UIButton *toggleWebViewButton;
-
-+ (CGFloat)toolbarHeight;
-
 @end

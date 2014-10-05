@@ -1,5 +1,5 @@
 //
-//  SPRArticlesModel.h
+//  SPRArticlesListModel.h
 //  SixParkReader
 //
 //  Created by Wyatt Lam on 9/24/14.
@@ -10,7 +10,7 @@
 
 @class SPRService;
 
-@interface SPRArticlesModel : NSObject
+@interface SPRArticlesListModel : NSObject
 @property (nonatomic, copy, readonly) NSArray *articles;
 @property (nonatomic) NSInteger selectedArticle;
 @property (nonatomic, readonly) RACSignal *selectedArticleHTMLSig;

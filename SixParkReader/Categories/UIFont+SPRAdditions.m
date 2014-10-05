@@ -10,7 +10,7 @@
 
 @implementation UIFont (SPRAdditions)
 
-+ (UIFont *)spr_defaultFont
++ (UIFont *)spr_defaultChineseFont
 {
     return [UIFont fontWithName:@"STHeitiSC-Light" size:20.f];
 }

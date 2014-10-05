@@ -17,6 +17,8 @@
 
 - (RACSignal *)fetch6ParkArticlesSig;
 
-- (RACSignal *)fetchHTMLWithArticleInfo:(SPRArticleInfo *)article;
+- (RACSignal *)fetchHTMLWithArticleInfo:(SPRArticleInfo *)articleInfo;
+
+- (RACSignal *)fetchArticleWithArticleInfo:(SPRArticleInfo *)articleInfo;
 
 @end

@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@class SPRArticlesModel;
+@class SPRArticlesListModel;
 @class SPRArticlesTableViewController;
 
 @interface SPRArticlesViewModel : NSObject
 @property (nonatomic, readonly) SPRArticlesTableViewController *viewController;
-@property (nonatomic, readonly) SPRArticlesModel *articlesModel;
+@property (nonatomic, readonly) SPRArticlesListModel *articlesModel;
 
-- (instancetype)initWithArticlesModel:(SPRArticlesModel *)articlesModel;
+- (instancetype)initWithArticlesModel:(SPRArticlesListModel *)articlesModel;
 
 - (void)refreshArticles;
 

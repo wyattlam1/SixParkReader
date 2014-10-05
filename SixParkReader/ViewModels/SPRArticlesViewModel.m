@@ -7,17 +7,17 @@
 //
 
 #import "SPRArticlesViewModel.h"
-#import "SPRArticlesModel.h"
+#import "SPRArticlesListModel.h"
 #import "SPRArticlesTableViewController.h"
 
 @interface SPRArticlesViewModel()
-@property (nonatomic) SPRArticlesModel *articlesModel;
+@property (nonatomic) SPRArticlesListModel *articlesModel;
 @property (nonatomic) SPRArticlesTableViewController *articlesViewController;
 @end
 
 @implementation SPRArticlesViewModel
 
-- (instancetype)initWithArticlesModel:(SPRArticlesModel *)articlesModel
+- (instancetype)initWithArticlesModel:(SPRArticlesListModel *)articlesModel
 {
     self = [super init];
     if (self) {

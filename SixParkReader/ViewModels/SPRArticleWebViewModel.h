@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@class SPRArticlesModel;
+@class SPRArticlesListModel;
+@class SPRArticleModel;
 @class SPRArticleWebViewController;
 
 @interface SPRArticleWebViewModel : NSObject
 @property (nonatomic, readonly) SPRArticleWebViewController *viewController;
 
-- (instancetype)initWithArticlesModel:(SPRArticlesModel *)articlesModel;
+- (instancetype)initWithArticlesModel:(SPRArticlesListModel *)articlesListModel articleModel:(SPRArticleModel *)articleModel;
 @end

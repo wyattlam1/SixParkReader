@@ -22,7 +22,7 @@
 		DB5557F619D31AAB000EB3A2 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5557F519D31AAB000EB3A2 /* libxml2.2.dylib */; };
 		DB5557FC19D32548000EB3A2 /* SPRConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5557FB19D32548000EB3A2 /* SPRConstants.m */; };
 		DB55580219D328F9000EB3A2 /* SPRArticlesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB55580119D328F9000EB3A2 /* SPRArticlesTableViewController.m */; };
-		DB55580519D3291B000EB3A2 /* SPRArticlesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB55580419D3291B000EB3A2 /* SPRArticlesModel.m */; };
+		DB55580519D3291B000EB3A2 /* SPRArticlesListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB55580419D3291B000EB3A2 /* SPRArticlesListModel.m */; };
 		DB55580819D32A81000EB3A2 /* SPRArticleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB55580719D32A81000EB3A2 /* SPRArticleTableViewCell.m */; };
 		DB60AE5619D8DAB200731F03 /* SPRRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DB60AE5519D8DAB200731F03 /* SPRRefreshControl.m */; };
 		DB60AE6019D8EE7C00731F03 /* SPRArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = DB60AE5F19D8EE7C00731F03 /* SPRArticle.m */; };
@@ -30,6 +30,13 @@
 		DB60AE6719DAFD8300731F03 /* SPRHTMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = DB60AE6619DAFD8300731F03 /* SPRHTMLElement.m */; };
 		DB7E047319DC56F70054950F /* NSString+SPRAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7E047219DC56F70054950F /* NSString+SPRAdditions.m */; };
 		DB7E047C19E0736B0054950F /* SPRArticleToolbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7E047B19E0736B0054950F /* SPRArticleToolbarView.m */; };
+		DB7E047F19E096230054950F /* SPRFontSizePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7E047E19E096230054950F /* SPRFontSizePickerController.m */; };
+		DB7E048219E0C7970054950F /* tiny.css in Resources */ = {isa = PBXBuildFile; fileRef = DB7E048019E0C7970054950F /* tiny.css */; };
+		DB7E048719E0C98E0054950F /* small.css in Resources */ = {isa = PBXBuildFile; fileRef = DB7E048519E0C98E0054950F /* small.css */; };
+		DB7E048B19E0CB210054950F /* SPRArticleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7E048A19E0CB210054950F /* SPRArticleModel.m */; };
+		DB7E048E19E1B9FC0054950F /* medium.css in Resources */ = {isa = PBXBuildFile; fileRef = DB7E048C19E1B9FC0054950F /* medium.css */; };
+		DB7E049119E1BA080054950F /* large.css in Resources */ = {isa = PBXBuildFile; fileRef = DB7E049019E1BA080054950F /* large.css */; };
+		DB7E049319E1BA140054950F /* huge.css in Resources */ = {isa = PBXBuildFile; fileRef = DB7E049219E1BA140054950F /* huge.css */; };
 		DBF3087519D5BA46004DD0F2 /* UIFont+SPRAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF3087419D5BA46004DD0F2 /* UIFont+SPRAdditions.m */; };
 		DBF3087819D5D2FE004DD0F2 /* UIColor+SPRAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF3087719D5D2FE004DD0F2 /* UIColor+SPRAdditions.m */; };
 		DBF3087B19D5ED8F004DD0F2 /* SPRArticleWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF3087A19D5ED8F004DD0F2 /* SPRArticleWebViewController.m */; };
@@ -135,8 +142,8 @@
 		DB5557FB19D32548000EB3A2 /* SPRConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRConstants.m; sourceTree = "<group>"; };
 		DB55580019D328F9000EB3A2 /* SPRArticlesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRArticlesTableViewController.h; path = Views/SPRArticlesTableViewController.h; sourceTree = "<group>"; };
 		DB55580119D328F9000EB3A2 /* SPRArticlesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRArticlesTableViewController.m; path = Views/SPRArticlesTableViewController.m; sourceTree = "<group>"; };
-		DB55580319D3291B000EB3A2 /* SPRArticlesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRArticlesModel.h; path = UIModels/SPRArticlesModel.h; sourceTree = "<group>"; };
-		DB55580419D3291B000EB3A2 /* SPRArticlesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRArticlesModel.m; path = UIModels/SPRArticlesModel.m; sourceTree = "<group>"; };
+		DB55580319D3291B000EB3A2 /* SPRArticlesListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRArticlesListModel.h; path = UIModels/SPRArticlesListModel.h; sourceTree = "<group>"; };
+		DB55580419D3291B000EB3A2 /* SPRArticlesListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRArticlesListModel.m; path = UIModels/SPRArticlesListModel.m; sourceTree = "<group>"; };
 		DB55580619D32A81000EB3A2 /* SPRArticleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRArticleTableViewCell.h; path = Views/SPRArticleTableViewCell.h; sourceTree = "<group>"; };
 		DB55580719D32A81000EB3A2 /* SPRArticleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRArticleTableViewCell.m; path = Views/SPRArticleTableViewCell.m; sourceTree = "<group>"; };
 		DB60AE5419D8DAB200731F03 /* SPRRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRRefreshControl.h; path = CustomControls/SPRRefreshControl.h; sourceTree = "<group>"; };
@@ -150,6 +157,15 @@
 		DB7E047219DC56F70054950F /* NSString+SPRAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+SPRAdditions.m"; path = "Categories/NSString+SPRAdditions.m"; sourceTree = "<group>"; };
 		DB7E047A19E0736B0054950F /* SPRArticleToolbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRArticleToolbarView.h; path = Views/SPRArticleToolbarView.h; sourceTree = "<group>"; };
 		DB7E047B19E0736B0054950F /* SPRArticleToolbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRArticleToolbarView.m; path = Views/SPRArticleToolbarView.m; sourceTree = "<group>"; };
+		DB7E047D19E096230054950F /* SPRFontSizePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRFontSizePickerController.h; path = Views/SPRFontSizePickerController.h; sourceTree = "<group>"; };
+		DB7E047E19E096230054950F /* SPRFontSizePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRFontSizePickerController.m; path = Views/SPRFontSizePickerController.m; sourceTree = "<group>"; };
+		DB7E048019E0C7970054950F /* tiny.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = tiny.css; path = stylesheets/tiny.css; sourceTree = "<group>"; };
+		DB7E048519E0C98E0054950F /* small.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = small.css; path = stylesheets/small.css; sourceTree = "<group>"; };
+		DB7E048919E0CB210054950F /* SPRArticleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRArticleModel.h; path = UIModels/SPRArticleModel.h; sourceTree = "<group>"; };
+		DB7E048A19E0CB210054950F /* SPRArticleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRArticleModel.m; path = UIModels/SPRArticleModel.m; sourceTree = "<group>"; };
+		DB7E048C19E1B9FC0054950F /* medium.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = medium.css; path = stylesheets/medium.css; sourceTree = "<group>"; };
+		DB7E049019E1BA080054950F /* large.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = large.css; path = stylesheets/large.css; sourceTree = "<group>"; };
+		DB7E049219E1BA140054950F /* huge.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = huge.css; path = stylesheets/huge.css; sourceTree = "<group>"; };
 		DBF3087319D5BA46004DD0F2 /* UIFont+SPRAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+SPRAdditions.h"; path = "Categories/UIFont+SPRAdditions.h"; sourceTree = "<group>"; };
 		DBF3087419D5BA46004DD0F2 /* UIFont+SPRAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+SPRAdditions.m"; path = "Categories/UIFont+SPRAdditions.m"; sourceTree = "<group>"; };
 		DBF3087619D5D2FE004DD0F2 /* UIColor+SPRAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+SPRAdditions.h"; path = "Categories/UIColor+SPRAdditions.h"; sourceTree = "<group>"; };
@@ -234,7 +250,7 @@
 				DB55576719D27066000EB3A2 /* Info.plist */,
 				DB55576819D27066000EB3A2 /* main.m */,
 				DB5557B119D284A9000EB3A2 /* PrefixHeader.pch */,
-				DB60AE6119D90A4C00731F03 /* style.css */,
+				DB7E048419E0C9710054950F /* Stylesheets */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -322,12 +338,14 @@
 				DBFE877C19D52F1C0033102A /* Cells */,
 				DB55580019D328F9000EB3A2 /* SPRArticlesTableViewController.h */,
 				DB55580119D328F9000EB3A2 /* SPRArticlesTableViewController.m */,
-				DBF3087919D5ED8F004DD0F2 /* SPRArticleWebViewController.h */,
-				DBF3087A19D5ED8F004DD0F2 /* SPRArticleWebViewController.m */,
-				DBFE877319D5285D0033102A /* SPRMasterViewController.h */,
-				DBFE877419D5285D0033102A /* SPRMasterViewController.m */,
 				DB7E047A19E0736B0054950F /* SPRArticleToolbarView.h */,
 				DB7E047B19E0736B0054950F /* SPRArticleToolbarView.m */,
+				DBF3087919D5ED8F004DD0F2 /* SPRArticleWebViewController.h */,
+				DBF3087A19D5ED8F004DD0F2 /* SPRArticleWebViewController.m */,
+				DB7E047D19E096230054950F /* SPRFontSizePickerController.h */,
+				DB7E047E19E096230054950F /* SPRFontSizePickerController.m */,
+				DBFE877319D5285D0033102A /* SPRMasterViewController.h */,
+				DBFE877419D5285D0033102A /* SPRMasterViewController.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -348,8 +366,10 @@
 		DB5557FF19D32869000EB3A2 /* UIModels */ = {
 			isa = PBXGroup;
 			children = (
-				DB55580319D3291B000EB3A2 /* SPRArticlesModel.h */,
-				DB55580419D3291B000EB3A2 /* SPRArticlesModel.m */,
+				DB55580319D3291B000EB3A2 /* SPRArticlesListModel.h */,
+				DB55580419D3291B000EB3A2 /* SPRArticlesListModel.m */,
+				DB7E048919E0CB210054950F /* SPRArticleModel.h */,
+				DB7E048A19E0CB210054950F /* SPRArticleModel.m */,
 			);
 			name = UIModels;
 			sourceTree = "<group>";
@@ -361,6 +381,19 @@
 				DB60AE5519D8DAB200731F03 /* SPRRefreshControl.m */,
 			);
 			name = CustomControls;
+			sourceTree = "<group>";
+		};
+		DB7E048419E0C9710054950F /* Stylesheets */ = {
+			isa = PBXGroup;
+			children = (
+				DB7E049219E1BA140054950F /* huge.css */,
+				DB7E049019E1BA080054950F /* large.css */,
+				DB7E048C19E1B9FC0054950F /* medium.css */,
+				DB7E048519E0C98E0054950F /* small.css */,
+				DB60AE6119D90A4C00731F03 /* style.css */,
+				DB7E048019E0C7970054950F /* tiny.css */,
+			);
+			name = Stylesheets;
 			sourceTree = "<group>";
 		};
 		DBF3086C19D5B9AA004DD0F2 /* Categories */ = {
@@ -525,9 +558,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB7E048E19E1B9FC0054950F /* medium.css in Resources */,
 				DB55577219D27066000EB3A2 /* Main.storyboard in Resources */,
+				DB7E049319E1BA140054950F /* huge.css in Resources */,
 				DB60AE6319D90A4C00731F03 /* style.css in Resources */,
+				DB7E049119E1BA080054950F /* large.css in Resources */,
 				DB55577419D27066000EB3A2 /* Images.xcassets in Resources */,
+				DB7E048719E0C98E0054950F /* small.css in Resources */,
+				DB7E048219E0C7970054950F /* tiny.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,8 +585,9 @@
 			files = (
 				DB7E047319DC56F70054950F /* NSString+SPRAdditions.m in Sources */,
 				DB5557FC19D32548000EB3A2 /* SPRConstants.m in Sources */,
+				DB7E048B19E0CB210054950F /* SPRArticleModel.m in Sources */,
 				DBF3087E19D5EF58004DD0F2 /* SPRArticleWebViewModel.m in Sources */,
-				DB55580519D3291B000EB3A2 /* SPRArticlesModel.m in Sources */,
+				DB55580519D3291B000EB3A2 /* SPRArticlesListModel.m in Sources */,
 				DB55580819D32A81000EB3A2 /* SPRArticleTableViewCell.m in Sources */,
 				DBFE877519D5285D0033102A /* SPRMasterViewController.m in Sources */,
 				DBF3087519D5BA46004DD0F2 /* UIFont+SPRAdditions.m in Sources */,
@@ -558,6 +597,7 @@
 				DBF3087B19D5ED8F004DD0F2 /* SPRArticleWebViewController.m in Sources */,
 				DB5557F219D31A06000EB3A2 /* TFHpple.m in Sources */,
 				DBF3087819D5D2FE004DD0F2 /* UIColor+SPRAdditions.m in Sources */,
+				DB7E047F19E096230054950F /* SPRFontSizePickerController.m in Sources */,
 				DB55578E19D272E7000EB3A2 /* SPRService.m in Sources */,
 				DB60AE6719DAFD8300731F03 /* SPRHTMLElement.m in Sources */,
 				DB60AE6019D8EE7C00731F03 /* SPRArticle.m in Sources */,

@@ -40,9 +40,14 @@ static NSString *kSPRErrorDomain = @"SPRErrorDomain";
     }];
 }
 
-- (RACSignal *)fetchHTMLWithArticleInfo:(SPRArticleInfo *)article
+- (RACSignal *)fetchHTMLWithArticleInfo:(SPRArticleInfo *)articleInfo
 {
-    return [[_httpService downloadHTMLSignalWithURL:article.url] flattenMap:^RACStream *(NSString *htmlString) {
+    return [_httpService downloadHTMLSignalWithURL:articleInfo.url];
+}
+
+- (RACSignal *)fetchArticleWithArticleInfo:(SPRArticleInfo *)articleInfo
+{
+    return [[_httpService downloadHTMLSignalWithURL:articleInfo.url] flattenMap:^RACStream *(NSString *htmlString) {
         return [self parseArticleWithHTMLString:htmlString];
     }];
 }
@@ -96,7 +101,7 @@ static NSString *kSPRErrorDomain = @"SPRErrorDomain";
         
     // Body & Images
     NSMutableArray *parsedBodyElements = [NSMutableArray new];
-    NSString *query = @"//td[@id='newscontent']/text() | //td[@id='newscontent']/p | //td[@id='newscontent']/center/text() | //td[@id='newscontent']//img";
+    NSString *query = @"//td[@id='newscontent']/text() | //td[@id='newscontent']/p | //td[@id='newscontent']/center/text() | //td[@id='newscontent']//img | //td[@id='newscontent']//div";
     NSArray *bodyElements = [doc searchWithXPathQuery:query];
     for (TFHppleElement *element in bodyElements) {
         if ([element.tagName isEqualToString:@"img"]) {

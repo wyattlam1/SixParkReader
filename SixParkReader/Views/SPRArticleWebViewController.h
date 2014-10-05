@@ -9,15 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @class SPRArticleToolbarView;
-@class SPRArticleInfo;
 
 @interface SPRArticleWebViewController : UIViewController
 @property (nonatomic, readonly) SPRArticleToolbarView *toolbarView;
-// choose either url or htmlString
-@property (nonatomic, readonly) BOOL isArticleLoaded;
-@property (nonatomic) NSURL *url;
+@property (nonatomic, readonly) UIActivityIndicatorView *spinner;
 @property (nonatomic, copy) NSString *htmlString;
-
-- (void)startLoading;
-
 @end

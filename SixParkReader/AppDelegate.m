@@ -9,7 +9,8 @@
 #import "AppDelegate.h"
 #import "SPRMasterViewModel.h"
 #import "SPRMasterViewController.h"
-#import "SPRArticlesModel.h"
+#import "SPRArticleModel.h"
+#import "SPRArticlesListModel.h"
 #import "SPRArticlesViewModel.h"
 #import "SPRArticleWebViewModel.h"
 #import "SPRService.h"
@@ -26,12 +27,14 @@
     SPRHTTPService *httpService = [SPRHTTPService new];
     SPRService *sprService = [[SPRService alloc] initWithSPRHTTPService:httpService];
     
+    SPRArticleModel *articleModel = [[SPRArticleModel alloc] initWithSPRService:sprService];
+    
     // Articles
-    SPRArticlesModel *articlesModel = [[SPRArticlesModel alloc] initWithSPRService:sprService];
-    SPRArticlesViewModel *articlesViewModel = [[SPRArticlesViewModel alloc] initWithArticlesModel:articlesModel];
+    SPRArticlesListModel *articlesListModel = [[SPRArticlesListModel alloc] initWithSPRService:sprService];
+    SPRArticlesViewModel *articlesViewModel = [[SPRArticlesViewModel alloc] initWithArticlesModel:articlesListModel];
     
     // WebView
-    SPRArticleWebViewModel *webViewModel = [[SPRArticleWebViewModel alloc] initWithArticlesModel:articlesModel];
+    SPRArticleWebViewModel *webViewModel = [[SPRArticleWebViewModel alloc] initWithArticlesModel:articlesListModel articleModel:articleModel];
     
     // Master
     _masterViewModel = [[SPRMasterViewModel alloc] initWithArticlesViewModel:articlesViewModel webViewModel:webViewModel];

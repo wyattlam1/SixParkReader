@@ -10,7 +10,7 @@
 #import "SPRArticlesViewModel.h"
 #import "SPRArticleInfo.h"
 #import "SPRArticleTableViewCell.h"
-#import "SPRArticlesModel.h"
+#import "SPRArticlesListModel.h"
 #import "SPRRefreshControl.h"
 #import "SPRConstants.h"
 #import "UIColor+SPRAdditions.h"

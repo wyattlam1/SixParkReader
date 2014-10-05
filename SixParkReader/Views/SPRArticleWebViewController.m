@@ -12,9 +12,8 @@
 #import "SPRConstants.h"
 #import "NSString+SPRAdditions.h"
 
-@interface SPRArticleWebViewController() <UIWebViewDelegate>
+@interface SPRArticleWebViewController()
 @property (nonatomic) UIWebView *webView;
-@property (nonatomic) UIActivityIndicatorView *spinner;
 @end
 
 @implementation SPRArticleWebViewController
@@ -25,12 +24,10 @@
     if (self) {
         _webView = [UIWebView new];
         _webView.backgroundColor = [UIColor whiteColor];
-        _webView.delegate = self;
         
         _toolbarView = [[SPRArticleToolbarView alloc] initWithFrame:CGRectZero];
         
         _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        [_spinner startAnimating];
     }
     return self;
 }
@@ -54,56 +51,15 @@
 
 #pragma mark - Properties
 
-- (BOOL)isArticleLoaded
-{
-    return [_htmlString isNotNilOrEmpty];
-}
-
-- (void)setUrl:(NSURL *)url
-{
-    if (_htmlString || (url && (_url != url))) {
-        _htmlString = nil;
-        _url = url;
-        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-        [_webView loadRequest:request];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            _webView.scalesPageToFit = YES;
-        });
-    }
-}
-
 - (void)setHtmlString:(NSString *)htmlString
 {
-    if (_url || (htmlString && (![_htmlString isEqualToString:htmlString]))) {
-        _url = nil;
+    if (htmlString && (![_htmlString isEqualToString:htmlString])) {
         _htmlString = htmlString;
         [_webView loadHTMLString:_htmlString baseURL:nil];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            _webView.scalesPageToFit = NO;
-        });
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            _webView.scalesPageToFit = NO;
+//        });
     }
-}
-
-#pragma mark - UIWebViewDelegate
-
-- (void)startLoading
-{
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if (_webView.isLoading) {
-           [_spinner startAnimating];
-        }
-    });
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    [_spinner stopAnimating];
-}
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
-{
-    [_spinner stopAnimating];
-    NSLog(@"Failed to load webview: %@", error);
 }
 
 @end

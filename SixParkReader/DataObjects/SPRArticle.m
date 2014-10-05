@@ -32,7 +32,7 @@
 {
     NSMutableString *htmlString = [NSMutableString new];
     [htmlString appendString:@"<html>"];
-    [htmlString appendFormat:@"<head><style>%@</style></head>", [self styleSheet]];
+    [htmlString appendFormat:@"<head><style>%@</style></head>", self.styleSheet];
     [htmlString appendString:@"<body>"];
     
     // Header Image
@@ -68,17 +68,6 @@
 }
 
 #pragma mark - Private
-
-- (NSString *)styleSheet
-{
-    NSError *error;
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"style" ofType:@".css"];
-    NSString *styleSheet = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
-    if (error) {
-        NSLog(@"Failed to load style sheet: %@", error);
-    }
-    return styleSheet;
-}
 
 - (NSString *)headerImage
 {

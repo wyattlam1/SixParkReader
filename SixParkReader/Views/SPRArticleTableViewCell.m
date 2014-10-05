@@ -22,7 +22,7 @@ static const CGFloat kArticleCellPadding = 15.f;
 
 + (CGFloat)heightForTableViewCell:(UITableView *)tableView article:(SPRArticleInfo *)article
 {
-    CGRect rect = [article.title boundingRectWithSize:(CGSize){CGRectGetWidth(tableView.bounds), CGFLOAT_MAX} options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) attributes:@{NSFontAttributeName: [UIFont spr_defaultFont]} context:nil];
+    CGRect rect = [article.title boundingRectWithSize:(CGSize){CGRectGetWidth(tableView.bounds), CGFLOAT_MAX} options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) attributes:@{NSFontAttributeName: [UIFont spr_defaultChineseFont]} context:nil];
     return rect.size.height + (2 * kArticleCellPadding);
 }
 
@@ -33,7 +33,7 @@ static const CGFloat kArticleCellPadding = 15.f;
         _titleLabel = [UILabel new];
         _titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
         _titleLabel.numberOfLines = 0;
-        _titleLabel.font = [UIFont spr_defaultFont];
+        _titleLabel.font = [UIFont spr_defaultChineseFont];
         _titleLabel.backgroundColor = [UIColor clearColor];
         
         _containerView = [UIView new];

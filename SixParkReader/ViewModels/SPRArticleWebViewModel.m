@@ -7,24 +7,27 @@
 //
 
 #import "SPRArticleWebViewModel.h"
-#import "SPRArticlesModel.h"
+#import "SPRArticlesListModel.h"
+#import "SPRArticleModel.h"
 #import "SPRArticleWebViewController.h"
 #import "SPRArticle.h"
 #import "SPRArticleInfo.h"
 #import "SPRArticleToolbarView.h"
 
 @interface SPRArticleWebViewModel()
-@property (nonatomic) SPRArticlesModel *articlesModel;
+@property (nonatomic) SPRArticleModel *articleModel;
+@property (nonatomic) SPRArticlesListModel *articlesListModel;
 @property (nonatomic) SPRArticleWebViewController *webViewController;
 @end
 
 @implementation SPRArticleWebViewModel
 
-- (instancetype)initWithArticlesModel:(SPRArticlesModel *)articlesModel
+- (instancetype)initWithArticlesModel:(SPRArticlesListModel *)articlesListModel articleModel:(SPRArticleModel *)articleModel
 {
     self = [super init];
     if (self) {
-        _articlesModel = articlesModel;
+        _articlesListModel = articlesListModel;
+        _articleModel = articleModel;
     }
     return self;
 }
@@ -40,42 +43,52 @@
 
 - (void)setupBindings
 {
-    [RACObserve(_articlesModel, selectedArticle) subscribeNext:^(NSNumber *index) {
-        if (_articlesModel.articles.count) {
-            [_webViewController startLoading];
-            [self loadArticleWithIndex:[index integerValue]];
+    [RACObserve(_articlesListModel, selectedArticle) subscribeNext:^(NSNumber *index) {
+        if (_articlesListModel.articles.count) {
+            SPRArticleInfo *articleInfo = [_articlesListModel.articles objectAtIndex:[index integerValue]];
+            [_articleModel loadArticleInfo:articleInfo];
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if (_articleModel.isLoading) {
+                    [_webViewController.spinner startAnimating];
+                }
+            });
         }
     }];
     
-    [_webViewController.toolbarView.webViewIcon addTarget:self action:@selector(webViewIconClicked:) forControlEvents:UIControlEventTouchUpInside];
-}
-
-- (void)webViewIconClicked:(UIButton *)sender
-{
-    NSInteger index = _articlesModel.selectedArticle;
-    if (_webViewController.isArticleLoaded) {
-        [self loadWebArticleWithIndex:index];
-    } else {
-        [self loadArticleWithIndex:index];
-    }
-}
-
-#pragma mark - Article Loading
-
-- (void)loadArticleWithIndex:(NSInteger)index
-{
-    [_articlesModel.selectedArticleHTMLSig subscribeNext:^(SPRArticle *article) {
-        _webViewController.htmlString = [article html];
-    } error:^(NSError *error) {
-        NSLog(@"Failed to load article: %@", error);
-        [self loadWebArticleWithIndex:index];
+    [RACObserve(_articleModel, articleHTML) subscribeNext:^(NSString *htmlString) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_webViewController.spinner stopAnimating];
+            _webViewController.htmlString = htmlString;
+        });
+    }];
+    
+    // Buttons    
+    [_webViewController.toolbarView.toggleWebViewButton addTarget:self action:@selector(webViewIconClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [RACObserve(_webViewController.toolbarView, smallerFontButton) subscribeNext:^(UIButton *smallerFontButton) {
+        [smallerFontButton addTarget:self action:@selector(smallerFontButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    }];
+    [RACObserve(_webViewController.toolbarView, largerFontButton) subscribeNext:^(UIButton *largerFontButton) {
+        [largerFontButton addTarget:self action:@selector(largerFontButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     }];
 }
 
-- (void)loadWebArticleWithIndex:(NSInteger)index
+#pragma mark - Button Handlers
+
+- (void)webViewIconClicked:(UIButton *)sender
 {
-    SPRArticleInfo *info = _articlesModel.articles[index];
-    _webViewController.url = info.url;
+    [_articleModel toggleWebView];
+}
+
+- (void)smallerFontButtonClicked:(UIButton *)sender
+{
+    [_articleModel decreaseFontSize];
+}
+
+- (void)largerFontButtonClicked:(UIButton *)sender
+{
+    [_articleModel increaseFontSize];
 }
 
 @end

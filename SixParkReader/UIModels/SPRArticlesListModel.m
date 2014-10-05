@@ -1,28 +1,26 @@
 //
-//  SPRArticlesModel.m
+//  SPRArticlesListModel.m
 //  SixParkReader
 //
 //  Created by Wyatt Lam on 9/24/14.
 //  Copyright (c) 2014 Wyatt Lam. All rights reserved.
 //
 
-#import "SPRArticlesModel.h"
+#import "SPRArticlesListModel.h"
 #import "SPRService.h"
 
-@interface SPRArticlesModel()
+@interface SPRArticlesListModel()
 @property (nonatomic) SPRService *sprService;
 @property (nonatomic, copy, readwrite) NSArray *articles;
 @end
 
-@implementation SPRArticlesModel
+@implementation SPRArticlesListModel
 
 - (instancetype)initWithSPRService:(SPRService *)sprService
 {
     self = [super init];
     if (self) {
         _sprService = sprService;
-//        _articles = @[];
-        
         [self refreshArticles];
     }
     return self;
