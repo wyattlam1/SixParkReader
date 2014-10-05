@@ -101,7 +101,15 @@ static NSString *kSPRErrorDomain = @"SPRErrorDomain";
         
     // Body & Images
     NSMutableArray *parsedBodyElements = [NSMutableArray new];
-    NSString *query = @"//td[@id='newscontent']/text() | //td[@id='newscontent']/p | //td[@id='newscontent']/center/text() | //td[@id='newscontent']//img | //td[@id='newscontent']//div";
+    NSMutableString *query = [NSMutableString new];
+    NSString *newsContentSection = @"//td[@id='newscontent']";
+    [query appendFormat:@"%@%@ | ", newsContentSection, @"/text()"];
+    [query appendFormat:@"%@%@ | ", newsContentSection, @"/p"];
+    [query appendFormat:@"%@%@ | ", newsContentSection, @"/p/text()"];
+    [query appendFormat:@"%@%@ | ", newsContentSection, @"/center/text()"];
+    [query appendFormat:@"%@%@ | ", newsContentSection, @"//img"];
+    [query appendFormat:@"%@%@", newsContentSection, @"//div"];
+    
     NSArray *bodyElements = [doc searchWithXPathQuery:query];
     for (TFHppleElement *element in bodyElements) {
         if ([element.tagName isEqualToString:@"img"]) {

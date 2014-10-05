@@ -27,6 +27,10 @@
     if (self) {
         _service = service;
         _fontSize = SPRArticleFontSizeMedium;
+        
+        RAC(self, isLoading) = [RACObserve(self, articleHTML) map:^id(id value) {
+            return @(NO);
+        }];
     }
     return self;
 }
@@ -60,16 +64,6 @@
 {
     _shouldLoadWebView = !_shouldLoadWebView;
     [self loadArticleInfo:_articleInfo];
-}
-
-#pragma mark - Properties
-
-- (void)setArticle:(SPRArticle *)article
-{
-    if (article && (_article != article)) {
-        _article = article;
-        _isLoading = NO;
-    }
 }
 
 #pragma mark - Styling
