@@ -12,4 +12,6 @@
 
 + (UIColor *)spr_lightGreen;
 
++ (UIColor *)spr_lightGray;
+
 @end

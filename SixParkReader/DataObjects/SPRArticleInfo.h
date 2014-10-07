@@ -12,5 +12,7 @@
 @property (nonatomic, copy, readonly) NSString *title;
 @property (nonatomic, readonly) NSURL *url;
 
+@property (nonatomic) BOOL hasBeenRead;
+
 - (instancetype)initWithTitle:(NSString *)title url:(NSURL *)url;
 @end

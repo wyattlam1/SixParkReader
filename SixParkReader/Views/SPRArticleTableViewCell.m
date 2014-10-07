@@ -49,10 +49,19 @@ static const CGFloat kArticleCellPadding = 15.f;
     return self;
 }
 
-- (void)updateCell:(SPRArticleInfo *)article
+- (void)updateCell:(SPRArticleInfo *)articleInfo
 {
-    _titleLabel.text = _article.title;
-    [self setNeedsLayout];
+    if (articleInfo) {
+        UIColor *fontColor;
+        if (articleInfo.hasBeenRead) {
+            fontColor = [UIColor spr_lightGray];
+        } else {
+            fontColor = [UIColor blackColor];
+        }
+        NSAttributedString *title = [[NSAttributedString alloc] initWithString:articleInfo.title attributes:@{NSForegroundColorAttributeName: fontColor}];
+        _titleLabel.attributedText = title;
+        [self setNeedsLayout];
+    }
 }
 
 #pragma mark - Layout & Drawing

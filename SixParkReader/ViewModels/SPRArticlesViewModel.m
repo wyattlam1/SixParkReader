@@ -11,17 +11,17 @@
 #import "SPRArticlesTableViewController.h"
 
 @interface SPRArticlesViewModel()
-@property (nonatomic) SPRArticlesListModel *articlesModel;
+@property (nonatomic, readwrite) SPRArticlesListModel *articlesListModel;
 @property (nonatomic) SPRArticlesTableViewController *articlesViewController;
 @end
 
 @implementation SPRArticlesViewModel
 
-- (instancetype)initWithArticlesModel:(SPRArticlesListModel *)articlesModel
+- (instancetype)initWithArticlesModel:(SPRArticlesListModel *)articlesListModel
 {
     self = [super init];
     if (self) {
-        _articlesModel = articlesModel;
+        _articlesListModel = articlesListModel;
     }
     return self;
 }
@@ -37,14 +37,13 @@
 
 - (void)updateBindings
 {
-    RAC(_articlesModel, selectedArticle) = RACObserve(_articlesViewController, selectedRow);
+    RAC(_articlesListModel, selectedArticle) = RACObserve(_articlesViewController, selectedRow);
 }
-
 #pragma mark - Commands
 
 - (void)refreshArticles
 {
-    [_articlesModel refreshArticles];
+    [_articlesListModel refreshArticles];
 }
 
 @end

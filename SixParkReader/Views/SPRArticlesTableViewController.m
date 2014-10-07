@@ -44,13 +44,11 @@
     
     [self setupTableView];
     
-    [RACObserve(self.articlesViewModel.articlesModel, articles) subscribeNext:^(NSArray *articles) {
+    [RACObserve(self.articlesViewModel.articlesListModel, articles) subscribeNext:^(NSArray *articles) {
         dispatch_async(dispatch_get_main_queue(), ^{
-           _refreshControl.hidden = (!articles || articles.count == 0);
-        });
+            _refreshControl.hidden = (!articles || articles.count == 0);
 
-        if (articles) {
-            dispatch_async(dispatch_get_main_queue(), ^{
+            if (articles) {
                 [_tableView reloadData];
                 // populate first article
                 if (_selectedRow == -1) {
@@ -59,8 +57,8 @@
                 if (_refreshControl.isLoading) {
                     [_refreshControl didFinishLoading:_tableView];
                 }
-            });
-        }
+            }
+        });
     }];
     
     [RACObserve(self.refreshControl, isLoading) subscribeNext:^(id x) {
@@ -104,7 +102,7 @@
 
 - (NSArray *)articles
 {
-    return _articlesViewModel.articlesModel.articles;
+    return _articlesViewModel.articlesListModel.articles;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -129,18 +127,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_selectedRow != indexPath.row) {
-        [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:_selectedRow inSection:0]].contentView.backgroundColor = [UIColor whiteColor];
         self.selectedRow = indexPath.row;
-        [tableView cellForRowAtIndexPath:indexPath].contentView.backgroundColor = [[UIColor spr_lightGreen] colorWithAlphaComponent:0.4f];
-    }
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.row == _selectedRow) {
-         cell.contentView.backgroundColor = [[UIColor spr_lightGreen] colorWithAlphaComponent:0.4f];
-    } else {
-        cell.contentView.backgroundColor = [UIColor whiteColor];
+        [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
     }
 }
 

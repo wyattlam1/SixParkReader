@@ -15,4 +15,9 @@
     return [UIColor colorWithRed:139.f/255.f green:191.f/255.f blue:27.f/255.f alpha:1.f];
 }
 
++ (UIColor *)spr_lightGray
+{
+    return [UIColor colorWithWhite:0.6 alpha:1.f];
+}
+
 @end
