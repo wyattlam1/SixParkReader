@@ -13,6 +13,7 @@
 #import "SPRArticlesListModel.h"
 #import "SPRRefreshControl.h"
 #import "SPRConstants.h"
+#import "SPRArticlesTableViewHeaderView.h"
 #import "UIColor+SPRAdditions.h"
 
 static const CGFloat SPRHeaderViewHeight = 70.f;
@@ -20,7 +21,7 @@ static const CGFloat SPRHeaderViewHeight = 70.f;
 @interface SPRArticlesTableViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, weak) SPRArticlesViewModel *articlesViewModel;
 // Views
-@property (nonatomic) UIView *headerView;
+@property (nonatomic) SPRArticlesTableViewHeaderView *headerView;
 @property (nonatomic) SPRRefreshControl *refreshControl;
 @property (nonatomic) UITableView *tableView;
 //
@@ -71,8 +72,7 @@ static const CGFloat SPRHeaderViewHeight = 70.f;
 
 - (void)setupTableView
 {
-    _headerView = [[UIView alloc] initWithFrame:CGRectZero];
-    _headerView.backgroundColor = [UIColor spr_lightGreen];
+    _headerView = [[SPRArticlesTableViewHeaderView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:_headerView];
     
     _refreshControl = [[SPRRefreshControl alloc] init];

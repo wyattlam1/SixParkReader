@@ -37,6 +37,7 @@
 		DB7E048E19E1B9FC0054950F /* medium.css in Resources */ = {isa = PBXBuildFile; fileRef = DB7E048C19E1B9FC0054950F /* medium.css */; };
 		DB7E049119E1BA080054950F /* large.css in Resources */ = {isa = PBXBuildFile; fileRef = DB7E049019E1BA080054950F /* large.css */; };
 		DB7E049319E1BA140054950F /* huge.css in Resources */ = {isa = PBXBuildFile; fileRef = DB7E049219E1BA140054950F /* huge.css */; };
+		DBC6466D19E9AF5000E01EEA /* SPRArticlesTableViewHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC6466C19E9AF5000E01EEA /* SPRArticlesTableViewHeaderView.m */; };
 		DBF3087519D5BA46004DD0F2 /* UIFont+SPRAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF3087419D5BA46004DD0F2 /* UIFont+SPRAdditions.m */; };
 		DBF3087819D5D2FE004DD0F2 /* UIColor+SPRAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF3087719D5D2FE004DD0F2 /* UIColor+SPRAdditions.m */; };
 		DBF3087B19D5ED8F004DD0F2 /* SPRArticleWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF3087A19D5ED8F004DD0F2 /* SPRArticleWebViewController.m */; };
@@ -166,6 +167,8 @@
 		DB7E048C19E1B9FC0054950F /* medium.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = medium.css; path = stylesheets/medium.css; sourceTree = "<group>"; };
 		DB7E049019E1BA080054950F /* large.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = large.css; path = stylesheets/large.css; sourceTree = "<group>"; };
 		DB7E049219E1BA140054950F /* huge.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = huge.css; path = stylesheets/huge.css; sourceTree = "<group>"; };
+		DBC6466B19E9AF5000E01EEA /* SPRArticlesTableViewHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRArticlesTableViewHeaderView.h; path = Views/Views/SPRArticlesTableViewHeaderView.h; sourceTree = "<group>"; };
+		DBC6466C19E9AF5000E01EEA /* SPRArticlesTableViewHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRArticlesTableViewHeaderView.m; path = Views/Views/SPRArticlesTableViewHeaderView.m; sourceTree = "<group>"; };
 		DBF3087319D5BA46004DD0F2 /* UIFont+SPRAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+SPRAdditions.h"; path = "Categories/UIFont+SPRAdditions.h"; sourceTree = "<group>"; };
 		DBF3087419D5BA46004DD0F2 /* UIFont+SPRAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+SPRAdditions.m"; path = "Categories/UIFont+SPRAdditions.m"; sourceTree = "<group>"; };
 		DBF3087619D5D2FE004DD0F2 /* UIColor+SPRAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+SPRAdditions.h"; path = "Categories/UIColor+SPRAdditions.h"; sourceTree = "<group>"; };
@@ -346,6 +349,7 @@
 				DB7E047E19E096230054950F /* SPRFontSizePickerController.m */,
 				DBFE877319D5285D0033102A /* SPRMasterViewController.h */,
 				DBFE877419D5285D0033102A /* SPRMasterViewController.m */,
+				DBC6466419E9AEFD00E01EEA /* Views */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -394,6 +398,15 @@
 				DB7E048019E0C7970054950F /* tiny.css */,
 			);
 			name = Stylesheets;
+			sourceTree = "<group>";
+		};
+		DBC6466419E9AEFD00E01EEA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DBC6466B19E9AF5000E01EEA /* SPRArticlesTableViewHeaderView.h */,
+				DBC6466C19E9AF5000E01EEA /* SPRArticlesTableViewHeaderView.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		DBF3086C19D5B9AA004DD0F2 /* Categories */ = {
@@ -608,6 +621,7 @@
 				DBFE877B19D52C620033102A /* SPRMasterViewModel.m in Sources */,
 				DB55580219D328F9000EB3A2 /* SPRArticlesTableViewController.m in Sources */,
 				DB55576919D27066000EB3A2 /* main.m in Sources */,
+				DBC6466D19E9AF5000E01EEA /* SPRArticlesTableViewHeaderView.m in Sources */,
 				DB60AE5619D8DAB200731F03 /* SPRRefreshControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,7 +12,7 @@
 
 + (UIColor *)spr_lightGreen
 {
-    return [UIColor colorWithRed:160.f/255.f green:216/255.f blue:128.f/255.f alpha:1.f];
+    return [UIColor colorWithRed:128.f/255.f green:173.f/255.f blue:103.f/255.f alpha:1.f];
 }
 
 + (UIColor *)spr_lightGray

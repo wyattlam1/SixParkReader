@@ -11,5 +11,6 @@
 @interface UIFont (SPRAdditions)
 
 + (UIFont *)spr_defaultChineseFont;
++ (UIFont *)spr_headerFont;
 
 @end

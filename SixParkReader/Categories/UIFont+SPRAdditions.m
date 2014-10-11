@@ -15,4 +15,9 @@
     return [UIFont fontWithName:@"STHeitiSC-Light" size:20.f];
 }
 
++ (UIFont *)spr_headerFont
+{
+    return [UIFont fontWithName:@"STHeitiSC-Medium" size:32.f];
+}
+
 @end
