@@ -15,9 +15,12 @@
 #import "SPRConstants.h"
 #import "UIColor+SPRAdditions.h"
 
+static const CGFloat SPRHeaderViewHeight = 70.f;
+
 @interface SPRArticlesTableViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, weak) SPRArticlesViewModel *articlesViewModel;
 // Views
+@property (nonatomic) UIView *headerView;
 @property (nonatomic) SPRRefreshControl *refreshControl;
 @property (nonatomic) UITableView *tableView;
 //
@@ -68,6 +71,10 @@
 
 - (void)setupTableView
 {
+    _headerView = [[UIView alloc] initWithFrame:CGRectZero];
+    _headerView.backgroundColor = [UIColor spr_lightGreen];
+    [self.view addSubview:_headerView];
+    
     _refreshControl = [[SPRRefreshControl alloc] init];
     [self.view addSubview:_refreshControl];
     
@@ -82,8 +89,9 @@
 
 - (void)viewDidLayoutSubviews
 {
-    _refreshControl.frame = (CGRect){0, 0, CGRectGetWidth(self.view.bounds), 0};
-   _tableView.frame = self.view.bounds;
+    _headerView.frame = (CGRect){0, 0, CGRectGetWidth(self.view.bounds), SPRHeaderViewHeight};
+    _refreshControl.frame = (CGRect){0, CGRectGetMaxY(_headerView.frame), CGRectGetWidth(self.view.bounds), 0};
+    _tableView.frame = (CGRect){0, CGRectGetMaxY(_headerView.frame), CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - SPRHeaderViewHeight};
 }
 
 #pragma mark - Pull to Refresh

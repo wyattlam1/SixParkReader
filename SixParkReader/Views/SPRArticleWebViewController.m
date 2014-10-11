@@ -11,6 +11,7 @@
 #import "SPRArticleWebViewModel.h"
 #import "SPRConstants.h"
 #import "NSString+SPRAdditions.h"
+#import "UIColor+SPRAdditions.h"
 
 @interface SPRArticleWebViewController()
 @property (nonatomic) UIWebView *webView;
@@ -26,6 +27,7 @@
         _webView.backgroundColor = [UIColor whiteColor];
         
         _toolbarView = [[SPRArticleToolbarView alloc] initWithFrame:CGRectZero];
+        _toolbarView.backgroundColor = [UIColor spr_lightGreen];
         
         _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     }
@@ -34,7 +36,7 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];    
+    [super viewDidLoad];
     [_webView addSubview:_spinner];
     [self.view addSubview:_toolbarView];
     [self.view addSubview:_webView];
@@ -42,7 +44,8 @@
 
 - (void)viewDidLayoutSubviews
 {
-    _toolbarView.frame = (CGRect){0, [SPRConstants statusBarHeight], CGRectGetWidth(self.view.bounds), [SPRArticleToolbarView toolbarHeight]};
+    // offset by 1 to cover UISplitViewController border
+    _toolbarView.frame = (CGRect){-1, [SPRConstants statusBarHeight], CGRectGetWidth(self.view.bounds) + 1, [SPRArticleToolbarView toolbarHeight]};
 
     _webView.frame = (CGRect){0, CGRectGetMaxY(_toolbarView.frame), CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - CGRectGetHeight(_toolbarView.bounds)};
 
