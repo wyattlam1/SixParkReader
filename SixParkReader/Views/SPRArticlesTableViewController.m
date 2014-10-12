@@ -16,7 +16,7 @@
 #import "SPRArticlesTableViewHeaderView.h"
 #import "UIColor+SPRAdditions.h"
 
-static const CGFloat SPRHeaderViewHeight = 70.f;
+static const CGFloat SPRHeaderViewHeight = 50.f;
 
 @interface SPRArticlesTableViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, weak) SPRArticlesViewModel *articlesViewModel;
@@ -52,7 +52,7 @@ static const CGFloat SPRHeaderViewHeight = 70.f;
         dispatch_async(dispatch_get_main_queue(), ^{
             _refreshControl.hidden = (!articles || articles.count == 0);
 
-            if (articles) {
+            if (articles.count > 0) {
                 [_tableView reloadData];
                 // populate first article
                 if (_selectedRow == -1) {
@@ -89,7 +89,7 @@ static const CGFloat SPRHeaderViewHeight = 70.f;
 
 - (void)viewDidLayoutSubviews
 {
-    _headerView.frame = (CGRect){0, 0, CGRectGetWidth(self.view.bounds), SPRHeaderViewHeight};
+    _headerView.frame = (CGRect){0, [SPRConstants statusBarHeight], CGRectGetWidth(self.view.bounds), SPRHeaderViewHeight};
     _refreshControl.frame = (CGRect){0, CGRectGetMaxY(_headerView.frame), CGRectGetWidth(self.view.bounds), 0};
     _tableView.frame = (CGRect){0, CGRectGetMaxY(_headerView.frame), CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - SPRHeaderViewHeight};
 }

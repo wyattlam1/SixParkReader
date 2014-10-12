@@ -34,7 +34,7 @@ static const CGFloat SPRToolbarWebViewIconWidth = 32.f;
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor spr_lightGreen];
         
         _fontSizePickerController = [SPRFontSizePickerController new];
         _fontSizePopover = [[UIPopoverController alloc] initWithContentViewController:_fontSizePickerController];

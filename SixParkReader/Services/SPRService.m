@@ -17,6 +17,7 @@
 
 static NSString *k6ParkURL = @"http://www.6park.com/us.shtml";
 static NSString *kSPRErrorDomain = @"SPRErrorDomain";
+static NSString *SPRArticleListDivName = @"parknews";
 
 @interface SPRService()
 @property (nonatomic) SPRHTTPService *httpService;
@@ -58,7 +59,7 @@ static NSString *kSPRErrorDomain = @"SPRErrorDomain";
 {
     NSMutableArray *articles = [NSMutableArray new];
     TFHpple *doc = [TFHpple hppleWithHTMLData:[htmlString dataUsingEncoding:NSUTF16StringEncoding]];
-    NSArray *elements = [doc searchWithXPathQuery:@"//div[@id='parknews']/a"];
+    NSArray *elements = [doc searchWithXPathQuery:[NSString stringWithFormat:@"//div[@id='%@']/a", SPRArticleListDivName]];
     for (TFHppleElement *element in elements) {
         NSString *content = element.text;
         NSString *link = element.attributes[@"href"];

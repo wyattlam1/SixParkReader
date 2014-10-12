@@ -27,7 +27,6 @@
         _webView.backgroundColor = [UIColor whiteColor];
         
         _toolbarView = [[SPRArticleToolbarView alloc] initWithFrame:CGRectZero];
-        _toolbarView.backgroundColor = [UIColor spr_lightGreen];
         
         _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     }
@@ -38,8 +37,8 @@
 {
     [super viewDidLoad];
     [_webView addSubview:_spinner];
-    [self.view addSubview:_toolbarView];
     [self.view addSubview:_webView];
+    [self.view addSubview:_toolbarView];
 }
 
 - (void)viewDidLayoutSubviews
@@ -47,7 +46,8 @@
     // offset by 1 to cover UISplitViewController border
     _toolbarView.frame = (CGRect){-1, [SPRConstants statusBarHeight], CGRectGetWidth(self.view.bounds) + 1, [SPRArticleToolbarView toolbarHeight]};
 
-    _webView.frame = (CGRect){0, CGRectGetMaxY(_toolbarView.frame), CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - CGRectGetHeight(_toolbarView.bounds)};
+    _webView.frame = (CGRect){0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - CGRectGetHeight(_toolbarView.bounds)};
+    _webView.scrollView.contentInset = UIEdgeInsetsMake([SPRConstants statusBarHeight] + CGRectGetHeight(_toolbarView.bounds), 0, 0, 0);
 
     _spinner.frame = (CGRect){CGRectGetWidth(_webView.bounds)/2.f - CGRectGetWidth(_spinner.bounds)/2.f, CGRectGetHeight(_webView.bounds)/2.f - CGRectGetHeight(_spinner.bounds)/2.f, .size = _spinner.bounds.size};
 }

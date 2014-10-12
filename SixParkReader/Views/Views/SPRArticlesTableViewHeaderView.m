@@ -41,7 +41,7 @@ static NSString *SPRHeaderTitle = @"留园网";
     
     CGRect headerBounds = _headerTitleLabel.bounds;
     
-    _headerTitleLabel.frame = (CGRect){CGRectGetWidth(self.bounds) / 2.f - CGRectGetWidth(headerBounds) / 2.f, [SPRConstants statusBarHeight] + 5, .size = headerBounds.size};
+    _headerTitleLabel.frame = (CGRect){CGRectGetWidth(self.bounds) / 2.f - CGRectGetWidth(headerBounds) / 2.f, 5, .size = headerBounds.size};
     
 }
 

@@ -20,9 +20,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     _statusBarBackground = [[UIView alloc] initWithFrame:(CGRect){0, 0, CGRectGetWidth(self.view.bounds), [SPRConstants statusBarHeight]}];
     _statusBarBackground.backgroundColor = [UIColor spr_lightGreen];
-    
     [self.view addSubview:_statusBarBackground];
 }
 
