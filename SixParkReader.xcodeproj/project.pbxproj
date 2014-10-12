@@ -145,8 +145,8 @@
 		DB55580119D328F9000EB3A2 /* SPRArticlesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRArticlesTableViewController.m; path = Views/SPRArticlesTableViewController.m; sourceTree = "<group>"; };
 		DB55580319D3291B000EB3A2 /* SPRArticlesListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRArticlesListModel.h; path = UIModels/SPRArticlesListModel.h; sourceTree = "<group>"; };
 		DB55580419D3291B000EB3A2 /* SPRArticlesListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRArticlesListModel.m; path = UIModels/SPRArticlesListModel.m; sourceTree = "<group>"; };
-		DB55580619D32A81000EB3A2 /* SPRArticleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRArticleTableViewCell.h; path = Views/SPRArticleTableViewCell.h; sourceTree = "<group>"; };
-		DB55580719D32A81000EB3A2 /* SPRArticleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRArticleTableViewCell.m; path = Views/SPRArticleTableViewCell.m; sourceTree = "<group>"; };
+		DB55580619D32A81000EB3A2 /* SPRArticleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRArticleTableViewCell.h; path = Views/Views/SPRArticleTableViewCell.h; sourceTree = "<group>"; };
+		DB55580719D32A81000EB3A2 /* SPRArticleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRArticleTableViewCell.m; path = Views/Views/SPRArticleTableViewCell.m; sourceTree = "<group>"; };
 		DB60AE5419D8DAB200731F03 /* SPRRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRRefreshControl.h; path = CustomControls/SPRRefreshControl.h; sourceTree = "<group>"; };
 		DB60AE5519D8DAB200731F03 /* SPRRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRRefreshControl.m; path = CustomControls/SPRRefreshControl.m; sourceTree = "<group>"; };
 		DB60AE5E19D8EE7C00731F03 /* SPRArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRArticle.h; path = DataObjects/SPRArticle.h; sourceTree = "<group>"; };
@@ -156,8 +156,8 @@
 		DB60AE6619DAFD8300731F03 /* SPRHTMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRHTMLElement.m; path = DataObjects/SPRHTMLElement.m; sourceTree = "<group>"; };
 		DB7E047119DC56F70054950F /* NSString+SPRAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+SPRAdditions.h"; path = "Categories/NSString+SPRAdditions.h"; sourceTree = "<group>"; };
 		DB7E047219DC56F70054950F /* NSString+SPRAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+SPRAdditions.m"; path = "Categories/NSString+SPRAdditions.m"; sourceTree = "<group>"; };
-		DB7E047A19E0736B0054950F /* SPRArticleToolbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRArticleToolbarView.h; path = Views/SPRArticleToolbarView.h; sourceTree = "<group>"; };
-		DB7E047B19E0736B0054950F /* SPRArticleToolbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRArticleToolbarView.m; path = Views/SPRArticleToolbarView.m; sourceTree = "<group>"; };
+		DB7E047A19E0736B0054950F /* SPRArticleToolbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRArticleToolbarView.h; path = Views/Views/SPRArticleToolbarView.h; sourceTree = "<group>"; };
+		DB7E047B19E0736B0054950F /* SPRArticleToolbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRArticleToolbarView.m; path = Views/Views/SPRArticleToolbarView.m; sourceTree = "<group>"; };
 		DB7E047D19E096230054950F /* SPRFontSizePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRFontSizePickerController.h; path = Views/SPRFontSizePickerController.h; sourceTree = "<group>"; };
 		DB7E047E19E096230054950F /* SPRFontSizePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRFontSizePickerController.m; path = Views/SPRFontSizePickerController.m; sourceTree = "<group>"; };
 		DB7E048019E0C7970054950F /* tiny.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = tiny.css; path = stylesheets/tiny.css; sourceTree = "<group>"; };
@@ -338,11 +338,8 @@
 		DB5557FD19D3285D000EB3A2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DBFE877C19D52F1C0033102A /* Cells */,
 				DB55580019D328F9000EB3A2 /* SPRArticlesTableViewController.h */,
 				DB55580119D328F9000EB3A2 /* SPRArticlesTableViewController.m */,
-				DB7E047A19E0736B0054950F /* SPRArticleToolbarView.h */,
-				DB7E047B19E0736B0054950F /* SPRArticleToolbarView.m */,
 				DBF3087919D5ED8F004DD0F2 /* SPRArticleWebViewController.h */,
 				DBF3087A19D5ED8F004DD0F2 /* SPRArticleWebViewController.m */,
 				DB7E047D19E096230054950F /* SPRFontSizePickerController.h */,
@@ -405,6 +402,10 @@
 			children = (
 				DBC6466B19E9AF5000E01EEA /* SPRArticlesTableViewHeaderView.h */,
 				DBC6466C19E9AF5000E01EEA /* SPRArticlesTableViewHeaderView.m */,
+				DB55580619D32A81000EB3A2 /* SPRArticleTableViewCell.h */,
+				DB55580719D32A81000EB3A2 /* SPRArticleTableViewCell.m */,
+				DB7E047A19E0736B0054950F /* SPRArticleToolbarView.h */,
+				DB7E047B19E0736B0054950F /* SPRArticleToolbarView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -420,15 +421,6 @@
 				DB7E047219DC56F70054950F /* NSString+SPRAdditions.m */,
 			);
 			name = Categories;
-			sourceTree = "<group>";
-		};
-		DBFE877C19D52F1C0033102A /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				DB55580619D32A81000EB3A2 /* SPRArticleTableViewCell.h */,
-				DB55580719D32A81000EB3A2 /* SPRArticleTableViewCell.m */,
-			);
-			name = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
