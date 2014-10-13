@@ -76,8 +76,9 @@ static const CGFloat SPRToolbarWebViewIconWidth = 32.f;
 - (NSAttributedString *)titleText
 {
     NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:@"AA"];
-    [title addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:18.f] range:NSMakeRange(0, 1)];
-    [title addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:28.f] range:NSMakeRange(1, 1)];
+    [title addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, title.length)];
+    [title addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:18.f] range:NSMakeRange(0, 1)];
+    [title addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:28.f] range:NSMakeRange(1, 1)];
     return title;
 }
 
