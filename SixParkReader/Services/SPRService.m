@@ -119,7 +119,7 @@ static NSString *SPRArticleListDivName = @"parknews";
     NSMutableString *query = [NSMutableString new];
     NSString *newsContentSection = @"//td[@id='newscontent']";
     [query appendFormat:@"%@%@ | ", newsContentSection, @"/text()"];
-    [query appendFormat:@"%@%@ | ", newsContentSection, @"/p"];
+//    [query appendFormat:@"%@%@ | ", newsContentSection, @"/p"]; // causes duplicates...
     [query appendFormat:@"%@%@ | ", newsContentSection, @"/p/text()"];
     [query appendFormat:@"%@%@ | ", newsContentSection, @"/center/text()"];
     [query appendFormat:@"%@%@ | ", newsContentSection, @"//img"];
