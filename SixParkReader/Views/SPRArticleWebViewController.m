@@ -46,7 +46,7 @@
     // offset by 1 to cover UISplitViewController border
     _toolbarView.frame = (CGRect){-1, [SPRConstants statusBarHeight], CGRectGetWidth(self.view.bounds) + 1, [SPRArticleToolbarView toolbarHeight]};
 
-    _webView.frame = (CGRect){0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - CGRectGetHeight(_toolbarView.bounds)};
+    _webView.frame = (CGRect){0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds)};
     _webView.scrollView.contentInset = UIEdgeInsetsMake([SPRConstants statusBarHeight] + CGRectGetHeight(_toolbarView.bounds), 0, 0, 0);
 
     _spinner.frame = (CGRect){CGRectGetWidth(_webView.bounds)/2.f - CGRectGetWidth(_spinner.bounds)/2.f, CGRectGetHeight(_webView.bounds)/2.f - CGRectGetHeight(_spinner.bounds)/2.f, .size = _spinner.bounds.size};

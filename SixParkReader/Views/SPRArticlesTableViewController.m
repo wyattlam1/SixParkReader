@@ -42,9 +42,7 @@ static const CGFloat SPRHeaderViewHeight = 50.f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     _selectedRow = -1;
-    self.view.backgroundColor = [UIColor whiteColor];
     
     [self setupTableView];
     
