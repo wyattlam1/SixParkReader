@@ -77,6 +77,7 @@ static const CGFloat SPRHeaderViewHeight = 50.f;
     [self.view addSubview:_refreshControl];
     
     _tableView = [[UITableView alloc] init];
+    _tableView.showsVerticalScrollIndicator = NO;
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.contentInset = UIEdgeInsetsMake([SPRConstants statusBarHeight], 0, 0, 0);
